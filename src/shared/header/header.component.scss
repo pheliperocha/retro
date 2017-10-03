@@ -1,0 +1,37 @@
+header {
+  background: lightblue;
+  padding: 8px 32px;
+
+  .left, .right {
+    width: 25%;
+  }
+
+  .left {
+    .logo {
+      width: 80px;
+      height: 36px;
+      background: lightgrey;
+    }
+  }
+
+  .right {
+    .user_name {
+      float: right;
+      margin-top: 8px;
+      margin-right: 8px;
+    }
+
+    .user_picture {
+      float: right;
+      width: 36px;
+      height: 36px;
+      background: lightgrey;
+      border-radius: 50%;
+    }
+  }
+
+  .center {
+    width: 50%;
+  }
+
+}

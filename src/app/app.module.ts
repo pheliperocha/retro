@@ -16,13 +16,15 @@ import { AppComponent } from './app.component';
 import { RetrospectiveComponent } from '../pages/retrospective/retrospective.component';
 import { LoginComponent } from '../pages/login/login.component';
 import { DashboardComponent } from '../pages/dashboard/dashboard.component';
+import { HeaderComponent } from '../shared/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    RetrospectiveComponent
+    RetrospectiveComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

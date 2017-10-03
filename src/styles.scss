@@ -8,3 +8,9 @@ $app-accent:  mat-palette($mat-pink, A200, A100, A400);
 $app-theme: mat-light-theme($app-primary, $app-accent);
 
 @include angular-material-theme($app-theme);
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
