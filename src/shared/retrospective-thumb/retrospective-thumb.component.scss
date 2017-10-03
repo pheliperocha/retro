@@ -1,0 +1,27 @@
+.retrospective-thumb {
+  position: relative;
+  width: 185px;
+  height: 200px;
+  background: lightcoral;
+  margin-right: 16px;
+  border-radius: 4px;
+  box-shadow: 1px 1px 10px rgba(0,0,0,.3);
+
+  &:hover {
+    transform: scale(1.05);
+    transition: .2s;
+    cursor: pointer;
+  }
+
+  .title {
+    box-sizing: border-box;
+    background: rgba(0,0,0,.3);
+    color: #fff;
+    font-weight: bolder;
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    padding: 10px;
+    border-radius: 0px 0px 4px 4px;
+  }
+}

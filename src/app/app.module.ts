@@ -17,6 +17,7 @@ import { RetrospectiveComponent } from '../pages/retrospective/retrospective.com
 import { LoginComponent } from '../pages/login/login.component';
 import { DashboardComponent } from '../pages/dashboard/dashboard.component';
 import { HeaderComponent } from '../shared/header/header.component';
+import { RetrospectiveThumbComponent } from '../shared/retrospective-thumb/retrospective-thumb.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HeaderComponent } from '../shared/header/header.component';
     LoginComponent,
     DashboardComponent,
     RetrospectiveComponent,
-    HeaderComponent
+    HeaderComponent,
+    RetrospectiveThumbComponent
   ],
   imports: [
     BrowserModule,
