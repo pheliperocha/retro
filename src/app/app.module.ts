@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MdButtonModule } from '@angular/material';
+import {MdButtonModule, MatToolbarModule, MatIconModule } from '@angular/material';
 
 // Services
 import { appRoutes } from './app.routes';
@@ -37,6 +37,8 @@ import { RetrospectiveThumbComponent } from '../shared/retrospective-thumb/retro
       { enableTracing: true }
     ),
     MdButtonModule,
+    MatToolbarModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

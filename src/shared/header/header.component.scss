@@ -1,37 +1,28 @@
-header {
-  background: lightblue;
-  padding: 8px 32px;
-
-  .left, .right {
-    width: 25%;
+md-toolbar {
+  .logo {
+    width: 80px;
+    height: 36px;
+    background: lightgrey;
   }
 
-  .left {
-    .logo {
-      width: 80px;
-      height: 36px;
-      background: lightgrey;
-    }
+  .center {
+    flex: 1 1 auto;
+    text-align: center;
   }
 
   .right {
     .user_name {
       float: right;
-      margin-top: 8px;
       margin-right: 8px;
+      margin-top: 8px;
     }
 
     .user_picture {
       float: right;
-      width: 36px;
-      height: 36px;
+      width: 46px;
+      height: 46px;
       background: lightgrey;
       border-radius: 50%;
     }
   }
-
-  .center {
-    width: 50%;
-  }
-
 }
