@@ -1,5 +1,12 @@
 section {
+  box-sizing: border-box;
   display: flex;
   width: 100%;
   padding: 32px;
+}
+
+.fab {
+  position: fixed;
+  right: 32px;
+  bottom: 32px;
 }
