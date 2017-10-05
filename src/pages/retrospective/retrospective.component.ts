@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./retrospective.component.scss']
 })
 export class RetrospectiveComponent {
-
+  constructor() {}
 }

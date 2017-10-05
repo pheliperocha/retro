@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {MdButtonModule, MatToolbarModule, MatIconModule } from '@angular/material';
+import { MdButtonModule, MatToolbarModule, MatIconModule, MatCardModule, MatStepperModule } from '@angular/material';
 
 // Services
 import { appRoutes } from './app.routes';
@@ -18,6 +18,7 @@ import { LoginComponent } from '../pages/login/login.component';
 import { DashboardComponent } from '../pages/dashboard/dashboard.component';
 import { HeaderComponent } from '../shared/header/header.component';
 import { RetrospectiveThumbComponent } from '../shared/retrospective-thumb/retrospective-thumb.component';
+import { ListComponent } from '../shared/list/list.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { RetrospectiveThumbComponent } from '../shared/retrospective-thumb/retro
     DashboardComponent,
     RetrospectiveComponent,
     HeaderComponent,
-    RetrospectiveThumbComponent
+    RetrospectiveThumbComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,9 @@ import { RetrospectiveThumbComponent } from '../shared/retrospective-thumb/retro
     ),
     MdButtonModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule,
+    MatStepperModule
   ],
   providers: [],
   bootstrap: [AppComponent]
