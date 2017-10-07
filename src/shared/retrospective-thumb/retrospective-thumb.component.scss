@@ -1,8 +1,11 @@
+@import '~@angular/material/theming';
+@import '../../theme.scss';
+
 .retrospective-thumb {
   position: relative;
   width: 185px;
   height: 200px;
-  background: lightcoral;
+  background: mat-color($accent);
   margin-right: 16px;
   border-radius: 4px;
   box-shadow: 1px 1px 10px rgba(0,0,0,.3);
@@ -16,7 +19,7 @@
   .title {
     box-sizing: border-box;
     background: rgba(0,0,0,.3);
-    color: #fff;
+    color: mat-color($accent, default-contrast);
     font-weight: bolder;
     position: absolute;
     width: 100%;
