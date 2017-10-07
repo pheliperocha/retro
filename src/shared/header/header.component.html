@@ -1,8 +1,19 @@
 <md-toolbar color="primary">
   <span class="logo"></span>
-  <span class="center"></span>
+
+  <span class="center">
+
+  </span>
+
   <span class="right">
-    <div class="user_picture"></div>
-    <div class="user_name">Phelipe Rocha</div>
+
+    <div class="user_picture" [mdMenuTriggerFor]="menu"><img src="{{ user.picture }}" alt="" title="" /></div>
+    <div class="user_name" [mdMenuTriggerFor]="menu">{{ user.name }}</div>
+
+    <md-menu #menu="mdMenu" xPosition="after">
+      <button md-menu-item (click)="logout()">
+        <span>Sair</span>
+      </button>
+    </md-menu>
   </span>
 </md-toolbar>

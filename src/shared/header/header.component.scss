@@ -15,6 +15,7 @@ md-toolbar {
       float: right;
       margin-right: 8px;
       margin-top: 8px;
+      cursor: pointer;
     }
 
     .user_picture {
@@ -23,6 +24,12 @@ md-toolbar {
       height: 46px;
       background: lightgrey;
       border-radius: 50%;
+      overflow: hidden;
+      cursor: pointer;
+
+      img {
+        width: 100%;
+      }
     }
   }
 }

@@ -5,7 +5,7 @@ import { HttpModule, XHRBackend, RequestOptions  } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MdButtonModule, MatToolbarModule, MatIconModule, MatCardModule, MatStepperModule } from '@angular/material';
+import { MdButtonModule, MatToolbarModule, MatIconModule, MatCardModule, MatStepperModule, MatMenuModule } from '@angular/material';
 
 // Modules
 import { OAuthModule } from '../providers/oauth/oauth.module';
@@ -50,7 +50,8 @@ import { CardComponent } from '../shared/card/card.component';
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
-    MatStepperModule
+    MatStepperModule,
+    MatMenuModule
   ],
   providers: [
   ],
