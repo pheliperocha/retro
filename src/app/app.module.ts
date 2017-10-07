@@ -19,6 +19,7 @@ import { DashboardComponent } from '../pages/dashboard/dashboard.component';
 import { HeaderComponent } from '../shared/header/header.component';
 import { RetrospectiveThumbComponent } from '../shared/retrospective-thumb/retrospective-thumb.component';
 import { ListComponent } from '../shared/list/list.component';
+import { CardComponent } from '../shared/card/card.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ListComponent } from '../shared/list/list.component';
     RetrospectiveComponent,
     HeaderComponent,
     RetrospectiveThumbComponent,
-    ListComponent
+    ListComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,7 @@ import { ListComponent } from '../shared/list/list.component';
     FlexLayoutModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true }
+      { enableTracing: false }
     ),
     MdButtonModule,
     MatToolbarModule,

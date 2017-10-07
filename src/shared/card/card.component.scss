@@ -1,0 +1,22 @@
+md-card {
+  padding: 0px;
+  margin-bottom: 8px;
+
+  .feedback {
+    padding: 8px;
+  }
+
+  .footer {
+    padding-left: 8px;
+
+    .user {
+      width: 36px;
+      height: 36px;
+      float: right;
+      margin-top: -36px;
+      border-radius: 999px 0px 0px 0px;
+
+      background: coral;
+    }
+  }
+}
