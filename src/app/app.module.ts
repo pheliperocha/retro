@@ -1,15 +1,17 @@
 // Core Angular
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule, XHRBackend, RequestOptions  } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MdButtonModule, MatToolbarModule, MatIconModule, MatCardModule, MatStepperModule } from '@angular/material';
 
+// Modules
+import { OAuthModule } from '../providers/oauth/oauth.module';
+
 // Services
 import { appRoutes } from './app.routes';
-import { AuthService } from '../providers/auth.service';
-import { AuthGuard } from '../providers/auth.guard';
 
 // Directives
 
@@ -37,7 +39,9 @@ import { CardComponent } from '../shared/card/card.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpModule,
     FlexLayoutModule,
+    OAuthModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: false }
@@ -49,8 +53,6 @@ import { CardComponent } from '../shared/card/card.component';
     MatStepperModule
   ],
   providers: [
-    AuthService,
-    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
