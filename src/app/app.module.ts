@@ -8,6 +8,8 @@ import { MdButtonModule, MatToolbarModule, MatIconModule, MatCardModule, MatStep
 
 // Services
 import { appRoutes } from './app.routes';
+import { AuthService } from '../providers/auth.service';
+import { AuthGuard } from '../providers/auth.guard';
 
 // Directives
 
@@ -46,7 +48,10 @@ import { CardComponent } from '../shared/card/card.component';
     MatCardModule,
     MatStepperModule
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
