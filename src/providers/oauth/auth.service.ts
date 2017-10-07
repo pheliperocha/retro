@@ -51,10 +51,11 @@ export class AuthService implements CanActivate, CanActivateChild, CanLoad {
     if (this.code) {
       this.login(this.code, this.configObj.clientId, this.configObj.redirectURI, this.configObj.authEndpoint)
       .then((data: any) => {
-          this.loading = false;
-          this.router.navigate([this.cachedURL]);
-              return true;
-          });
+        this.loading = false;
+        this.router.navigate([this.cachedURL]);
+
+        return true;
+      });
     }
   }
 

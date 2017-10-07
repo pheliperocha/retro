@@ -8,6 +8,7 @@ export const appRoutes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthService] },
-  { path: 'retrospective', component: RetrospectiveComponent, canActivate: [AuthService] },
+  { path: 'retrospective/:id', component: RetrospectiveComponent, canActivate: [AuthService] },
+  { path: 'retrospective', component: DashboardComponent, canActivate: [AuthService] },
   { path: '**', component: LoginComponent },
 ];

@@ -24,6 +24,7 @@ import { HeaderComponent } from '../shared/header/header.component';
 import { RetrospectiveThumbComponent } from '../shared/retrospective-thumb/retrospective-thumb.component';
 import { ListComponent } from '../shared/list/list.component';
 import { CardComponent } from '../shared/card/card.component';
+import { ApiService } from '../providers/api/api.service';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { CardComponent } from '../shared/card/card.component';
     MatMenuModule
   ],
   providers: [
+    ApiService
   ],
   bootstrap: [AppComponent]
 })
