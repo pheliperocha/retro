@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class AuthService {
+  public isLogged: boolean = true;
 
   constructor() {}
 
@@ -10,6 +11,12 @@ export class AuthService {
   }
 
   isLoggedIn(): Promise<boolean> {
-    return Promise.resolve(false);
+    return new Promise((resolve, reject) => {
+      if (this.isLogged) {
+        resolve(true);
+      } else {
+        reject(false);
+      }
+    });
   }
 }

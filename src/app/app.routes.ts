@@ -7,6 +7,6 @@ import { AuthGuard } from '../providers/auth.guard';
 export const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: 'retrospective', component: RetrospectiveComponent },
+  { path: 'retrospective', component: RetrospectiveComponent, canActivate: [AuthGuard] },
   { path: '**', component: LoginComponent },
 ];
