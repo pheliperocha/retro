@@ -26,7 +26,7 @@
     </div>
   </md-card-header>
 
-  <md-card-content fxFlex>
+  <md-card-content fxFlex [dragula]='"bag-cards"'>
     <app-card *ngFor="let card of cards" [card]="card"></app-card>
   </md-card-content>
 

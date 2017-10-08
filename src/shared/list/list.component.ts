@@ -1,10 +1,11 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { Card } from '../../models/card';
 import { DeleteDialogComponent } from "../dialogs/delete-dialog.component";
 import {MdDialog} from "@angular/material";
 import {List} from "../../models/list";
 import {RetrospectiveService} from "../../providers/retrospective.service";
 import {Subscription} from "rxjs/Subscription";
+import {DragulaService} from "ng2-dragula";
 
 @Component({
   selector: 'app-list',
@@ -17,7 +18,8 @@ export class ListComponent {
   @Input() state: number;
   public editing: boolean = false;
 
-  constructor(public deleteDialog: MdDialog, private retrospectiveService: RetrospectiveService) {}
+  constructor(public deleteDialog: MdDialog,
+              private retrospectiveService: RetrospectiveService) {}
 
   editList(status: boolean) {
     this.editing = status;

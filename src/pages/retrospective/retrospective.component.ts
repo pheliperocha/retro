@@ -53,6 +53,15 @@ export class RetrospectiveComponent implements OnInit {
         return handle.classList.contains('handle');
       }
     });
+
+    this.dragulaService.setOptions('bag-cards', {
+      revertOnSpill: true
+    });
+
+    this.dragulaService.drop.subscribe((value) => {
+      console.log('=====');
+      console.log(value[2]);
+    });
   }
 
   getCardsFromList(listId: number): Card[] {
