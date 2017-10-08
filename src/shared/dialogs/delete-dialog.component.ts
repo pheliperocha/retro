@@ -4,7 +4,7 @@ import {MD_DIALOG_DATA, MdDialogRef} from "@angular/material";
 @Component({
   selector: 'delete-dialog',
   template: `    
-  <p>Tem certeza que deseja deletar essa lista?</p>
+  <p>{{ message }}</p>
   <md-dialog-actions>
     <button md-button fxFlex (click)="dialogRef.close(0)">Não</button>
     <button md-button fxFlex (click)="deleteList()">Sim</button>
@@ -12,11 +12,18 @@ import {MD_DIALOG_DATA, MdDialogRef} from "@angular/material";
   `
 })
 export class DeleteDialogComponent {
+  message: string;
 
   constructor(public dialogRef: MdDialogRef<DeleteDialogComponent>,
-              @Inject(MD_DIALOG_DATA) public data: any) {}
+              @Inject(MD_DIALOG_DATA) public data: any) {
+    this.message = data.message;
+  }
 
   deleteList() {
-    this.dialogRef.close(1);
+    if (this.data.object) {
+      this.dialogRef.close(this.data.object);
+    } else {
+      this.dialogRef.close(1);
+    }
   }
 }

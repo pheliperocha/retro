@@ -25,6 +25,7 @@ export class RetrospectiveComponent implements OnInit {
   public appSettings = AppSettings;
   private deleteListSubscribe: Subscription;
   private addCardSubscribe: Subscription;
+  private deleteCardSubscribe: Subscription;
 
   constructor(
     private authService: AuthService,
@@ -51,6 +52,14 @@ export class RetrospectiveComponent implements OnInit {
     this.addCardSubscribe = this.retrospectiveService.addCardSource$.subscribe(card => {
       console.log(3);
       this.cards.push(card);
+    });
+
+    this.deleteCardSubscribe = this.retrospectiveService.deleteCardSource$.subscribe(card => {
+      console.log('Delete Card');
+      let index = this.cards.findIndex((elt) => (elt===card));
+      if (index != -1) {
+        this.cards.splice(index, 1);
+      }
     });
 
     this.dragulaService.setOptions('bag-list', {
@@ -107,5 +116,6 @@ export class RetrospectiveComponent implements OnInit {
   ngOnDestroy() {
     console.log('Destroy Retrospective');
     this.deleteListSubscribe.unsubscribe();
+    this.addCardSubscribe.unsubscribe();
   }
 }

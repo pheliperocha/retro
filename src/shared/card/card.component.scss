@@ -7,6 +7,18 @@ md-card {
 
   .feedback {
     padding: 8px;
+
+    textarea {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid mat-color($mat-grey, 300);
+      resize: vertical;
+
+      &:focus {
+        outline: none;
+        border-bottom: 2px solid mat-color($accent);
+      }
+    }
   }
 
   .footer {

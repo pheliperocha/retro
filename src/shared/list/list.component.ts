@@ -54,7 +54,7 @@ export class ListComponent {
 
   deleteList() {
     let dialogRef = this.deleteDialog.open(DeleteDialogComponent, {
-      data: this.list
+      data: { message: 'Tem certeza que deseja remover essa lista?' }
     });
 
     dialogRef.afterClosed().subscribe(result => {
