@@ -6,6 +6,7 @@ import {List} from "../../models/list";
 import {RetrospectiveService} from "../../providers/retrospective.service";
 import {Subscription} from "rxjs/Subscription";
 import {DragulaService} from "ng2-dragula";
+import {CreateCardDialogComponent} from "../dialogs/createCard-dialog.component";
 
 @Component({
   selector: 'app-list',
@@ -21,6 +22,26 @@ export class ListComponent {
   constructor(public deleteDialog: MdDialog,
               private retrospectiveService: RetrospectiveService) {}
 
+  createCard() {
+    let dialogRef = this.deleteDialog.open(CreateCardDialogComponent, {
+      data: this.list
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result !== 0) {
+        let newCard = {
+          id: 6,
+          listId: this.list.id,
+          description: result.feedback,
+          votes: 0
+        };
+
+        console.log(1);
+        this.retrospectiveService.addCard(newCard);
+      }
+    });
+  }
+
   editList(status: boolean) {
     this.editing = status;
   }
@@ -31,14 +52,14 @@ export class ListComponent {
     this.editing = false;
   }
 
-  deleteList(list: List) {
+  deleteList() {
     let dialogRef = this.deleteDialog.open(DeleteDialogComponent, {
-      data: list
+      data: this.list
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === 1) {
-        this.retrospectiveService.deleteList(list);
+        this.retrospectiveService.deleteList(this.list);
       }
     });
   }

@@ -2,7 +2,7 @@ import {Component, EventEmitter, Inject, Output} from "@angular/core";
 import {MD_DIALOG_DATA, MdDialogRef} from "@angular/material";
 
 @Component({
-  selector: 'your-dialog-selector',
+  selector: 'delete-dialog',
   template: `    
   <p>Tem certeza que deseja deletar essa lista?</p>
   <md-dialog-actions>

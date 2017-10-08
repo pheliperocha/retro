@@ -33,6 +33,7 @@ import {RetroHeaderComponent} from "../pages/retrospective/retrospective-header/
 import {DeleteDialogComponent} from "../shared/dialogs/delete-dialog.component";
 import {FormsModule} from "@angular/forms";
 import {DragulaModule} from "ng2-dragula";
+import {CreateCardDialogComponent} from "../shared/dialogs/createCard-dialog.component";
 
 @NgModule({
   declarations: [
@@ -45,9 +46,10 @@ import {DragulaModule} from "ng2-dragula";
     RetrospectiveThumbComponent,
     ListComponent,
     CardComponent,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    CreateCardDialogComponent
   ],
-  entryComponents: [ DeleteDialogComponent ],
+  entryComponents: [ DeleteDialogComponent, CreateCardDialogComponent ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

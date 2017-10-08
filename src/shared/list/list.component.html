@@ -20,7 +20,7 @@
         <md-icon>clear</md-icon>
       </button>
 
-      <button md-icon-button *ngIf="!editing" (click)="deleteList(list)">
+      <button md-icon-button *ngIf="!editing" (click)="deleteList()">
         <md-icon>delete</md-icon>
       </button>
     </div>
@@ -30,5 +30,5 @@
     <app-card *ngFor="let card of cards" [card]="card"></app-card>
   </md-card-content>
 
-  <button md-raised-button color="primary"><md-icon >add</md-icon></button>
+  <button md-raised-button color="primary" (click)="createCard()"><md-icon >add</md-icon></button>
 </md-card>

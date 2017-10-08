@@ -23,7 +23,8 @@ export class RetrospectiveComponent implements OnInit {
   public lists: List[];
   public cards: Card[];
   public appSettings = AppSettings;
-  private deleteSubscribe: Subscription;
+  private deleteListSubscribe: Subscription;
+  private addCardSubscribe: Subscription;
 
   constructor(
     private authService: AuthService,
@@ -39,12 +40,17 @@ export class RetrospectiveComponent implements OnInit {
     this.lists = this.route.snapshot.data['lists'];
     this.cards = this.route.snapshot.data['cards'];
 
-    this.deleteSubscribe = this.retrospectiveService.deleteListSource$.subscribe(list => {
+    this.deleteListSubscribe = this.retrospectiveService.deleteListSource$.subscribe(list => {
       console.log('Delete List');
       let index = this.lists.findIndex((elt) => (elt===list));
       if (index != -1) {
         this.lists.splice(index, 1);
       }
+    });
+
+    this.addCardSubscribe = this.retrospectiveService.addCardSource$.subscribe(card => {
+      console.log(3);
+      this.cards.push(card);
     });
 
     this.dragulaService.setOptions('bag-list', {
@@ -71,7 +77,14 @@ export class RetrospectiveComponent implements OnInit {
   }
 
   test() {
-    console.log(this.lists);
+    this.cards.push({
+      id: 8,
+      description: 'sdfsdfds',
+      listId: 2,
+      votes: 2
+    });
+
+    console.log(this.cards);
   }
 
   createList() {
@@ -93,6 +106,6 @@ export class RetrospectiveComponent implements OnInit {
 
   ngOnDestroy() {
     console.log('Destroy Retrospective');
-    this.deleteSubscribe.unsubscribe();
+    this.deleteListSubscribe.unsubscribe();
   }
 }
