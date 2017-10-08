@@ -3,7 +3,8 @@ import { RetrospectiveComponent } from '../pages/retrospective/retrospective.com
 import { LoginComponent } from '../pages/login/login.component';
 import { DashboardComponent } from '../pages/dashboard/dashboard.component';
 import { AuthService } from '../providers/oauth/auth.service';
-import { RetrospectiveResolverService } from '../pages/retrospective/retrospective-resolver.service';
+import { RetrospectiveResolverService } from '../providers/resolvers/retrospective-resolver.service';
+import { ListsResolverService } from '../providers/resolvers/lists-resolver.service';
 
 export const appRoutes: Routes = [
   {
@@ -24,7 +25,8 @@ export const appRoutes: Routes = [
     component: RetrospectiveComponent,
     canActivate: [AuthService],
     resolve: {
-      retrospective: RetrospectiveResolverService
+      retrospective: RetrospectiveResolverService,
+      lists: ListsResolverService
     }
   },
   {

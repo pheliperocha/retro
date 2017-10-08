@@ -13,7 +13,8 @@ import { OAuthModule } from '../providers/oauth/oauth.module';
 // Services
 import { appRoutes } from './app.routes';
 import { ApiService } from '../providers/api/api.service';
-import { RetrospectiveResolverService } from "../pages/retrospective/retrospective-resolver.service";
+import { RetrospectiveResolverService } from '../providers/resolvers/retrospective-resolver.service';
+import { ListsResolverService } from '../providers/resolvers/lists-resolver.service';
 
 
 // Directives
@@ -59,7 +60,8 @@ import { CardComponent } from '../shared/card/card.component';
   ],
   providers: [
     ApiService,
-    RetrospectiveResolverService
+    RetrospectiveResolverService,
+    ListsResolverService
   ],
   bootstrap: [AppComponent]
 })

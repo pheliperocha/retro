@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-list',
@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent {
+  @Input() title: string;
+
   constructor() {}
 }

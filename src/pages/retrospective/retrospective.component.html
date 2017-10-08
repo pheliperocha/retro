@@ -20,5 +20,5 @@
 </section>
 
 <section class="lists" fxLayout="row">
-  <app-list fxLayout="column" fxLayoutAlign="start" *ngFor="let n of [1,1,1,1,1,1,1]"></app-list>
+  <app-list fxLayout="column" fxLayoutAlign="start" *ngFor="let list of lists" title="{{ list.title }}"></app-list>
 </section>

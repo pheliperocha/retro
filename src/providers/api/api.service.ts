@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { Retrospective } from '../../models/retrospective';
+import { List } from '../../models/list';
 
 @Injectable()
 export class ApiService {
@@ -27,6 +28,16 @@ export class ApiService {
       .toPromise()
       .then((response) => {
         return response.json() as Retrospective;
+      })
+      .catch(this.handleError);
+  }
+
+  getLists(id): Promise<List[]> {
+    return this.http
+      .get(this.apiUrl + 'retrospective/' + id + '/list')
+      .toPromise()
+      .then((response) => {
+        return response.json() as List;
       })
       .catch(this.handleError);
   }
