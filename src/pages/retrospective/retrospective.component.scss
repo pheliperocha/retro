@@ -34,6 +34,7 @@ section.steps {
       border-radius: 8px;
       margin: 0 auto;
       margin-bottom: 8px;
+      color: mat-color($primary, default-contrast);
     }
 
     &.active {
