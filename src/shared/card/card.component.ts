@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Card } from '../../models/card';
-import {DeleteDialogComponent} from "../dialogs/delete-dialog.component";
-import {MdDialog} from "@angular/material";
-import {RetrospectiveService} from "../../providers/retrospective.service";
+import { DeleteDialogComponent } from '../dialogs/delete-dialog.component';
+import { MdDialog } from '@angular/material';
+import { RetrospectiveService } from '../../providers/retrospective.service';
 
 @Component({
   selector: 'app-card',

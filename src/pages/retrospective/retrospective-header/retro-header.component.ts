@@ -1,7 +1,7 @@
-import {Component, Input} from '@angular/core';
-import {AuthService} from "../../../providers/oauth/auth.service";
-import {User} from "../../../models/user";
-import {Retrospective} from "../../../models/retrospective";
+import { Component, Input } from '@angular/core';
+import { AuthService } from '../../../providers/oauth/auth.service';
+import { User } from '../../../models/user';
+import { Retrospective } from '../../../models/retrospective';
 
 @Component({
   selector: 'app-retre-header',

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject }    from 'rxjs/Subject';
-import {List} from "../models/list";
-import {Card} from "../models/card";
+import { List } from '../models/list';
+import { Card } from '../models/card';
 
 @Injectable()
 export class RetrospectiveService {

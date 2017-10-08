@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Inject, Output} from "@angular/core";
-import {MD_DIALOG_DATA, MdDialogRef} from "@angular/material";
+import { Component, EventEmitter, Inject, Output } from '@angular/core';
+import { MD_DIALOG_DATA, MdDialogRef } from '@angular/material';
 
 @Component({
   selector: 'delete-dialog',

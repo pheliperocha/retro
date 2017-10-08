@@ -1,12 +1,12 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { Card } from '../../models/card';
-import { DeleteDialogComponent } from "../dialogs/delete-dialog.component";
-import {MdDialog} from "@angular/material";
-import {List} from "../../models/list";
-import {RetrospectiveService} from "../../providers/retrospective.service";
-import {Subscription} from "rxjs/Subscription";
-import {DragulaService} from "ng2-dragula";
-import {CreateCardDialogComponent} from "../dialogs/createCard-dialog.component";
+import { DeleteDialogComponent } from '../dialogs/delete-dialog.component';
+import { MdDialog } from '@angular/material';
+import { List } from '../../models/list';
+import { RetrospectiveService } from '../../providers/retrospective.service';
+import { Subscription } from 'rxjs/Subscription';
+import { DragulaService } from 'ng2-dragula';
+import { CreateCardDialogComponent } from '../dialogs/createCard-dialog.component';
 
 @Component({
   selector: 'app-list',

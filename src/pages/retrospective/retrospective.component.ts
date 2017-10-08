@@ -6,9 +6,9 @@ import { ActivatedRoute } from '@angular/router';
 import { List } from '../../models/list';
 import { Card } from '../../models/card';
 import { AppSettings } from '../../app/app.settings';
-import {RetrospectiveService} from "../../providers/retrospective.service";
-import {Subscription} from "rxjs/Subscription";
-import {DragulaService} from "ng2-dragula";
+import { RetrospectiveService } from '../../providers/retrospective.service';
+import { Subscription } from 'rxjs/Subscription';
+import { DragulaService } from 'ng2-dragula';
 
 @Component({
   selector: 'app-retrospective',
@@ -83,17 +83,6 @@ export class RetrospectiveComponent implements OnInit {
     return this.cards.filter(function (info) {
       return info.listId == listId;
     });
-  }
-
-  test() {
-    this.cards.push({
-      id: 8,
-      description: 'sdfsdfds',
-      listId: 2,
-      votes: 2
-    });
-
-    console.log(this.cards);
   }
 
   createList() {
