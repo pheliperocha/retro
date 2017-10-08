@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MdButtonModule, MatToolbarModule, MatIconModule, MatCardModule, MatStepperModule, MatMenuModule, MatProgressBarModule } from '@angular/material';
+import { MdButtonModule, MatToolbarModule, MatIconModule, MatCardModule, MatStepperModule, MatMenuModule, MatProgressBarModule, MatTooltipModule } from '@angular/material';
 
 // Modules
 import { OAuthModule } from '../providers/oauth/oauth.module';
@@ -29,6 +29,7 @@ import { HeaderComponent } from '../shared/header/header.component';
 import { RetrospectiveThumbComponent } from '../shared/retrospective-thumb/retrospective-thumb.component';
 import { ListComponent } from '../shared/list/list.component';
 import { CardComponent } from '../shared/card/card.component';
+import {RetroHeaderComponent} from "../pages/retrospective/retrospective-header/retro-header.component";
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { CardComponent } from '../shared/card/card.component';
     DashboardComponent,
     RetrospectiveComponent,
     HeaderComponent,
+    RetroHeaderComponent,
     RetrospectiveThumbComponent,
     ListComponent,
     CardComponent
@@ -57,7 +59,8 @@ import { CardComponent } from '../shared/card/card.component';
     MatCardModule,
     MatStepperModule,
     MatMenuModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatTooltipModule
   ],
   providers: [
     ApiService,

@@ -18,7 +18,14 @@
 
 section.steps {
   .step {
-    padding: 16px 32px;
+    padding: 0px;
+    margin: 16px 32px;
+    transition: .3s;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+    }
 
     .icon {
       width: 32px;
@@ -27,6 +34,19 @@ section.steps {
       border-radius: 8px;
       margin: 0 auto;
       margin-bottom: 8px;
+    }
+
+    &.active {
+      color: mat-color($accent);
+
+      &:hover {
+        transform: scale(1);
+        cursor: default;
+      }
+
+      .icon {
+        background: mat-color($accent);
+      }
     }
   }
 }

@@ -1,0 +1,13 @@
+<md-toolbar color="primary">
+  <span class="logo"></span>
+
+  <span class="center">
+    <a class="title">Título da Retrospectiva</a>
+  </span>
+
+  <span class="right">
+    <div class="members_picture" mdTooltip="Nome do Membro" *ngFor="let n of [1,1,1,1,1,1]"><img src="{{ user.picture }}" alt="" title="" /></div>
+    <div class="facilitador_picture" mdTooltip="Nome do Facilitador"><img src="{{ user.picture }}" alt="" title="" /></div>
+    <div class="num_members">6 participantes</div>
+  </span>
+</md-toolbar>

@@ -5,6 +5,7 @@ import { Retrospective } from '../../models/retrospective';
 import { ActivatedRoute } from '@angular/router';
 import { List } from '../../models/list';
 import { Card } from '../../models/card';
+import { AppSettings } from '../../app/app.settings';
 
 @Component({
   selector: 'app-retrospective',
@@ -17,6 +18,7 @@ export class RetrospectiveComponent implements OnInit {
   public retrospective: Retrospective;
   public lists: List[];
   public cards: Card[];
+  public appSettings = AppSettings;
 
   constructor(
     private authService: AuthService,

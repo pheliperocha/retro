@@ -1,19 +1,19 @@
-<app-header></app-header>
+<app-retre-header></app-retre-header>
 
-<div class="pin_code">PIN: {{ retrospective?.pin }}</div>
+<div class="pin_code" *ngIf="retrospective?.state === appSettings.FEEDBACK">PIN: {{ retrospective?.pin }}</div>
 
 <section class="steps" fxLayout="row" fxLayoutAlign="center">
-  <div class="step">
+  <div class="step" [ngClass]="{ active: retrospective?.state === appSettings.PREPARAR }">
     <div class="icon"></div>
     <div class="name">Prepare</div>
   </div>
 
-  <div class="step">
+  <div class="step" [ngClass]="{ active: retrospective?.state === appSettings.FEEDBACK }">
     <div class="icon"></div>
     <div class="name">Feedback</div>
   </div>
 
-  <div class="step">
+  <div class="step" [ngClass]="{ active: retrospective?.state === appSettings.REFLEXAO }">
     <div class="icon"></div>
     <div class="name">Reflexão</div>
   </div>
