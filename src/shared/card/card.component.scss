@@ -1,3 +1,6 @@
+@import '~@angular/material/theming';
+@import '../../theme.scss';
+
 md-card {
   padding: 0px;
   margin-bottom: 8px;
@@ -8,6 +11,45 @@ md-card {
 
   .footer {
     padding-left: 8px;
+
+    .votes {
+
+      .num {
+        float: left;
+        margin-top: 1px;
+      }
+
+      button {
+        border: none;
+        background: none;
+        padding: 0px;
+
+        &:focus {
+          outline: none;
+        }
+
+        md-icon {
+          font-size: 16px;
+          height: auto;
+
+          &:hover {
+            transform: scale(1.1);
+          }
+
+          &:active {
+            transform: scale(1.2) rotate(-10deg);
+          }
+        }
+      }
+
+      &.active {
+        color: mat-color($accent);
+
+        md-icon {
+          color: mat-color($accent);
+        }
+      }
+    }
 
     .user {
       width: 36px;

@@ -4,9 +4,11 @@
   </div>
 
   <div class="footer">
-    <div class="votes">
+    <div class="votes" [ngClass]="{ active: voted === true }">
       <span class="num">{{ card?.votes }}</span>
-      <md-icon>L</md-icon>
+      <button (click)="vote()">
+        <md-icon >thumb_up</md-icon>
+      </button>
     </div>
     <div class="user"></div>
   </div>
