@@ -9,6 +9,7 @@ import { Card } from '../../models/card';
 export class ListComponent {
   @Input() title: string;
   @Input() cards: Card[];
+  @Input() state: number;
 
   constructor() {}
 }

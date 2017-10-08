@@ -8,6 +8,21 @@ md-toolbar {
   .center {
     flex: 1 1 auto;
     text-align: center;
+
+    .title {
+      padding-top: 20px;
+
+      button md-icon {
+        font-size: 14px;
+      }
+    }
+
+    .sub-title {
+      position: relative;
+      font-size: 14px;
+      top: -15px;
+    }
+
   }
 
   .right {

@@ -20,5 +20,5 @@
 </section>
 
 <section class="lists" fxLayout="row">
-  <app-list fxLayout="column" fxLayoutAlign="start" *ngFor="let list of lists" title="{{ list.title }}" [cards]="getCardsFromList(list.id)"></app-list>
+  <app-list fxLayout="column" fxLayoutAlign="start" state="{{ retrospective.state }}" *ngFor="let list of lists" title="{{ list.title }}" [cards]="getCardsFromList(list.id)"></app-list>
 </section>
