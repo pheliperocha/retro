@@ -20,3 +20,29 @@ a {
 }
 
 [hidden] { display: none !important; }
+
+/* ScrollBar */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-button {
+  width: 2px;
+  height: 2px;
+}
+::-webkit-scrollbar-thumb {
+  background: mat-color($mat-grey, 500);
+  border: none;
+  border-radius: 100px;
+}
+::-webkit-scrollbar-track {
+  background: mat-color($mat-grey, A200);
+  border: none;
+  border-radius: 100px;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* ScrollBar */
