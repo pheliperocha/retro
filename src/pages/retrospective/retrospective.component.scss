@@ -59,4 +59,10 @@ section.lists {
   position: fixed;
   height: calc(100% - 164px);
   width: 100%;
+
+  .add-list {
+    height: 46px;
+    width: 316px;
+    margin-right: 16px;
+  }
 }

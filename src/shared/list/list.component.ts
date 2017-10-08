@@ -1,5 +1,10 @@
-import { Component, Input } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import { Card } from '../../models/card';
+import { DeleteDialogComponent } from "../dialogs/delete-dialog.component";
+import {MdDialog} from "@angular/material";
+import {List} from "../../models/list";
+import {RetrospectiveService} from "../../providers/retrospective.service";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'app-list',
@@ -7,9 +12,26 @@ import { Card } from '../../models/card';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent {
-  @Input() title: string;
+  @Input() list: List;
   @Input() cards: Card[];
   @Input() state: number;
+  subscription: Subscription;
 
-  constructor() {}
+  constructor(public deleteDialog: MdDialog, private retrospectiveService: RetrospectiveService) {}
+
+  deleteList(list: List) {
+    let dialogRef = this.deleteDialog.open(DeleteDialogComponent, {
+      data: list
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 1) {
+        this.retrospectiveService.deleteList(list);
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    console.log('destroy list');
+  }
 }

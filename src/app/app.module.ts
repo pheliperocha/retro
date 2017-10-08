@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MdButtonModule, MatToolbarModule, MatIconModule, MatCardModule, MatStepperModule, MatMenuModule, MatProgressBarModule, MatTooltipModule } from '@angular/material';
+import { MdButtonModule, MatToolbarModule, MatIconModule, MatCardModule, MatDialogModule, MatStepperModule, MatMenuModule, MatProgressBarModule, MatTooltipModule } from '@angular/material';
 
 // Modules
 import { OAuthModule } from '../providers/oauth/oauth.module';
@@ -30,6 +30,7 @@ import { RetrospectiveThumbComponent } from '../shared/retrospective-thumb/retro
 import { ListComponent } from '../shared/list/list.component';
 import { CardComponent } from '../shared/card/card.component';
 import {RetroHeaderComponent} from "../pages/retrospective/retrospective-header/retro-header.component";
+import {DeleteDialogComponent} from "../shared/dialogs/delete-dialog.component";
 
 @NgModule({
   declarations: [
@@ -41,8 +42,10 @@ import {RetroHeaderComponent} from "../pages/retrospective/retrospective-header/
     RetroHeaderComponent,
     RetrospectiveThumbComponent,
     ListComponent,
-    CardComponent
+    CardComponent,
+    DeleteDialogComponent
   ],
+  entryComponents: [ DeleteDialogComponent ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -60,7 +63,8 @@ import {RetroHeaderComponent} from "../pages/retrospective/retrospective-header/
     MatStepperModule,
     MatMenuModule,
     MatProgressBarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDialogModule,
   ],
   providers: [
     ApiService,
