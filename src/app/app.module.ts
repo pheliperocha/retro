@@ -1,17 +1,20 @@
 // Core Angular
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule, XHRBackend, RequestOptions  } from '@angular/http';
+import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MdButtonModule, MatToolbarModule, MatIconModule, MatCardModule, MatStepperModule, MatMenuModule } from '@angular/material';
+import { MdButtonModule, MatToolbarModule, MatIconModule, MatCardModule, MatStepperModule, MatMenuModule, MatProgressBarModule } from '@angular/material';
 
 // Modules
 import { OAuthModule } from '../providers/oauth/oauth.module';
 
 // Services
 import { appRoutes } from './app.routes';
+import { ApiService } from '../providers/api/api.service';
+import { RetrospectiveResolverService } from "../pages/retrospective/retrospective-resolver.service";
+
 
 // Directives
 
@@ -24,7 +27,6 @@ import { HeaderComponent } from '../shared/header/header.component';
 import { RetrospectiveThumbComponent } from '../shared/retrospective-thumb/retrospective-thumb.component';
 import { ListComponent } from '../shared/list/list.component';
 import { CardComponent } from '../shared/card/card.component';
-import { ApiService } from '../providers/api/api.service';
 
 @NgModule({
   declarations: [
@@ -52,10 +54,12 @@ import { ApiService } from '../providers/api/api.service';
     MatIconModule,
     MatCardModule,
     MatStepperModule,
-    MatMenuModule
+    MatMenuModule,
+    MatProgressBarModule
   ],
   providers: [
-    ApiService
+    ApiService,
+    RetrospectiveResolverService
   ],
   bootstrap: [AppComponent]
 })

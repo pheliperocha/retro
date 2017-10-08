@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../providers/api/api.service';
-import { RetrospectiveThumbs } from '../../models/retrospectiveThumbs';
+import { Retrospective } from '../../models/retrospective';
 import { AuthService } from '../../providers/oauth/auth.service';
 import { User } from '../../models/user';
 
@@ -11,7 +11,7 @@ import { User } from '../../models/user';
 })
 export class DashboardComponent {
   public user: User;
-  public retrospectives: RetrospectiveThumbs[];
+  public retrospectives: Retrospective[];
 
   constructor(private authService: AuthService, private apiService: ApiService) {
     this.user = this.authService.user;

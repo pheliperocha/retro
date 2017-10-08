@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
-import { RetrospectiveThumbs } from '../../models/retrospectiveThumbs';
+import { Retrospective } from '../../models/retrospective';
 
 @Injectable()
 export class ApiService {
@@ -11,12 +11,22 @@ export class ApiService {
   constructor(private http: Http) {
   }
 
-  getAllRetrospectives(userId): Promise<Array<RetrospectiveThumbs>> {
+  getAllRetrospectives(userId): Promise<Array<Retrospective>> {
     return this.http
       .get(this.apiUrl + 'facilitador/' + userId + '/retrospective')
       .toPromise()
       .then((response) => {
-        return response.json() as RetrospectiveThumbs[];
+        return response.json() as Retrospective[];
+      })
+      .catch(this.handleError);
+  }
+
+  getRetrospectives(id): Promise<Retrospective> {
+    return this.http
+      .get(this.apiUrl + 'retrospective/' + id)
+      .toPromise()
+      .then((response) => {
+        return response.json() as Retrospective;
       })
       .catch(this.handleError);
   }
