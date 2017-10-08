@@ -12,21 +12,15 @@ md-card {
   .footer {
     padding-left: 8px;
 
-    .votes {
-
-      .num {
-        float: left;
-        margin-top: 1px;
-      }
-
+    .actions {
       button {
         border: none;
         background: none;
         padding: 0px;
-
-        &:focus {
-          outline: none;
-        }
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
 
         md-icon {
           font-size: 16px;
@@ -42,23 +36,29 @@ md-card {
         }
       }
 
-      &.active {
+      &.active .num, &.active .vote {
         color: mat-color($accent);
-
-        md-icon {
-          color: mat-color($accent);
-        }
       }
     }
 
     .user {
+      float: right;
       width: 36px;
       height: 36px;
-      float: right;
       margin-top: -36px;
       border-radius: 999px 0px 0px 0px;
+      overflow: hidden;
+      transition: .3s;
 
-      background: coral;
+      &:hover {
+        width: 42px;
+        height: 42px;
+        margin-top: -42px;
+      }
+
+      img {
+        width: 100%;
+      }
     }
   }
 }
