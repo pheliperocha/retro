@@ -1,4 +1,4 @@
-<app-retre-header></app-retre-header>
+<app-retre-header [retrospective]="retrospective"></app-retre-header>
 
 <div class="pin_code" *ngIf="retrospective?.state === appSettings.FEEDBACK">PIN: {{ retrospective?.pin }}</div>
 

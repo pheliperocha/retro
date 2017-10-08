@@ -1,3 +1,6 @@
+@import '~@angular/material/theming';
+@import '../../../theme.scss';
+
 md-toolbar {
   .logo {
     width: 80px;
@@ -14,6 +17,20 @@ md-toolbar {
 
       button md-icon {
         font-size: 14px;
+      }
+
+      input {
+        background: none;
+        border: none;
+        font-size: 20px;
+        color: mat-color($primary, default-contrast);
+        width: auto;
+        border-bottom: 1px solid mat-color($primary, default-contrast);
+
+        &:focus {
+          outline: none;
+          border-bottom: 2px solid mat-color($accent);
+        }
       }
     }
 
