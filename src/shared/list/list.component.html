@@ -1,5 +1,6 @@
 <md-card fxLayout="column">
-  <md-card-header>
+  <md-card-header class="handle">
+
     <md-card-title *ngIf="!editing">{{ list.title }}</md-card-title>
 
     <md-card-title [hidden]="!editing">

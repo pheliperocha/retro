@@ -32,6 +32,7 @@ import { CardComponent } from '../shared/card/card.component';
 import {RetroHeaderComponent} from "../pages/retrospective/retrospective-header/retro-header.component";
 import {DeleteDialogComponent} from "../shared/dialogs/delete-dialog.component";
 import {FormsModule} from "@angular/forms";
+import {DragulaModule} from "ng2-dragula";
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import {FormsModule} from "@angular/forms";
     FlexLayoutModule,
     OAuthModule,
     FormsModule,
+    DragulaModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: false }

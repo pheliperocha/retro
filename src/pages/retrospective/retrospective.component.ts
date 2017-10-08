@@ -8,6 +8,7 @@ import { Card } from '../../models/card';
 import { AppSettings } from '../../app/app.settings';
 import {RetrospectiveService} from "../../providers/retrospective.service";
 import {Subscription} from "rxjs/Subscription";
+import {DragulaService} from "ng2-dragula";
 
 @Component({
   selector: 'app-retrospective',
@@ -27,9 +28,16 @@ export class RetrospectiveComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private route: ActivatedRoute,
-    private retrospectiveService: RetrospectiveService
+    private retrospectiveService: RetrospectiveService,
+    private dragulaService: DragulaService,
   ) {
     this.user = this.authService.user;
+  }
+
+  ngOnInit() {
+    this.retrospective = this.route.snapshot.data['retrospective'];
+    this.lists = this.route.snapshot.data['lists'];
+    this.cards = this.route.snapshot.data['cards'];
 
     this.deleteSubscribe = this.retrospectiveService.deleteListSource$.subscribe(list => {
       console.log('Delete List');
@@ -38,12 +46,13 @@ export class RetrospectiveComponent implements OnInit {
         this.lists.splice(index, 1);
       }
     });
-  }
 
-  ngOnInit() {
-    this.retrospective = this.route.snapshot.data['retrospective'];
-    this.lists = this.route.snapshot.data['lists'];
-    this.cards = this.route.snapshot.data['cards'];
+    this.dragulaService.setOptions('bag-list', {
+      revertOnSpill: true,
+      moves: function (el: any, container: any, handle: any): any {
+        return handle.classList.contains('handle');
+      }
+    });
   }
 
   getCardsFromList(listId: number): Card[] {
@@ -52,10 +61,15 @@ export class RetrospectiveComponent implements OnInit {
     });
   }
 
+  test() {
+    console.log(this.lists);
+  }
+
   createList() {
     let newList = {
       id: 4,
-      title: ''
+      title: '',
+      order: 3
     };
 
     this.lists.push(newList);

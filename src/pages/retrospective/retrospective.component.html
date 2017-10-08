@@ -6,6 +6,7 @@
   <div class="step" [ngClass]="{ active: retrospective?.state === appSettings.PREPARAR }">
     <div class="icon" fxLayoutAlign="center center"><md-icon>create</md-icon></div>
     <div class="name">Prepare</div>
+    <button (click)="test()">AAA</button>
   </div>
 
   <div class="step" [ngClass]="{ active: retrospective?.state === appSettings.FEEDBACK }">
@@ -19,7 +20,7 @@
   </div>
 </section>
 
-<section class="lists" fxLayout="row">
+<section class="lists" fxLayout="row" [dragula]='"bag-list"' [dragulaModel]='lists'>
   <app-list fxLayout="column" fxLayoutAlign="start" state="{{ retrospective.state }}" *ngFor="let list of lists" [list]="list" [cards]="getCardsFromList(list.id)"></app-list>
 
   <button class="add-list" md-raised-button color="primary" (click)="createList()"><md-icon >add</md-icon></button>
