@@ -1,13 +1,25 @@
 <md-card fxLayout="column">
   <md-card-header>
-    <md-card-title>{{ list.title }}</md-card-title>
+    <md-card-title *ngIf="!editing">{{ list.title }}</md-card-title>
+
+    <md-card-title [hidden]="!editing">
+      <input #titleInput value="{{ list.title }}">
+    </md-card-title>
 
     <div class="actions">
-      <button md-icon-button>
+      <button md-icon-button *ngIf="!editing" (click)="editList(true)">
         <md-icon>edit</md-icon>
       </button>
 
-      <button md-icon-button (click)="deleteList(list)">
+      <button md-icon-button *ngIf="editing" (click)="saveList(titleInput?.value)">
+        <md-icon>save</md-icon>
+      </button>
+
+      <button md-icon-button *ngIf="editing" (click)="editList(false)">
+        <md-icon>clear</md-icon>
+      </button>
+
+      <button md-icon-button *ngIf="!editing" (click)="deleteList(list)">
         <md-icon>delete</md-icon>
       </button>
     </div>

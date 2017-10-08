@@ -18,14 +18,31 @@ md-card {
 
     .mat-card-title {
       margin-bottom: 0px;
+
+      input {
+        width: 100%;
+        background: none;
+        border: none;
+        color: mat-color($primary, default-contrast);
+        border-bottom: 1px solid mat-color($primary, default-contrast);
+
+        &:focus {
+          outline: none;
+          border-bottom: 2px solid mat-color($accent);
+        }
+      }
     }
 
     .actions {
       position: absolute;
       right: 0px;
-      top: 4px;
+      top: 8px;
 
       button {
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+
         md-icon {
           font-size: 16px;
         }

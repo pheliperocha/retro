@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MdButtonModule, MatToolbarModule, MatIconModule, MatCardModule, MatDialogModule, MatStepperModule, MatMenuModule, MatProgressBarModule, MatTooltipModule } from '@angular/material';
+import { MdButtonModule, MatToolbarModule, MatIconModule, MatFormFieldModule, MatCardModule, MatDialogModule, MatStepperModule, MatMenuModule, MatProgressBarModule, MatTooltipModule } from '@angular/material';
 
 // Modules
 import { OAuthModule } from '../providers/oauth/oauth.module';
@@ -31,6 +31,7 @@ import { ListComponent } from '../shared/list/list.component';
 import { CardComponent } from '../shared/card/card.component';
 import {RetroHeaderComponent} from "../pages/retrospective/retrospective-header/retro-header.component";
 import {DeleteDialogComponent} from "../shared/dialogs/delete-dialog.component";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import {DeleteDialogComponent} from "../shared/dialogs/delete-dialog.component";
     HttpModule,
     FlexLayoutModule,
     OAuthModule,
+    FormsModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: false }
@@ -65,6 +67,7 @@ import {DeleteDialogComponent} from "../shared/dialogs/delete-dialog.component";
     MatProgressBarModule,
     MatTooltipModule,
     MatDialogModule,
+    MatFormFieldModule,
   ],
   providers: [
     ApiService,

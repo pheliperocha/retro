@@ -17,3 +17,5 @@ a {
   text-decoration: none;
   color: mat-color($primary, default-contrast)
 }
+
+[hidden] { display: none !important; }

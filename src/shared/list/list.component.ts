@@ -15,9 +15,19 @@ export class ListComponent {
   @Input() list: List;
   @Input() cards: Card[];
   @Input() state: number;
-  subscription: Subscription;
+  public editing: boolean = false;
 
   constructor(public deleteDialog: MdDialog, private retrospectiveService: RetrospectiveService) {}
+
+  editList(status: boolean) {
+    this.editing = status;
+  }
+
+  saveList(newTitle: string) {
+    this.list.title = newTitle;
+
+    this.editing = false;
+  }
 
   deleteList(list: List) {
     let dialogRef = this.deleteDialog.open(DeleteDialogComponent, {
