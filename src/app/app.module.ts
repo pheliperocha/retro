@@ -5,10 +5,12 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule } from '@angular/forms';
 import { MdButtonModule, MatToolbarModule, MatIconModule, MatFormFieldModule, MatCardModule, MatDialogModule, MatStepperModule, MatMenuModule, MatProgressBarModule, MatTooltipModule } from '@angular/material';
 
 // Modules
 import { OAuthModule } from '../providers/oauth/oauth.module';
+import { DragulaModule } from 'ng2-dragula';
 
 // Services
 import { appRoutes } from './app.routes';
@@ -29,11 +31,10 @@ import { HeaderComponent } from '../shared/header/header.component';
 import { RetrospectiveThumbComponent } from '../shared/retrospective-thumb/retrospective-thumb.component';
 import { ListComponent } from '../shared/list/list.component';
 import { CardComponent } from '../shared/card/card.component';
-import {RetroHeaderComponent} from "../pages/retrospective/retrospective-header/retro-header.component";
-import {DeleteDialogComponent} from "../shared/dialogs/delete-dialog.component";
-import {FormsModule} from "@angular/forms";
-import {DragulaModule} from "ng2-dragula";
-import {CreateCardDialogComponent} from "../shared/dialogs/createCard-dialog.component";
+import { RetroHeaderComponent } from '../pages/retrospective/retrospective-header/retro-header.component';
+import { DeleteDialogComponent } from '../shared/dialogs/delete-dialog.component';
+import { CreateCardDialogComponent } from '../shared/dialogs/createCard-dialog.component';
+
 
 @NgModule({
   declarations: [
