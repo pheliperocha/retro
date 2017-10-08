@@ -4,6 +4,6 @@
   </md-card-header>
 
   <md-card-content>
-    <app-card *ngFor="let n of [1,1,1,1,1]"></app-card>
+    <app-card *ngFor="let card of cards" [card]="card"></app-card>
   </md-card-content>
 </md-card>

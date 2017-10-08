@@ -4,6 +4,7 @@ import 'rxjs/add/operator/toPromise';
 
 import { Retrospective } from '../../models/retrospective';
 import { List } from '../../models/list';
+import { Card } from '../../models/card';
 
 @Injectable()
 export class ApiService {
@@ -38,6 +39,16 @@ export class ApiService {
       .toPromise()
       .then((response) => {
         return response.json() as List;
+      })
+      .catch(this.handleError);
+  }
+
+  getCards(retrospectiveId): Promise<Card[]> {
+    return this.http
+      .get(this.apiUrl + 'retrospective/' + retrospectiveId + '/card')
+      .toPromise()
+      .then((response) => {
+        return response.json() as Card;
       })
       .catch(this.handleError);
   }

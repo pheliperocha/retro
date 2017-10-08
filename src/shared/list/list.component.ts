@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Card } from '../../models/card';
 
 @Component({
   selector: 'app-list',
@@ -7,6 +8,7 @@ import { Component, Input } from '@angular/core';
 })
 export class ListComponent {
   @Input() title: string;
+  @Input() cards: Card[];
 
   constructor() {}
 }

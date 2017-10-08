@@ -15,6 +15,7 @@ import { appRoutes } from './app.routes';
 import { ApiService } from '../providers/api/api.service';
 import { RetrospectiveResolverService } from '../providers/resolvers/retrospective-resolver.service';
 import { ListsResolverService } from '../providers/resolvers/lists-resolver.service';
+import { CardsResolverService } from '../providers/resolvers/cards-resolver.service';
 
 
 // Directives
@@ -61,7 +62,8 @@ import { CardComponent } from '../shared/card/card.component';
   providers: [
     ApiService,
     RetrospectiveResolverService,
-    ListsResolverService
+    ListsResolverService,
+    CardsResolverService
   ],
   bootstrap: [AppComponent]
 })

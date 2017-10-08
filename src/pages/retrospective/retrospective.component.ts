@@ -4,6 +4,7 @@ import { User } from '../../models/user';
 import { Retrospective } from '../../models/retrospective';
 import { ActivatedRoute } from '@angular/router';
 import { List } from '../../models/list';
+import { Card } from '../../models/card';
 
 @Component({
   selector: 'app-retrospective',
@@ -15,6 +16,7 @@ export class RetrospectiveComponent implements OnInit {
   public id: number;
   public retrospective: Retrospective;
   public lists: List[];
+  public cards: Card[];
 
   constructor(
     private authService: AuthService,
@@ -26,5 +28,12 @@ export class RetrospectiveComponent implements OnInit {
   ngOnInit() {
     this.retrospective = this.route.snapshot.data['retrospective'];
     this.lists = this.route.snapshot.data['lists'];
+    this.cards = this.route.snapshot.data['cards'];
+  }
+
+  getCardsFromList(listId: number): Card[] {
+    return this.cards.filter(function (info) {
+      return info.listId == listId;
+    });
   }
 }
