@@ -34,6 +34,7 @@ import { CardComponent } from '../shared/card/card.component';
 import { RetroHeaderComponent } from '../pages/retrospective/retrospective-header/retro-header.component';
 import { DeleteDialogComponent } from '../shared/dialogs/delete-dialog.component';
 import { CreateCardDialogComponent } from '../shared/dialogs/createCard-dialog.component';
+import { ContextDialogComponent } from '../shared/dialogs/context-dialog.component';
 
 
 @NgModule({
@@ -48,9 +49,10 @@ import { CreateCardDialogComponent } from '../shared/dialogs/createCard-dialog.c
     ListComponent,
     CardComponent,
     DeleteDialogComponent,
-    CreateCardDialogComponent
+    CreateCardDialogComponent,
+    ContextDialogComponent
   ],
-  entryComponents: [ DeleteDialogComponent, CreateCardDialogComponent ],
+  entryComponents: [ DeleteDialogComponent, CreateCardDialogComponent, ContextDialogComponent ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
