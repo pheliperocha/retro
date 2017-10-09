@@ -26,6 +26,7 @@ export class RetrospectiveComponent implements OnInit {
   private deleteListSubscribe: Subscription;
   private addCardSubscribe: Subscription;
   private deleteCardSubscribe: Subscription;
+  private dragulaSubscribe: Subscription;
 
   constructor(
     private authService: AuthService,
@@ -73,7 +74,7 @@ export class RetrospectiveComponent implements OnInit {
       revertOnSpill: true
     });
 
-    this.dragulaService.drop.subscribe((value) => {
+    this.dragulaSubscribe = this.dragulaService.drop.subscribe((value) => {
       console.log('=====');
       console.log(value[2]);
     });
@@ -106,5 +107,8 @@ export class RetrospectiveComponent implements OnInit {
     console.log('Destroy Retrospective');
     this.deleteListSubscribe.unsubscribe();
     this.addCardSubscribe.unsubscribe();
+    this.dragulaSubscribe.unsubscribe();
+    this.dragulaService.destroy('bag-list');
+    this.dragulaService.destroy('bag-cards');
   }
 }
