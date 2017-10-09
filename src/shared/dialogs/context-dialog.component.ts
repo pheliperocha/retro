@@ -9,7 +9,7 @@ import { MD_DIALOG_DATA, MdDialogRef } from '@angular/material';
       <textarea #contextInput style="font-size: 24px; min-height: 150px; min-width: 400px" [hidden]="!editing">{{ retroContext }}</textarea>
     </md-dialog-content>
     
-    <md-dialog-actions>
+    <md-dialog-actions *ngIf="retroState === 1">
       <button md-icon-button *ngIf="editing" (click)="saveContext(contextInput?.value)">
         <md-icon class="md-24">save</md-icon>
       </button>
@@ -26,11 +26,13 @@ import { MD_DIALOG_DATA, MdDialogRef } from '@angular/material';
 })
 export class ContextDialogComponent {
   public retroContext: string;
+  public retroState: number;
   public editing: boolean = false;
 
   constructor(public dialogRef: MdDialogRef<ContextDialogComponent>,
               @Inject(MD_DIALOG_DATA) public data: any) {
-    this.retroContext = data;
+    this.retroContext = data.context;
+    this.retroState = data.retroState;
   }
 
   saveContext(context: string) {

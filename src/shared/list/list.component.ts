@@ -16,7 +16,7 @@ import { CreateCardDialogComponent } from '../dialogs/createCard-dialog.componen
 export class ListComponent {
   @Input() list: List;
   @Input() cards: Card[];
-  @Input() state: number;
+  @Input() retroState: number;
   public editing: boolean = false;
 
   constructor(public deleteDialog: MdDialog,

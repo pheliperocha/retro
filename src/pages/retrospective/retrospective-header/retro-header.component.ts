@@ -21,7 +21,7 @@ export class RetroHeaderComponent {
 
   openRetroContext() {
     let dialogRef = this.contextDialog.open(ContextDialogComponent, {
-      data: this.retrospective.context
+      data: { context: this.retrospective.context, retroState: this.retrospective.state }
     });
 
     dialogRef.afterClosed().subscribe(result => {

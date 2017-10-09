@@ -3,24 +3,24 @@
 <div class="pin_code" *ngIf="retrospective?.state === appSettings.FEEDBACK">PIN: {{ retrospective?.pin }}</div>
 
 <section class="steps" fxLayout="row" fxLayoutAlign="center">
-  <div class="step" [ngClass]="{ active: retrospective?.state === appSettings.PREPARAR }">
+  <div class="step" (click)="goToPrepareStep()" [ngClass]="{ active: retrospective?.state === appSettings.PREPARAR }">
     <div class="icon" fxLayoutAlign="center center"><md-icon>create</md-icon></div>
     <div class="name">Prepare</div>
   </div>
 
-  <div class="step" [ngClass]="{ active: retrospective?.state === appSettings.FEEDBACK }">
+  <div class="step" (click)="goToFeedbackStep()" [ngClass]="{ active: retrospective?.state === appSettings.FEEDBACK }">
     <div class="icon" fxLayoutAlign="center center"><md-icon>announcement</md-icon></div>
     <div class="name">Feedback</div>
   </div>
 
-  <div class="step" [ngClass]="{ active: retrospective?.state === appSettings.REFLEXAO }">
+  <div class="step" (click)="goToReflexaoStep()" [ngClass]="{ active: retrospective?.state === appSettings.REFLEXAO }">
     <div class="icon" fxLayoutAlign="center center"><md-icon>lightbulb_outline</md-icon></div>
     <div class="name">Reflexão</div>
   </div>
 </section>
 
 <section class="lists" fxLayout="row" [dragula]='"bag-list"' [dragulaModel]='lists'>
-  <app-list fxLayout="column" fxLayoutAlign="start" state="{{ retrospective.state }}" *ngFor="let list of lists" [list]="list" [cards]="getCardsFromList(list.id)"></app-list>
+  <app-list fxLayout="column" fxLayoutAlign="start" retroState="{{ retrospective.state }}" *ngFor="let list of lists" [list]="list" [cards]="getCardsFromList(list.id)"></app-list>
 
-  <button class="add-list" md-raised-button color="primary" (click)="createList()"><md-icon >add</md-icon></button>
+  <button *ngIf="retrospective.state === 1" class="add-list" md-raised-button color="primary" (click)="createList()"><md-icon >add</md-icon></button>
 </section>

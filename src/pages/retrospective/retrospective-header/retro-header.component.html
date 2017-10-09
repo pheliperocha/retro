@@ -7,7 +7,7 @@
 
       <span [hidden]="!editing"><input #retroTitleInput value="{{ retrospective?.title }}"></span>
 
-      <button md-icon-button *ngIf="!editing" (click)="editRetroTitle()">
+      <button md-icon-button *ngIf="!editing && retrospective?.state === 1" (click)="editRetroTitle()">
         <md-icon>edit</md-icon>
       </button>
 
@@ -21,6 +21,6 @@
   <span class="right">
     <div class="members_picture" mdTooltip="Nome do Membro" *ngFor="let n of [1,1,1,1,1,1]"><img src="{{ user.picture }}" alt="" title="" /></div>
     <div class="facilitador_picture" mdTooltip="Nome do Facilitador"><img src="{{ user.picture }}" alt="" title="" /></div>
-    <div class="num_members">6 participantes</div>
+    <div class="num_members" *ngIf="retrospective?.state === 1">6 participantes</div>
   </span>
 </md-toolbar>

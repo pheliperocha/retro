@@ -15,11 +15,11 @@
         <md-icon>thumb_up</md-icon>
       </button>
 
-      <button md-icon-button *ngIf="!editing" (click)="editCard(true)">
+      <button md-icon-button *ngIf="!editing && retroState == 1" (click)="editCard(true)">
         <md-icon>edit</md-icon>
       </button>
 
-      <button md-icon-button *ngIf="!editing" (click)="deleteCard(card)">
+      <button md-icon-button *ngIf="!editing && retroState == 1" (click)="deleteCard(card)">
         <md-icon>delete</md-icon>
       </button>
 

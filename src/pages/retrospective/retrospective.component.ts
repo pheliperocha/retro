@@ -65,7 +65,10 @@ export class RetrospectiveComponent implements OnInit {
 
     this.dragulaService.setOptions('bag-list', {
       revertOnSpill: true,
-      moves: function (el: any, container: any, handle: any): any {
+      moves: (el: any, container: any, handle: any): any => {
+        if (this.retrospective.state !== 1) {
+          return false;
+        }
         return handle.classList.contains('handle');
       }
     });
@@ -78,6 +81,18 @@ export class RetrospectiveComponent implements OnInit {
       console.log('=====');
       console.log(value[2]);
     });
+  }
+
+  goToPrepareStep() {
+    this.retrospective.state = 1;
+  }
+
+  goToFeedbackStep() {
+    this.retrospective.state = 2;
+  }
+
+  goToReflexaoStep() {
+    this.retrospective.state = 3;
   }
 
   getCardsFromList(listId: number): Card[] {

@@ -11,10 +11,15 @@ import { RetrospectiveService } from '../../providers/retrospective.service';
 })
 export class CardComponent {
   @Input() card: Card;
+  @Input() retroState: number;
   public voted: boolean = false;
   public editing: boolean = false;
 
   constructor(public deleteDialog: MdDialog, private retrospectiveService: RetrospectiveService) {}
+
+  ngOnInit() {
+    console.log(this.retroState);
+  }
 
   saveCard(feedback: string) {
     this.card.description = feedback;

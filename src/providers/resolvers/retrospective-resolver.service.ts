@@ -13,6 +13,7 @@ export class RetrospectiveResolverService implements Resolve<Retrospective> {
     let id = route.paramMap.get('id');
 
     return this.apiService.getRetrospectives(id).then(retrospective => {
+      retrospective.state = 1;
       return retrospective;
     }).catch(err => {
       this.router.navigate(['dashboard']);
