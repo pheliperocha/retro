@@ -5,12 +5,25 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormsModule } from '@angular/forms';
-import { MdButtonModule, MatToolbarModule, MatIconModule, MatFormFieldModule, MatCardModule, MatDialogModule, MatStepperModule, MatMenuModule, MatProgressBarModule, MatTooltipModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  MdButtonModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatFormFieldModule,
+  MatCardModule,
+  MatDialogModule,
+  MatStepperModule,
+  MatMenuModule,
+  MatProgressBarModule,
+  MatTooltipModule,
+  MdInputModule,
+} from '@angular/material';
 
 // Modules
 import { OAuthModule } from '../providers/oauth/oauth.module';
 import { DragulaModule } from 'ng2-dragula';
+import { SwiperModule } from 'ngx-swiper-wrapper';
 
 // Services
 import { appRoutes } from './app.routes';
@@ -35,7 +48,7 @@ import { RetroHeaderComponent } from '../pages/retrospective/retrospective-heade
 import { DeleteDialogComponent } from '../shared/dialogs/delete-dialog.component';
 import { CreateCardDialogComponent } from '../shared/dialogs/createCard-dialog.component';
 import { ContextDialogComponent } from '../shared/dialogs/context-dialog.component';
-
+import { CreateRetrospectiveComponent } from '../pages/create-retrospective/create-retrospective.component';
 
 @NgModule({
   declarations: [
@@ -50,9 +63,10 @@ import { ContextDialogComponent } from '../shared/dialogs/context-dialog.compone
     CardComponent,
     DeleteDialogComponent,
     CreateCardDialogComponent,
-    ContextDialogComponent
+    ContextDialogComponent,
+    CreateRetrospectiveComponent
   ],
-  entryComponents: [ DeleteDialogComponent, CreateCardDialogComponent, ContextDialogComponent ],
+  entryComponents: [ DeleteDialogComponent, CreateCardDialogComponent, ContextDialogComponent, CreateRetrospectiveComponent ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -60,7 +74,16 @@ import { ContextDialogComponent } from '../shared/dialogs/context-dialog.compone
     FlexLayoutModule,
     OAuthModule,
     FormsModule,
+    ReactiveFormsModule,
     DragulaModule,
+    SwiperModule,
+    SwiperModule.forRoot({
+      direction: 'horizontal',
+      slidesPerView: '3',
+      keyboardControl: true,
+      scrollbar: 'dasfsf',
+      spaceBetween: 16
+    }),
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: false }
@@ -75,6 +98,7 @@ import { ContextDialogComponent } from '../shared/dialogs/context-dialog.compone
     MatTooltipModule,
     MatDialogModule,
     MatFormFieldModule,
+    MdInputModule
   ],
   providers: [
     ApiService,

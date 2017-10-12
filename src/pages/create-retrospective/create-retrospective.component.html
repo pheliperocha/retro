@@ -1,0 +1,26 @@
+<section>
+  <form>
+    <md-form-field fxFill>
+      <input mdInput #titleInput placeholder="Nome da reunião de retrospectiva">
+    </md-form-field>
+
+    <md-form-field fxFill>
+      <textarea mdInput #contextInput placeholder="Contexto da Reunião"></textarea>
+    </md-form-field>
+
+    <label>Template</label>
+
+    <swiper>
+      <div class="card" *ngFor="let template of templates" [ngClass]="{ selected: template?.id === selectedTemplate }" (click)="selectTemplate(template?.id)">
+        <img md-card-sm-image src="{{ template?.image }}">
+
+        <div class="name">{{ template?.name }}</div>
+      </div>
+    </swiper>
+
+    <div class="actions">
+      <button md-button md-dialog-close>Canclear</button>
+      <button md-button (click)="createNewRetrospective(titleInput.value, contextInput.value)">Salvar</button>
+    </div>
+  </form>
+</section>

@@ -1,0 +1,47 @@
+@import '~@angular/material/theming';
+@import '../../theme.scss';
+
+section {
+  textarea {
+    height: 180px;
+  }
+
+  label {
+    margin-bottom: 8px;
+  }
+
+  swiper {
+    
+    .card {
+      cursor: pointer;
+
+      img {
+        border-radius: 4px;
+        width: 200px;
+        height: 200px;
+      }
+
+      .name {
+        bottom: 0px;
+        position: absolute;
+        background: rgba(0, 0, 0, .5);
+        color: #fff;
+        width: 200px;
+        padding: 8px;
+        margin-bottom: 4px;
+        border-radius: 0px 0px 4px 4px;
+      }
+
+      &.selected {
+        img {
+          border: 3px solid #007aff;
+        }
+      }
+    }
+
+  }
+
+  .actions {
+    margin-top: 32px;
+  }
+}

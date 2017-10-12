@@ -16,6 +16,22 @@ export class RetrospectiveService {
   addCardSource$ = this.addCardSource.asObservable();
   deleteCardSource$ = this.deleteCardSource.asObservable();
 
+  createNewRetrospective(title: string, context: string, templateId: number) {
+
+    let newRetrospective = {
+      id: 5,
+      title: title,
+      context: context,
+      state: 1,
+      date: '2017-10-12',
+      image: '',
+      pin: '12487'
+    };
+
+    return Promise.resolve(newRetrospective);
+
+  }
+
   addCard(card: Card) {
     console.log(2);
     this.addCardSource.next(card);
