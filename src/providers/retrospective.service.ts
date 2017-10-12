@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject }    from 'rxjs/Subject';
 import { List } from '../models/list';
 import { Card } from '../models/card';
+import { ApiService } from './api/api.service';
 
 @Injectable()
 export class RetrospectiveService {
@@ -16,6 +17,8 @@ export class RetrospectiveService {
   addCardSource$ = this.addCardSource.asObservable();
   deleteCardSource$ = this.deleteCardSource.asObservable();
 
+  constructor(private apiService: ApiService) {}
+
   createNewRetrospective(title: string, context: string, templateId: number) {
 
     let newRetrospective = {
@@ -29,12 +32,14 @@ export class RetrospectiveService {
     };
 
     return Promise.resolve(newRetrospective);
-
   }
 
   addCard(card: Card) {
-    console.log(2);
-    this.addCardSource.next(card);
+    this.apiService.createNewCard(card).then(card => {
+      this.addCardSource.next(card);
+    }).catch(err => {
+      console.log(err);
+    });
   }
 
   deleteCard(card: Card) {

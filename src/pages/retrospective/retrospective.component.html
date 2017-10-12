@@ -20,7 +20,7 @@
 </section>
 
 <section class="lists" fxLayout="row" [dragula]='"bag-list"' [dragulaModel]='lists'>
-  <app-list fxLayout="column" fxLayoutAlign="start" retroState="{{ retrospective.state }}" *ngFor="let list of lists" [list]="list" [cards]="getCardsFromList(list.id)"></app-list>
+  <app-list fxLayout="column" fxLayoutAlign="start" retroState="{{ retrospective.state }}" *ngFor="let list of lists" [list]="list" [cards]="list.cards"></app-list>
 
   <button *ngIf="retrospective.state === 1" class="add-list" md-raised-button color="primary" (click)="createList()"><md-icon >add</md-icon></button>
 </section>

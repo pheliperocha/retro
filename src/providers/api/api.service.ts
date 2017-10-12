@@ -10,7 +10,16 @@ import { Card } from '../../models/card';
 export class ApiService {
   private apiUrl = 'http://localhost:5000/';
 
-  constructor(private http: Http) {
+  constructor(private http: Http) {}
+
+  createNewCard(card: Card): Promise<Card> {
+    return this.http
+      .post(this.apiUrl + 'card', card)
+      .toPromise()
+      .then((response) => {
+        return response.json();
+      })
+      .catch(this.handleError);
   }
 
   getAllRetrospectives(userId): Promise<Array<Retrospective>> {

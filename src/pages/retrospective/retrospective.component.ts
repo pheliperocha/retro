@@ -40,7 +40,6 @@ export class RetrospectiveComponent implements OnInit {
   ngOnInit() {
     this.retrospective = this.route.snapshot.data['retrospective'];
     this.lists = this.route.snapshot.data['lists'];
-    this.cards = this.route.snapshot.data['cards'];
 
     this.deleteListSubscribe = this.retrospectiveService.deleteListSource$.subscribe(list => {
       console.log('Delete List');
@@ -51,15 +50,20 @@ export class RetrospectiveComponent implements OnInit {
     });
 
     this.addCardSubscribe = this.retrospectiveService.addCardSource$.subscribe(card => {
-      console.log(3);
-      this.cards.push(card);
+      let index = this.lists.findIndex((list) => (list.id === card.listId));
+      if (index != -1) {
+        this.lists[index].cards.push(card);
+      }
     });
 
     this.deleteCardSubscribe = this.retrospectiveService.deleteCardSource$.subscribe(card => {
-      console.log('Delete Card');
-      let index = this.cards.findIndex((elt) => (elt===card));
-      if (index != -1) {
-        this.cards.splice(index, 1);
+      let listIndex = this.lists.findIndex((list) => (list.id === card.listId));
+
+      if (listIndex != -1) {
+        let cards = this.lists[listIndex].cards;
+        let cardIndex = cards.findIndex((elt) => (elt.id === card.id));
+
+        cards.splice(cardIndex, 1);
       }
     });
 
@@ -105,13 +109,7 @@ export class RetrospectiveComponent implements OnInit {
   }
 
   createList() {
-    let newList = {
-      id: 4,
-      title: '',
-      order: 3
-    };
 
-    this.lists.push(newList);
   }
 
   onListDeleted(list: List) {
