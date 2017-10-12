@@ -31,8 +31,8 @@ export class RetroHeaderComponent {
     });
   }
 
-  editRetroTitle() {
-    this.editing = true;
+  editRetroTitle(editing: boolean) {
+    this.editing = editing;
   }
 
   saveRetroTitle(newTitle: string) {

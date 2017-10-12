@@ -3,4 +3,5 @@ export class Card {
   listId: number;
   description: string;
   votes: number;
+  userId: number;
 }

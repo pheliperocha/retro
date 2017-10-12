@@ -7,6 +7,8 @@ import { RetrospectiveService } from '../../providers/retrospective.service';
 import { Subscription } from 'rxjs/Subscription';
 import { DragulaService } from 'ng2-dragula';
 import { CreateCardDialogComponent } from '../dialogs/createCard-dialog.component';
+import { AuthService } from '../../providers/oauth/auth.service';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-list',
@@ -14,13 +16,17 @@ import { CreateCardDialogComponent } from '../dialogs/createCard-dialog.componen
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent {
+  public user: User;
   @Input() list: List;
   @Input() cards: Card[];
   @Input() retroState: number;
   public editing: boolean = false;
 
   constructor(public deleteDialog: MdDialog,
-              private retrospectiveService: RetrospectiveService) {}
+              private retrospectiveService: RetrospectiveService,
+              private authService: AuthService) {
+    this.user = authService.user;
+  }
 
   createCard() {
     let dialogRef = this.deleteDialog.open(CreateCardDialogComponent, {
@@ -33,7 +39,8 @@ export class ListComponent {
           id: 6,
           listId: this.list.id,
           description: result.feedback,
-          votes: 0
+          votes: 0,
+          userId: this.user.id
         };
 
         console.log(1);

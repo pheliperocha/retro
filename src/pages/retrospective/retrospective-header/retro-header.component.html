@@ -7,19 +7,23 @@
 
       <span [hidden]="!editing"><input #retroTitleInput value="{{ retrospective?.title }}"></span>
 
-      <button md-icon-button *ngIf="!editing && retrospective?.state === 1" (click)="editRetroTitle()">
+      <button md-icon-button *ngIf="!editing && retrospective?.state === 1" (click)="editRetroTitle(true)">
         <md-icon>edit</md-icon>
       </button>
 
       <button md-icon-button *ngIf="editing" (click)="saveRetroTitle(retroTitleInput.value)">
         <md-icon>save</md-icon>
       </button>
+
+      <button md-icon-button *ngIf="editing" (click)="editRetroTitle(false)">
+        <md-icon>clear</md-icon>
+      </button>
     </div>
     <a class="sub-title" (click)="openRetroContext()">Contexto</a>
   </span>
 
   <span class="right">
-    <div class="members_picture" mdTooltip="Nome do Membro" *ngFor="let n of [1,1,1,1,1,1]"><img src="{{ user.picture }}" alt="" title="" /></div>
+    <div class="members_picture" mdTooltip="Nome do Membro" *ngFor="let n of [1,1,1,1,1,1]"><img src="#" alt="" title="" /></div>
     <div class="facilitador_picture" mdTooltip="Nome do Facilitador"><img src="{{ user.picture }}" alt="" title="" /></div>
     <div class="num_members" *ngIf="retrospective?.state === 1">6 participantes</div>
   </span>

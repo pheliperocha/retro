@@ -74,7 +74,10 @@ export class RetrospectiveComponent implements OnInit {
     });
 
     this.dragulaService.setOptions('bag-cards', {
-      revertOnSpill: true
+      revertOnSpill: true,
+      moves: (el: any, container: any, handle: any): any => {
+        return el.classList.contains('drag');
+      }
     });
 
     this.dragulaSubscribe = this.dragulaService.drop.subscribe((value) => {

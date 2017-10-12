@@ -3,6 +3,8 @@ import { Card } from '../../models/card';
 import { DeleteDialogComponent } from '../dialogs/delete-dialog.component';
 import { MdDialog } from '@angular/material';
 import { RetrospectiveService } from '../../providers/retrospective.service';
+import { AuthService } from '../../providers/oauth/auth.service';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-card',
@@ -10,12 +12,17 @@ import { RetrospectiveService } from '../../providers/retrospective.service';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent {
+  public user: User;
   @Input() card: Card;
   @Input() retroState: number;
   public voted: boolean = false;
   public editing: boolean = false;
 
-  constructor(public deleteDialog: MdDialog, private retrospectiveService: RetrospectiveService) {}
+  constructor(public deleteDialog: MdDialog,
+              private retrospectiveService: RetrospectiveService,
+              private authService: AuthService) {
+    this.user = authService.user;
+  }
 
   ngOnInit() {
     console.log(this.retroState);

@@ -8,7 +8,7 @@
     </md-card-title>
 
     <div class="actions">
-      <button md-icon-button *ngIf="!editing && retroState === 1" (click)="editList(true)">
+      <button md-icon-button *ngIf="!editing && retroState == 1" (click)="editList(true)">
         <md-icon>edit</md-icon>
       </button>
 
@@ -27,7 +27,7 @@
   </md-card-header>
 
   <md-card-content fxFlex [dragula]='"bag-cards"'>
-    <app-card *ngFor="let card of cards" [retroState]="retroState" [card]="card"></app-card>
+    <app-card *ngFor="let card of cards" [retroState]="retroState" [ngClass]="{ drag: user.id == card.userId }" [card]="card"></app-card>
   </md-card-content>
 
   <button md-raised-button color="primary" (click)="createCard()"><md-icon >add</md-icon></button>
