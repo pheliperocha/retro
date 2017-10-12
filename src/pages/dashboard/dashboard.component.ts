@@ -29,8 +29,5 @@ export class DashboardComponent {
     let dialogRef = this.newRetroDialog.open(CreateRetrospectiveComponent, {
       width: '700px'
     });
-
-    dialogRef.afterClosed().subscribe(result => {
-    });
   }
 }

@@ -5,12 +5,22 @@ import 'rxjs/add/operator/toPromise';
 import { Retrospective } from '../../models/retrospective';
 import { List } from '../../models/list';
 import { Card } from '../../models/card';
+import { Template } from '../../models/template';
 
 @Injectable()
 export class ApiService {
   private apiUrl = 'http://localhost:5000/';
 
   constructor(private http: Http) {}
+
+  getAllTemplates(): Promise<Template[]> {
+    return this.http
+      .get(this.apiUrl + 'template')
+      .toPromise()
+      .then(response => {
+        return response.json();
+      }).catch(this.handleError);
+  }
 
   createNewCard(card: Card): Promise<Card> {
     return this.http

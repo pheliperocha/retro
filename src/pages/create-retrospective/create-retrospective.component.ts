@@ -1,8 +1,9 @@
 import { Component, Inject } from '@angular/core';
 import { MD_DIALOG_DATA, MdDialogRef } from '@angular/material';
 import { Template } from '../../models/template';
-import {RetrospectiveService} from "../../providers/retrospective.service";
-import {Router} from "@angular/router";
+import { RetrospectiveService } from '../../providers/retrospective.service';
+import { Router } from '@angular/router';
+import { ApiService } from '../../providers/api/api.service';
 
 @Component({
   selector: 'create-retrospective',
@@ -19,31 +20,13 @@ export class CreateRetrospectiveComponent {
   constructor(public dialogRef: MdDialogRef<CreateRetrospectiveComponent>,
               @Inject(MD_DIALOG_DATA) public data: any,
               private retrospectiveService: RetrospectiveService,
+              private apiService: ApiService,
               private router: Router) {
-
-    this.templates = [
-      {
-        id: 1,
-        name: 'Template 1',
-        image: 'http://placehold.it/200x200'
-      },{
-        id: 2,
-        name: 'Template 2',
-        image: 'http://placehold.it/200x200'
-      },{
-        id: 3,
-        name: 'Template 3',
-        image: 'http://placehold.it/200x200'
-      },{
-        id: 4,
-        name: 'Template 4',
-        image: 'http://placehold.it/200x200'
-      },{
-        id: 5,
-        name: 'Template 5',
-        image: 'http://placehold.it/200x200'
-      }
-    ];
+    this.apiService.getAllTemplates().then(templates => {
+      this.templates = templates;
+    }).catch(err => {
+      console.log(err);
+    });
   }
 
   selectTemplate(templateId: number) {
