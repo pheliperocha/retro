@@ -1,4 +1,8 @@
-<md-card>
+<md-card [ngClass]="{reflexao: reflexao}">
+  <div class="list_title" *ngIf="reflexao">
+    {{ card?.list?.title }}
+  </div>
+
   <div class="feedback" *ngIf="!editing">
     {{ card?.description }}
   </div>
@@ -15,15 +19,15 @@
         <md-icon>thumb_up</md-icon>
       </button>
 
-      <button md-icon-button *ngIf="!editing && user.id == card.userId" (click)="editCard(true)">
+      <button md-icon-button *ngIf="!editing && user.id == card.userId && !reflexao" (click)="editCard(true)">
         <md-icon>edit</md-icon>
       </button>
 
-      <button md-icon-button *ngIf="!editing && user.id == card.userId" (click)="deleteCard(card)">
+      <button md-icon-button *ngIf="!editing && user.id == card.userId && !reflexao" (click)="deleteCard(card)">
         <md-icon>delete</md-icon>
       </button>
 
-      <button md-icon-button *ngIf="editing && user.id == card.userId" (click)="saveCard(feedbackInput?.value)">
+      <button md-icon-button *ngIf="editing && user.id == card.userId && !reflexao" (click)="saveCard(feedbackInput?.value)">
         <md-icon>save</md-icon>
       </button>
 

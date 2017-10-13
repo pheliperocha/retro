@@ -15,6 +15,7 @@ export class CardComponent {
   public user: User;
   @Input() card: Card;
   @Input() retroState: number;
+  @Input() reflexao: boolean = false;
   public voted: boolean = false;
   public editing: boolean = false;
 

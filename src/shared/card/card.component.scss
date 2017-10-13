@@ -21,6 +21,12 @@ md-card {
     }
   }
 
+  .list_title {
+    padding: 8px 8px 0px 8px;
+    color: mat-color($mat-grey, 500);
+    font-size: 20px;
+  }
+
   .footer {
     padding-left: 8px;
 
@@ -73,4 +79,9 @@ md-card {
       }
     }
   }
+}
+
+.reflexao {
+  font-size: 26px;
+  padding: 16px 0px 0px 16px;
 }
