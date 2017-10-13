@@ -5,6 +5,7 @@ import { RetrospectiveService } from '../../../providers/retrospective.service';
 import { MdDialog } from '@angular/material';
 import { CreateCardDialogComponent } from '../../../shared/dialogs/createCard-dialog.component';
 import { Annotation } from '../../../models/annotation';
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'reflexao-retrospective',

@@ -25,10 +25,6 @@ export class CardComponent {
     this.user = authService.user;
   }
 
-  ngOnInit() {
-    console.log(this.retroState);
-  }
-
   saveCard(feedback: string) {
     let update = {
       'op': 'replace',

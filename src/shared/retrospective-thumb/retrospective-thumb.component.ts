@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-retrospective-thumb',
@@ -12,6 +11,6 @@ export class RetrospectiveThumbComponent {
   @Input() image: string;
   @Input() date: string;
 
-  constructor(private router: Router) {}
+  constructor() {}
 
 }

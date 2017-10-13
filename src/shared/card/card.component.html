@@ -19,24 +19,24 @@
         <md-icon>thumb_up</md-icon>
       </button>
 
-      <button md-icon-button *ngIf="!editing && user.id == card.userId && !reflexao" (click)="editCard(true)">
+      <button md-icon-button *ngIf="!editing && user.id == card.user.id && !reflexao" (click)="editCard(true)">
         <md-icon>edit</md-icon>
       </button>
 
-      <button md-icon-button *ngIf="!editing && user.id == card.userId && !reflexao" (click)="deleteCard(card)">
+      <button md-icon-button *ngIf="!editing && user.id == card.user.id && !reflexao" (click)="deleteCard(card)">
         <md-icon>delete</md-icon>
       </button>
 
-      <button md-icon-button *ngIf="editing && user.id == card.userId && !reflexao" (click)="saveCard(feedbackInput?.value)">
+      <button md-icon-button *ngIf="editing && user.id == card.user.id && !reflexao" (click)="saveCard(feedbackInput?.value)">
         <md-icon>save</md-icon>
       </button>
 
-      <button md-icon-button *ngIf="editing && user.id == card.userId" (click)="editCard(false)">
+      <button md-icon-button *ngIf="editing && user.id == card.user.id" (click)="editCard(false)">
         <md-icon>clear</md-icon>
       </button>
     </div>
-    <div class="user" mdTooltip="Nome">
-      <img src="https://s3-sa-east-1.amazonaws.com/pheliperocha/images/brand/PhelipeRocha-150.jpg" />
+    <div class="user" mdTooltip="{{ card?.user?.name }}">
+      <img src="{{ card?.user?.image }}" />
     </div>
   </div>
 </md-card>

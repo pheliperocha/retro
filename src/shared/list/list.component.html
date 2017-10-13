@@ -27,7 +27,7 @@
   </md-card-header>
 
   <md-card-content fxFlex [dragula]='"bag-cards"'>
-    <app-card *ngFor="let card of cards" [retroState]="retroState" [ngClass]="{ drag: user.id == card.userId }" [card]="card"></app-card>
+    <app-card *ngFor="let card of cards" [retroState]="retroState" [ngClass]="{ drag: user?.id == card?.user?.id }" [card]="card"></app-card>
   </md-card-content>
 
   <button md-raised-button color="primary" (click)="createCard()"><md-icon >add</md-icon></button>

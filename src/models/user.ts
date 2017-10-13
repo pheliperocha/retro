@@ -1,7 +1,7 @@
 export class User {
   id: number;
   name: string;
-  email: string;
   image: string;
-  status: boolean
+  email?: string;
+  status?: boolean
 }

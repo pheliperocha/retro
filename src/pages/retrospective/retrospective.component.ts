@@ -4,7 +4,6 @@ import { User } from '../../models/user';
 import { Retrospective } from '../../models/retrospective';
 import { ActivatedRoute } from '@angular/router';
 import { List } from '../../models/list';
-import { Card } from '../../models/card';
 import { AppSettings } from '../../app/app.settings';
 import { RetrospectiveService } from '../../providers/retrospective.service';
 import { Subscription } from 'rxjs/Subscription';
@@ -16,7 +15,7 @@ import { DeleteDialogComponent } from '../../shared/dialogs/delete-dialog.compon
   selector: 'app-retrospective',
   templateUrl: './retrospective.component.html',
   styleUrls: ['./retrospective.component.scss'],
-  providers: [RetrospectiveService]
+  providers: [ RetrospectiveService ]
 })
 export class RetrospectiveComponent implements OnInit {
   public user: User;
@@ -44,7 +43,6 @@ export class RetrospectiveComponent implements OnInit {
     this.lists = this.route.snapshot.data['lists'];
 
     this.deleteListSubscribe = this.retrospectiveService.deleteListSource$.subscribe(list => {
-      console.log('Delete List');
       let index = this.lists.findIndex((elt) => (elt===list));
       if (index != -1) {
         this.lists.splice(index, 1);
@@ -86,10 +84,7 @@ export class RetrospectiveComponent implements OnInit {
       }
     });
 
-    this.dragulaSubscribe = this.dragulaService.drop.subscribe((value) => {
-      console.log('=====');
-      console.log(value[2]);
-    });
+    this.dragulaSubscribe = this.dragulaService.drop.subscribe((value) => {});
   }
 
   goToPrepareStep() {
@@ -155,17 +150,10 @@ export class RetrospectiveComponent implements OnInit {
     })
   }
 
-  onListDeleted(list: List) {
-    let index = this.lists.findIndex((elt) => (elt===list));
-    if (index != -1) {
-      this.lists.splice(index, 1);
-    }
-  }
-
   ngOnDestroy() {
-    console.log('Destroy Retrospective');
     this.deleteListSubscribe.unsubscribe();
     this.addCardSubscribe.unsubscribe();
+    this.deleteCardSubscribe.unsubscribe();
     this.dragulaSubscribe.unsubscribe();
     this.dragulaService.destroy('bag-list');
     this.dragulaService.destroy('bag-cards');

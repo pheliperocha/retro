@@ -10,12 +10,10 @@ import { Annotation } from '../models/annotation';
 export class RetrospectiveService {
 
   private deleteListSource = new Subject<List>();
-  private changeListSource = new Subject<List>();
   private addCardSource = new Subject<Card>();
   private deleteCardSource = new Subject<Card>();
 
   deleteListSource$ = this.deleteListSource.asObservable();
-  changeListSource$ = this.changeListSource.asObservable();
   addCardSource$ = this.addCardSource.asObservable();
   deleteCardSource$ = this.deleteCardSource.asObservable();
 
@@ -120,9 +118,5 @@ export class RetrospectiveService {
     }).catch(err => {
       console.log(err);
     });
-  }
-
-  changeList(list: List) {
-    this.changeListSource.next(list);
   }
 }

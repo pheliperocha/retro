@@ -1,11 +1,9 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Card } from '../../models/card';
 import { DeleteDialogComponent } from '../dialogs/delete-dialog.component';
 import { MdDialog } from '@angular/material';
 import { List } from '../../models/list';
 import { RetrospectiveService } from '../../providers/retrospective.service';
-import { Subscription } from 'rxjs/Subscription';
-import { DragulaService } from 'ng2-dragula';
 import { CreateCardDialogComponent } from '../dialogs/createCard-dialog.component';
 import { AuthService } from '../../providers/oauth/auth.service';
 import { User } from '../../models/user';
@@ -35,15 +33,18 @@ export class ListComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result !== 0) {
-        let newCard = {
+        let newCard: Card = {
           id: 6,
           listId: this.list.id,
           description: result.feedback,
           votes: 0,
-          userId: this.user.id
+          user: {
+            id: this.user.id,
+            name: this.user.name,
+            image: this.user.image
+          }
         };
 
-        console.log(1);
         this.retrospectiveService.addCard(newCard);
       }
     });
@@ -80,9 +81,5 @@ export class ListComponent {
         this.retrospectiveService.deleteList(this.list);
       }
     });
-  }
-
-  ngOnDestroy() {
-    console.log('destroy list');
   }
 }

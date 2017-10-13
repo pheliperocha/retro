@@ -70,8 +70,4 @@ export class RetroHeaderComponent {
       console.log(err);
     });
   }
-
-  logout() {
-    this.authService.logout();
-  }
 }

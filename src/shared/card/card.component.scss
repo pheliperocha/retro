@@ -3,7 +3,8 @@
 
 md-card {
   padding: 0px;
-  margin-bottom: 8px;
+  max-width: 700px;
+  margin: 8px auto;
 
   .feedback {
     padding: 8px;
@@ -67,6 +68,7 @@ md-card {
       border-radius: 999px 0px 0px 0px;
       overflow: hidden;
       transition: .3s;
+      background: mat-color($mat-grey, 300);
 
       &:hover {
         width: 42px;
