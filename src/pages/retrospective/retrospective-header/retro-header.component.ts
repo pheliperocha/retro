@@ -2,8 +2,9 @@ import { Component, Input } from '@angular/core';
 import { AuthService } from '../../../providers/oauth/auth.service';
 import { User } from '../../../models/user';
 import { Retrospective } from '../../../models/retrospective';
-import {MdDialog} from "@angular/material";
-import {ContextDialogComponent} from "../../../shared/dialogs/context-dialog.component";
+import { MdDialog } from '@angular/material';
+import { ContextDialogComponent } from '../../../shared/dialogs/context-dialog.component';
+import { ApiService } from '../../../providers/api/api.service';
 
 @Component({
   selector: 'app-retre-header',
@@ -15,7 +16,9 @@ export class RetroHeaderComponent {
   public editing: boolean = false;
   @Input() retrospective: Retrospective;
 
-  constructor(private authService: AuthService, public contextDialog: MdDialog) {
+  constructor(private authService: AuthService,
+              public contextDialog: MdDialog,
+              private apiService: ApiService) {
     this.user = this.authService.user;
   }
 
@@ -36,8 +39,20 @@ export class RetroHeaderComponent {
   }
 
   saveRetroTitle(newTitle: string) {
-    this.retrospective.title = newTitle;
-    this.editing = false;
+    let update = {
+      'op': 'replace',
+      'path': '/title',
+      'value': newTitle
+    };
+
+    this.apiService.updateRetrospective(this.retrospective.id, update).then(response => {
+      if (response === true) {
+        this.retrospective.title = newTitle;
+        this.editing = false;
+      }
+    }).catch(err => {
+      console.log(err);
+    });
   }
 
   logout() {
