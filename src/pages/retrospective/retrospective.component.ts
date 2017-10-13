@@ -9,6 +9,8 @@ import { AppSettings } from '../../app/app.settings';
 import { RetrospectiveService } from '../../providers/retrospective.service';
 import { Subscription } from 'rxjs/Subscription';
 import { DragulaService } from 'ng2-dragula';
+import { MdDialog } from '@angular/material';
+import { DeleteDialogComponent } from '../../shared/dialogs/delete-dialog.component';
 
 @Component({
   selector: 'app-retrospective',
@@ -32,6 +34,7 @@ export class RetrospectiveComponent implements OnInit {
     private authService: AuthService,
     private route: ActivatedRoute,
     private retrospectiveService: RetrospectiveService,
+    public confirmDialog: MdDialog,
     private dragulaService: DragulaService,
   ) {
     this.user = this.authService.user;
@@ -91,7 +94,37 @@ export class RetrospectiveComponent implements OnInit {
   }
 
   goToPrepareStep() {
-    this.retrospective.state = 1;
+    if (this.retrospective.members.length >= 1) {
+
+      let dialogRef = this.confirmDialog.open(DeleteDialogComponent, {
+        data: { message: 'Existe outras pessoas acessando essa reunião, ao voltar para etapa de preparação, todos os outros participantes serão desconectador. Tem certeza que deseja continuar?' }
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        if (result === 1) {
+          this.changeToPrepareStep();
+        }
+      });
+    } else {
+      this.changeToPrepareStep();
+    }
+  }
+
+  private changeToPrepareStep() {
+    let update = {
+      'op': 'replace',
+      'path': 'state',
+      'value': 1
+    };
+
+    this.retrospectiveService.updateRetrospective(this.retrospective.id, update).then(response => {
+      if (response.updated === true) {
+        this.retrospective.state = 1;
+        this.retrospective.pin = null;
+      }
+    }).catch(err => {
+      console.log(err);
+    });
   }
 
   goToFeedbackStep() {
