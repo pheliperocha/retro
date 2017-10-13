@@ -61,7 +61,7 @@ export class ListComponent {
     };
 
     this.retrospectiveService.updateList(this.list.id, update).then(response => {
-      if (response === true) {
+      if (response.updated === true) {
         this.list.title = newTitle;
         this.editing = false;
       }

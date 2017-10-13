@@ -36,7 +36,7 @@ export class CardComponent {
     };
 
     this.retrospectiveService.updateCard(this.card.id, update).then(response => {
-      if (response === true) {
+      if (response.updated === true) {
         this.card.description = feedback;
         this.editing = false;
       }

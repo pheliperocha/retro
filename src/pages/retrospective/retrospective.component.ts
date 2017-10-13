@@ -95,7 +95,20 @@ export class RetrospectiveComponent implements OnInit {
   }
 
   goToFeedbackStep() {
-    this.retrospective.state = 2;
+    let update = {
+      'op': 'replace',
+      'path': 'state',
+      'value': 2
+    };
+
+    this.retrospectiveService.updateRetrospective(this.retrospective.id, update).then(response => {
+      if (response.updated === true) {
+        this.retrospective.state = 2;
+        this.retrospective.pin = response.data.pin;
+      }
+    }).catch(err => {
+      console.log(err);
+    });
   }
 
   goToReflexaoStep() {

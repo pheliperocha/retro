@@ -46,7 +46,7 @@ export class RetroHeaderComponent {
     };
 
     this.retrospectiveService.updateRetrospective(this.retrospective.id, update).then(response => {
-      if (response === true) {
+      if (response.updated === true) {
         this.retrospective.title = newTitle;
         this.editing = false;
       }
@@ -63,7 +63,7 @@ export class RetroHeaderComponent {
     };
 
     this.retrospectiveService.updateRetrospective(this.retrospective.id, update).then(response => {
-      if (response === true) {
+      if (response.updated === true) {
         this.retrospective.context = newContext;
       }
     }).catch(err => {

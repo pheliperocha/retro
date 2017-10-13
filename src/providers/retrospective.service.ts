@@ -20,7 +20,7 @@ export class RetrospectiveService {
 
   constructor(private apiService: ApiService) {}
 
-  updateRetrospective(retrospectiveId, update): Promise<boolean> {
+  updateRetrospective(retrospectiveId, update): Promise<any> {
     return this.apiService.updateRetrospective(retrospectiveId, update).then(response => {
       return response;
     }).catch(err => {
@@ -28,7 +28,7 @@ export class RetrospectiveService {
     });
   }
 
-  updateList(listId, update): Promise<boolean> {
+  updateList(listId, update): Promise<any> {
     return this.apiService.updateList(listId, update).then(response => {
       return response;
     }).catch(err => {
@@ -36,7 +36,7 @@ export class RetrospectiveService {
     });
   }
 
-  updateCard(cardId, update): Promise<boolean> {
+  updateCard(cardId, update): Promise<any> {
     return this.apiService.updateCard(cardId, update).then(response => {
       return response;
     }).catch(err => {

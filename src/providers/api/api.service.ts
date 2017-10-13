@@ -92,32 +92,32 @@ export class ApiService {
       .catch(this.handleError);
   }
 
-  updateRetrospective(retrospectiveId: number, update: object): Promise<boolean> {
+  updateRetrospective(retrospectiveId: number, update: object): Promise<any> {
     return this.http
       .patch(this.apiUrl + 'retrospective/' + retrospectiveId, update)
       .toPromise()
       .then(response => {
-        return response.json() as Card;
+        return response.json();
       })
       .catch(this.handleError);
   }
 
-  updateList(listId: number, update: object): Promise<boolean> {
+  updateList(listId: number, update: object): Promise<any> {
     return this.http
       .patch(this.apiUrl + 'list/' + listId, update)
       .toPromise()
       .then(response => {
-        return response.json() as Card;
+        return response.json();
       })
       .catch(this.handleError);
   }
 
-  updateCard(cardId: number, update: object): Promise<boolean> {
+  updateCard(cardId: number, update: object): Promise<any> {
     return this.http
       .patch(this.apiUrl + 'card/' + cardId, update)
       .toPromise()
       .then(response => {
-        return response.json() as Card;
+        return response.json();
       })
       .catch(this.handleError);
   }
