@@ -54,6 +54,21 @@ export class RetrospectiveService {
     });
   }
 
+  createNewList(): Promise<List> {
+    let list = {
+      id: null,
+      title: '',
+      order: null,
+      cards: []
+    };
+
+    return this.apiService.createNewList(list).then(newList => {
+      return newList;
+    }).catch(err => {
+      console.log(err);
+    });
+  }
+
   addCard(card: Card) {
     this.apiService.createNewCard(card).then(card => {
       this.addCardSource.next(card);

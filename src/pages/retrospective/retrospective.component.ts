@@ -109,7 +109,11 @@ export class RetrospectiveComponent implements OnInit {
   }
 
   createList() {
-
+    this.retrospectiveService.createNewList().then(list => {
+      this.lists.push(list);
+    }).catch(err => {
+      console.log(err);
+    })
   }
 
   onListDeleted(list: List) {
