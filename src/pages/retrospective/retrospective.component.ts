@@ -23,7 +23,6 @@ export class RetrospectiveComponent implements OnInit {
   public id: number;
   public retrospective: Retrospective;
   public lists: List[];
-  public cards: Card[];
   public appSettings = AppSettings;
   private deleteListSubscribe: Subscription;
   private addCardSubscribe: Subscription;
@@ -146,12 +145,6 @@ export class RetrospectiveComponent implements OnInit {
 
   goToReflexaoStep() {
     this.retrospective.state = 3;
-  }
-
-  getCardsFromList(listId: number): Card[] {
-    return this.cards.filter(function (info) {
-      return info.listId == listId;
-    });
   }
 
   createList() {

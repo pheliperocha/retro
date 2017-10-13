@@ -30,7 +30,6 @@ import { appRoutes } from './app.routes';
 import { ApiService } from '../providers/api/api.service';
 import { RetrospectiveResolverService } from '../providers/resolvers/retrospective-resolver.service';
 import { ListsResolverService } from '../providers/resolvers/lists-resolver.service';
-import { CardsResolverService } from '../providers/resolvers/cards-resolver.service';
 
 
 // Directives
@@ -104,8 +103,7 @@ import { ReflexaoComponent } from '../pages/retrospective/reflexao/reflexao.comp
   providers: [
     ApiService,
     RetrospectiveResolverService,
-    ListsResolverService,
-    CardsResolverService
+    ListsResolverService
   ],
   bootstrap: [AppComponent]
 })
