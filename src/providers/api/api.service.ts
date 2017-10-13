@@ -33,7 +33,7 @@ export class ApiService {
       .catch(this.handleError);
   }
 
-  createNewRetrospective(retrospective: Retrospective): Promise<Retrospective> {
+  createNewRetrospective(retrospective: Retrospective): Promise<any> {
     return this.http
       .post(this.apiUrl + 'retrospective', retrospective)
       .toPromise()

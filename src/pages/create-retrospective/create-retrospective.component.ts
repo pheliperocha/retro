@@ -40,9 +40,9 @@ export class CreateRetrospectiveComponent {
   }
 
   createNewRetrospective(title: string, context: string) {
-    this.retrospectiveService.createNewRetrospective(title, context, this.selectedTemplate).then(retrospective => {
+    this.retrospectiveService.createNewRetrospective(title, context, this.selectedTemplate).then(retrospectiveId => {
       this.dialogRef.close();
-      this.router.navigate(['/retrospective/' + retrospective.id]);
+      this.router.navigate(['/retrospective/' + retrospectiveId]);
     }).catch(err => {
       console.log(JSON.stringify(err));
     });

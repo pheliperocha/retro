@@ -3,11 +3,13 @@ import { Subject }    from 'rxjs/Subject';
 import { List } from '../models/list';
 import { Card } from '../models/card';
 import { ApiService } from './api/api.service';
-import { Retrospective } from '../models/retrospective';
 import { Annotation } from '../models/annotation';
+import { AuthService } from './oauth/auth.service';
+import { User } from '../models/user';
 
 @Injectable()
 export class RetrospectiveService {
+  public user: User;
 
   private deleteListSource = new Subject<List>();
   private addCardSource = new Subject<Card>();
@@ -17,7 +19,9 @@ export class RetrospectiveService {
   addCardSource$ = this.addCardSource.asObservable();
   deleteCardSource$ = this.deleteCardSource.asObservable();
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private authService: AuthService) {
+    this.user = this.authService.user;
+  }
 
   getCards(retrospectiveId: number): Promise<Card[]> {
     return this.apiService.getCards(retrospectiveId).then(cards => {
@@ -51,19 +55,25 @@ export class RetrospectiveService {
     });
   }
 
-  createNewRetrospective(title: string, context: string, templateId: number): Promise<Retrospective> {
+  createNewRetrospective(title: string, context: string, templateId: number): Promise<number> {
     let retrospective = {
       id: null,
       title: title,
       context: context,
+      templateId: templateId,
       state: null,
       date: null,
       image: null,
+      facilitador: {
+        id: this.user.id,
+        name: this.user.name,
+        image: this.user.image
+      },
       pin: null
     };
 
     return this.apiService.createNewRetrospective(retrospective).then(newRetrospective => {
-      return newRetrospective;
+      return newRetrospective.id;
     }).catch(err => {
       console.log(err);
     });
