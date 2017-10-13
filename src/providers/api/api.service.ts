@@ -92,6 +92,16 @@ export class ApiService {
       .catch(this.handleError);
   }
 
+  updateList(listId: number, update: object): Promise<boolean> {
+    return this.http
+      .patch(this.apiUrl + 'list/' + listId, update)
+      .toPromise()
+      .then(response => {
+        return response.json() as Card;
+      })
+      .catch(this.handleError);
+  }
+
   private handleError(error: any): Promise<any> {
     console.error('Infelizmente ocorreu um erro ', error);
     return Promise.reject(error.message || error);

@@ -28,6 +28,14 @@ export class RetrospectiveService {
     });
   }
 
+  updateList(listId, update): Promise<boolean> {
+    return this.apiService.updateList(listId, update).then(response => {
+      return response;
+    }).catch(err => {
+      console.log(err);
+    });
+  }
+
   createNewRetrospective(title: string, context: string, templateId: number): Promise<Retrospective> {
     let retrospective = {
       id: null,

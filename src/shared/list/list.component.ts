@@ -54,9 +54,20 @@ export class ListComponent {
   }
 
   saveList(newTitle: string) {
-    this.list.title = newTitle;
+    let update = {
+      'op': 'replace',
+      'path': 'title',
+      'value': newTitle
+    };
 
-    this.editing = false;
+    this.retrospectiveService.updateList(this.list.id, update).then(response => {
+      if (response === true) {
+        this.list.title = newTitle;
+        this.editing = false;
+      }
+    }).catch(err => {
+      console.log(err);
+    });
   }
 
   deleteList() {
