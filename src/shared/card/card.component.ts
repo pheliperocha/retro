@@ -29,8 +29,20 @@ export class CardComponent {
   }
 
   saveCard(feedback: string) {
-    this.card.description = feedback;
-    this.editing = false;
+    let update = {
+      'op': 'replace',
+      'path': 'description',
+      'value': feedback
+    };
+
+    this.retrospectiveService.updateCard(this.card.id, update).then(response => {
+      if (response === true) {
+        this.card.description = feedback;
+        this.editing = false;
+      }
+    }).catch(err => {
+      console.log(err);
+    });
   }
 
   editCard(state: boolean) {

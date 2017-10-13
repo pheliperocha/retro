@@ -112,6 +112,16 @@ export class ApiService {
       .catch(this.handleError);
   }
 
+  updateCard(cardId: number, update: object): Promise<boolean> {
+    return this.http
+      .patch(this.apiUrl + 'card/' + cardId, update)
+      .toPromise()
+      .then(response => {
+        return response.json() as Card;
+      })
+      .catch(this.handleError);
+  }
+
   deleteList(listId: number): Promise<boolean> {
     return this.http
       .delete(this.apiUrl + 'list/' + listId)

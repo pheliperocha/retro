@@ -36,6 +36,14 @@ export class RetrospectiveService {
     });
   }
 
+  updateCard(cardId, update): Promise<boolean> {
+    return this.apiService.updateCard(cardId, update).then(response => {
+      return response;
+    }).catch(err => {
+      console.log(err);
+    });
+  }
+
   createNewRetrospective(title: string, context: string, templateId: number): Promise<Retrospective> {
     let retrospective = {
       id: null,
