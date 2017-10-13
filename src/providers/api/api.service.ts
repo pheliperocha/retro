@@ -32,6 +32,16 @@ export class ApiService {
       .catch(this.handleError);
   }
 
+  createNewRetrospective(retrospective: Retrospective): Promise<Retrospective> {
+    return this.http
+      .post(this.apiUrl + 'retrospective', retrospective)
+      .toPromise()
+      .then((response) => {
+        return response.json();
+      })
+      .catch(this.handleError);
+  }
+
   getAllRetrospectives(userId): Promise<Array<Retrospective>> {
     return this.http
       .get(this.apiUrl + 'facilitador/' + userId + '/retrospective')

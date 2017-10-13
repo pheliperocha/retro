@@ -3,6 +3,7 @@ import { Subject }    from 'rxjs/Subject';
 import { List } from '../models/list';
 import { Card } from '../models/card';
 import { ApiService } from './api/api.service';
+import { Retrospective } from '../models/retrospective';
 
 @Injectable()
 export class RetrospectiveService {
@@ -19,19 +20,23 @@ export class RetrospectiveService {
 
   constructor(private apiService: ApiService) {}
 
-  createNewRetrospective(title: string, context: string, templateId: number) {
+  createNewRetrospective(title: string, context: string, templateId: number): Promise<Retrospective> {
 
-    let newRetrospective = {
-      id: 5,
+    let retrospective = {
+      id: null,
       title: title,
       context: context,
-      state: 1,
-      date: '2017-10-12',
-      image: '',
-      pin: '12487'
+      state: null,
+      date: null,
+      image: null,
+      pin: null
     };
 
-    return Promise.resolve(newRetrospective);
+    return this.apiService.createNewRetrospective(retrospective).then(newRetrospective => {
+      return newRetrospective;
+    }).catch(err => {
+      console.log(err);
+    });
   }
 
   addCard(card: Card) {
