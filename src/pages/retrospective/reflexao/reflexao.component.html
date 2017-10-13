@@ -1,5 +1,13 @@
 <swiper [config]="swiperConfig">
   <div class="slide" *ngFor="let card of cards">
     <app-card [card]="card" [reflexao]="true"></app-card>
+
+    <div class="actions">
+      <button class="fab" md-fab>
+        <md-icon>annotation</md-icon>
+      </button>
+
+      <div class="annotation" *ngFor="let annotation of card?.annotation">{{ annotation.description }}</div>
+    </div>
   </div>
 </swiper>

@@ -1,3 +1,20 @@
+@import '~@angular/material/theming';
+@import '../../../theme.scss';
+
 .slide {
   padding: 64px;
+
+  .actions {
+    text-align: center;
+    padding: 16px;
+
+    .annotation {
+      background: mat-color($primary);
+      color: mat-color($primary, default-contrast);
+      padding: 8px;
+      margin: 16px;
+      border-radius: 4px;
+      max-width: 500px;
+    }
+  }
 }

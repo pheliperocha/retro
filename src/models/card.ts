@@ -1,4 +1,5 @@
 import { List } from './list';
+import { Annotation } from './annotation';
 
 export class Card {
   id: number;
@@ -7,4 +8,5 @@ export class Card {
   votes: number;
   userId: number;
   list?: List;
+  annotation?: Annotation;
 }
