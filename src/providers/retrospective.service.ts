@@ -20,6 +20,14 @@ export class RetrospectiveService {
 
   constructor(private apiService: ApiService) {}
 
+  getCards(retrospectiveId: number): Promise<Card[]> {
+    return this.apiService.getCards(retrospectiveId).then(cards => {
+      return cards;
+    }).catch(err => {
+      console.log(err);
+    })
+  }
+
   updateRetrospective(retrospectiveId, update): Promise<any> {
     return this.apiService.updateRetrospective(retrospectiveId, update).then(response => {
       return response;

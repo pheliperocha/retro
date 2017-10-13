@@ -49,6 +49,7 @@ import { DeleteDialogComponent } from '../shared/dialogs/delete-dialog.component
 import { CreateCardDialogComponent } from '../shared/dialogs/createCard-dialog.component';
 import { ContextDialogComponent } from '../shared/dialogs/context-dialog.component';
 import { CreateRetrospectiveComponent } from '../pages/create-retrospective/create-retrospective.component';
+import { ReflexaoComponent } from '../pages/retrospective/reflexao/reflexao.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { CreateRetrospectiveComponent } from '../pages/create-retrospective/crea
     DeleteDialogComponent,
     CreateCardDialogComponent,
     ContextDialogComponent,
-    CreateRetrospectiveComponent
+    CreateRetrospectiveComponent,
+    ReflexaoComponent
   ],
   entryComponents: [ DeleteDialogComponent, CreateCardDialogComponent, ContextDialogComponent, CreateRetrospectiveComponent ],
   imports: [
@@ -79,9 +81,8 @@ import { CreateRetrospectiveComponent } from '../pages/create-retrospective/crea
     SwiperModule,
     SwiperModule.forRoot({
       direction: 'horizontal',
-      slidesPerView: '3',
+      slidesPerView: 3,
       keyboardControl: true,
-      scrollbar: 'dasfsf',
       spaceBetween: 16
     }),
     RouterModule.forRoot(
