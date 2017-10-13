@@ -4,7 +4,7 @@ import { User } from '../../../models/user';
 import { Retrospective } from '../../../models/retrospective';
 import { MdDialog } from '@angular/material';
 import { ContextDialogComponent } from '../../../shared/dialogs/context-dialog.component';
-import { ApiService } from '../../../providers/api/api.service';
+import { RetrospectiveService } from '../../../providers/retrospective.service';
 
 @Component({
   selector: 'app-retre-header',
@@ -18,7 +18,7 @@ export class RetroHeaderComponent {
 
   constructor(private authService: AuthService,
               public contextDialog: MdDialog,
-              private apiService: ApiService) {
+              private retrospectiveService: RetrospectiveService) {
     this.user = this.authService.user;
   }
 
@@ -45,7 +45,7 @@ export class RetroHeaderComponent {
       'value': newTitle
     };
 
-    this.apiService.updateRetrospective(this.retrospective.id, update).then(response => {
+    this.retrospectiveService.updateRetrospective(this.retrospective.id, update).then(response => {
       if (response === true) {
         this.retrospective.title = newTitle;
         this.editing = false;
@@ -62,7 +62,7 @@ export class RetroHeaderComponent {
       'value': newContext
     };
 
-    this.apiService.updateRetrospective(this.retrospective.id, update).then(response => {
+    this.retrospectiveService.updateRetrospective(this.retrospective.id, update).then(response => {
       if (response === true) {
         this.retrospective.context = newContext;
       }

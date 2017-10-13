@@ -20,8 +20,15 @@ export class RetrospectiveService {
 
   constructor(private apiService: ApiService) {}
 
-  createNewRetrospective(title: string, context: string, templateId: number): Promise<Retrospective> {
+  updateRetrospective(retrospectiveId, update): Promise<boolean> {
+    return this.apiService.updateRetrospective(retrospectiveId, update).then(response => {
+      return response;
+    }).catch(err => {
+      console.log(err);
+    });
+  }
 
+  createNewRetrospective(title: string, context: string, templateId: number): Promise<Retrospective> {
     let retrospective = {
       id: null,
       title: title,
