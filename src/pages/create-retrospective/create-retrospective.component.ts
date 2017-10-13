@@ -4,6 +4,7 @@ import { Template } from '../../models/template';
 import { RetrospectiveService } from '../../providers/retrospective.service';
 import { Router } from '@angular/router';
 import { ApiService } from '../../providers/api/api.service';
+import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
 @Component({
   selector: 'create-retrospective',
@@ -16,6 +17,11 @@ import { ApiService } from '../../providers/api/api.service';
 export class CreateRetrospectiveComponent {
   public templates: Template[];
   public selectedTemplate: number = 1;
+  public swiperConfig: SwiperConfigInterface = {
+    slidesPerView: 3,
+    prevButton: '.swiper-button-prev',
+    nextButton: '.swiper-button-next',
+  };
 
   constructor(public dialogRef: MdDialogRef<CreateRetrospectiveComponent>,
               @Inject(MD_DIALOG_DATA) public data: any,

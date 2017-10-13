@@ -10,7 +10,9 @@ import { RetrospectiveService } from '../../../providers/retrospective.service';
 })
 export class ReflexaoComponent {
   public swiperConfig: SwiperConfigInterface = {
-    slidesPerView: 1
+    slidesPerView: 1,
+    prevButton: '.swiper-button-prev',
+    nextButton: '.swiper-button-next',
   };
 
   @Input() retrospectiveId: number;

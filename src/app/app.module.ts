@@ -78,12 +78,6 @@ import { ReflexaoComponent } from '../pages/retrospective/reflexao/reflexao.comp
     ReactiveFormsModule,
     DragulaModule,
     SwiperModule,
-    SwiperModule.forRoot({
-      direction: 'horizontal',
-      slidesPerView: 3,
-      keyboardControl: true,
-      spaceBetween: 16
-    }),
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: false }

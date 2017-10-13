@@ -10,7 +10,7 @@
 
     <label>Template</label>
 
-    <swiper>
+    <swiper [config]="swiperConfig">
       <div class="card" *ngFor="let template of templates" [ngClass]="{ selected: template?.id === selectedTemplate }" (click)="selectTemplate(template?.id)">
         <img md-card-sm-image src="{{ template?.image }}">
 
