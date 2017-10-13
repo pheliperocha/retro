@@ -86,7 +86,13 @@ export class RetrospectiveService {
   }
 
   deleteCard(card: Card) {
-    this.deleteCardSource.next(card);
+    this.apiService.deleteCard(card.id).then(response => {
+      if (response === true) {
+        this.deleteCardSource.next(card);
+      }
+    }).catch(err => {
+      console.log(err);
+    });
   }
 
   deleteList(list: List) {
