@@ -29,7 +29,7 @@ export class RetroHeaderComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.retrospective.context = result;
+        this.updateRetroContext(result);
       }
     });
   }
@@ -41,7 +41,7 @@ export class RetroHeaderComponent {
   saveRetroTitle(newTitle: string) {
     let update = {
       'op': 'replace',
-      'path': '/title',
+      'path': 'title',
       'value': newTitle
     };
 
@@ -49,6 +49,22 @@ export class RetroHeaderComponent {
       if (response === true) {
         this.retrospective.title = newTitle;
         this.editing = false;
+      }
+    }).catch(err => {
+      console.log(err);
+    });
+  }
+
+  updateRetroContext(newContext: string) {
+    let update = {
+      'op': 'replace',
+      'path': 'context',
+      'value': newContext
+    };
+
+    this.apiService.updateRetrospective(this.retrospective.id, update).then(response => {
+      if (response === true) {
+        this.retrospective.context = newContext;
       }
     }).catch(err => {
       console.log(err);
