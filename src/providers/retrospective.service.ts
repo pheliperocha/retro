@@ -67,7 +67,13 @@ export class RetrospectiveService {
   }
 
   deleteList(list: List) {
-    this.deleteListSource.next(list);
+    return this.apiService.deleteList(list.id).then(response => {
+      if (response === true) {
+        this.deleteListSource.next(list);
+      }
+    }).catch(err => {
+      console.log(err);
+    });
   }
 
   changeList(list: List) {

@@ -102,6 +102,16 @@ export class ApiService {
       .catch(this.handleError);
   }
 
+  deleteList(listId: number): Promise<boolean> {
+    return this.http
+      .delete(this.apiUrl + 'list/' + listId)
+      .toPromise()
+      .then(response => {
+        return response.json() as Card;
+      })
+      .catch(this.handleError);
+  }
+
   private handleError(error: any): Promise<any> {
     console.error('Infelizmente ocorreu um erro ', error);
     return Promise.reject(error.message || error);
