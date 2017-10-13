@@ -8,5 +8,5 @@ export class Card {
   votes: number;
   userId: number;
   list?: List;
-  annotation?: Annotation;
+  annotation?: Annotation[];
 }

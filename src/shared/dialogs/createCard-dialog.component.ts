@@ -20,7 +20,6 @@ export class CreateCardDialogComponent {
               @Inject(MD_DIALOG_DATA) public data: any) {}
 
   createCard(feedback: string) {
-    console.log(feedback);
     this.dialogRef.close({ feedback: feedback });
   }
 }

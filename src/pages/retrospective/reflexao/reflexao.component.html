@@ -3,7 +3,7 @@
     <app-card [card]="card" [reflexao]="true"></app-card>
 
     <div class="actions">
-      <button class="fab" md-fab>
+      <button class="fab" md-fab (click)="createAnnotation(card.id)">
         <md-icon>annotation</md-icon>
       </button>
 

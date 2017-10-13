@@ -6,6 +6,7 @@ import { Retrospective } from '../../models/retrospective';
 import { List } from '../../models/list';
 import { Card } from '../../models/card';
 import { Template } from '../../models/template';
+import { Annotation } from '../../models/annotation';
 
 @Injectable()
 export class ApiService {
@@ -45,6 +46,16 @@ export class ApiService {
   createNewList(list: List): Promise<List> {
     return this.http
       .post(this.apiUrl + 'list', list)
+      .toPromise()
+      .then((response) => {
+        return response.json();
+      })
+      .catch(this.handleError);
+  }
+
+  createNewAnnotation(annotation: Annotation): Promise<Annotation> {
+    return this.http
+      .post(this.apiUrl + 'annotation', annotation)
       .toPromise()
       .then((response) => {
         return response.json();

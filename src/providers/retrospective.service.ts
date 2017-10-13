@@ -4,6 +4,7 @@ import { List } from '../models/list';
 import { Card } from '../models/card';
 import { ApiService } from './api/api.service';
 import { Retrospective } from '../models/retrospective';
+import { Annotation } from '../models/annotation';
 
 @Injectable()
 export class RetrospectiveService {
@@ -80,6 +81,14 @@ export class RetrospectiveService {
 
     return this.apiService.createNewList(list).then(newList => {
       return newList;
+    }).catch(err => {
+      console.log(err);
+    });
+  }
+
+  createNewAnnotation(annotation: Annotation): Promise<Annotation> {
+    return this.apiService.createNewAnnotation(annotation).then(newAnnotation => {
+      return newAnnotation;
     }).catch(err => {
       console.log(err);
     });
