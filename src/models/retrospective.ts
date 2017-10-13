@@ -1,3 +1,5 @@
+import { User } from './user';
+
 export class Retrospective {
   id: number;
   title: string;
@@ -6,4 +8,6 @@ export class Retrospective {
   date: string;
   image: string;
   pin: string;
+  facilitador?: User;
+  members?: User[];
 }
