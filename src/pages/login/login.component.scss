@@ -1,5 +1,10 @@
 header {
   margin: 16px;
+
+  img {
+    border-radius: 4px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,.3);
+  }
 }
 
 section button {
