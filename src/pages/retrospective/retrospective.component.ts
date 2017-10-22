@@ -144,6 +144,7 @@ export class RetrospectiveComponent implements OnInit {
 
   createList() {
     this.retrospectiveService.createNewList(this.retrospective.id).then(list => {
+      list.cards = [];
       this.lists.push(list);
     }).catch(err => {
       console.log(err);
