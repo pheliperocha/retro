@@ -3,11 +3,12 @@ import { Annotation } from './annotation';
 import { User } from './user';
 
 export class Card {
-  id: number;
+  id?: number;
   listId?: number;
   description: string;
-  votes: number;
+  votes?: number;
   user?: User;
+  userId?: number;
   list?: List;
   annotation?: Annotation[];
 }

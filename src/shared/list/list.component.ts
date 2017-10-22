@@ -34,15 +34,9 @@ export class ListComponent {
     dialogRef.afterClosed().subscribe(result => {
       if (result !== 0) {
         let newCard: Card = {
-          id: 6,
           listId: this.list.id,
           description: result.feedback,
-          votes: 0,
-          user: {
-            id: this.user.id,
-            name: this.user.name,
-            image: this.user.image
-          }
+          userId: this.user.id
         };
 
         this.retrospectiveService.addCard(newCard);
