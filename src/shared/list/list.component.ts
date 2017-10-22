@@ -56,9 +56,7 @@ export class ListComponent {
 
   saveList(newTitle: string) {
     let update = {
-      'op': 'replace',
-      'path': 'title',
-      'value': newTitle
+      'nome': newTitle
     };
 
     this.retrospectiveService.updateList(this.list.id, update).then(response => {
