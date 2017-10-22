@@ -49,6 +49,7 @@ import { CreateCardDialogComponent } from '../shared/dialogs/createCard-dialog.c
 import { ContextDialogComponent } from '../shared/dialogs/context-dialog.component';
 import { CreateRetrospectiveComponent } from '../pages/create-retrospective/create-retrospective.component';
 import { ReflexaoComponent } from '../pages/retrospective/reflexao/reflexao.component';
+import { RetrospectiveService } from '../providers/retrospective.service';
 
 @NgModule({
   declarations: [
@@ -97,7 +98,8 @@ import { ReflexaoComponent } from '../pages/retrospective/reflexao/reflexao.comp
   providers: [
     ApiService,
     RetrospectiveResolverService,
-    ListsResolverService
+    ListsResolverService,
+    RetrospectiveService
   ],
   bootstrap: [AppComponent]
 })

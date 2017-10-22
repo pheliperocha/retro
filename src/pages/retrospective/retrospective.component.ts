@@ -143,7 +143,7 @@ export class RetrospectiveComponent implements OnInit {
   }
 
   createList() {
-    this.retrospectiveService.createNewList().then(list => {
+    this.retrospectiveService.createNewList(this.retrospective.id).then(list => {
       this.lists.push(list);
     }).catch(err => {
       console.log(err);

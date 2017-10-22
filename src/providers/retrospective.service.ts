@@ -79,12 +79,10 @@ export class RetrospectiveService {
     });
   }
 
-  createNewList(): Promise<List> {
+  createNewList(retroId): Promise<List> {
     let list = {
-      id: null,
       title: '',
-      order: null,
-      cards: []
+      retroId: retroId
     };
 
     return this.apiService.createNewList(list).then(newList => {
