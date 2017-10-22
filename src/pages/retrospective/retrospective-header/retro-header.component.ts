@@ -40,9 +40,7 @@ export class RetroHeaderComponent {
 
   saveRetroTitle(newTitle: string) {
     let update = {
-      'op': 'replace',
-      'path': 'title',
-      'value': newTitle
+      'nome': newTitle
     };
 
     this.retrospectiveService.updateRetrospective(this.retrospective.id, update).then(response => {
@@ -57,9 +55,7 @@ export class RetroHeaderComponent {
 
   updateRetroContext(newContext: string) {
     let update = {
-      'op': 'replace',
-      'path': 'context',
-      'value': newContext
+      'contexto': newContext
     };
 
     this.retrospectiveService.updateRetrospective(this.retrospective.id, update).then(response => {
