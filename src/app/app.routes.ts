@@ -5,7 +5,6 @@ import { DashboardComponent } from '../pages/dashboard/dashboard.component';
 import { AuthService } from '../providers/oauth/auth.service';
 import { RetrospectiveResolverService } from '../providers/resolvers/retrospective-resolver.service';
 import { ListsResolverService } from '../providers/resolvers/lists-resolver.service';
-import { CardsResolverService } from '../providers/resolvers/cards-resolver.service';
 
 export const appRoutes: Routes = [
   {
@@ -27,8 +26,7 @@ export const appRoutes: Routes = [
     canActivate: [AuthService],
     resolve: {
       retrospective: RetrospectiveResolverService,
-      lists: ListsResolverService,
-      cards: CardsResolverService
+      lists: ListsResolverService
     }
   },
   {
