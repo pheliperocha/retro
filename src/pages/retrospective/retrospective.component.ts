@@ -140,7 +140,17 @@ export class RetrospectiveComponent implements OnInit {
   }
 
   goToReflexaoStep() {
-    this.retrospective.state = 3;
+    let update = {
+      'status_reuniao': 3
+    };
+
+    this.retrospectiveService.updateRetrospective(this.retrospective.id, update).then(response => {
+      if (response.updated === true) {
+        this.retrospective.state = 3;
+      }
+    }).catch(err => {
+      console.log(err);
+    });
   }
 
   createList() {
