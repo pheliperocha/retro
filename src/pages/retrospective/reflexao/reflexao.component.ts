@@ -41,7 +41,6 @@ export class ReflexaoComponent {
     dialogRef.afterClosed().subscribe(result => {
       if (result !== 0) {
         let newAnnotation: Annotation = {
-          id: null,
           description: result.feedback,
           cardId: cardId
         };
