@@ -23,12 +23,14 @@ export class ReflexaoComponent {
   public cards: Card[];
 
   constructor(private retrospectiveService: RetrospectiveService,
-              public mdDialog: MdDialog) {
+              public mdDialog: MdDialog) {}
+
+  ngOnInit() {
     this.retrospectiveService.getCards(this.retrospectiveId).then(cards => {
       this.cards = cards;
     }).catch(err => {
       console.log(err);
-    })
+    });
   }
 
   createAnnotation(cardId: number) {
