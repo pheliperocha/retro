@@ -122,16 +122,17 @@ export class RetrospectiveComponent implements OnInit {
   }
 
   goToFeedbackStep() {
+    let newPin = Math.random().toString().substr(-6);
+
     let update = {
-      'op': 'replace',
-      'path': 'state',
-      'value': 2
+      'status_reuniao': 2,
+      'pin': newPin
     };
 
     this.retrospectiveService.updateRetrospective(this.retrospective.id, update).then(response => {
       if (response.updated === true) {
         this.retrospective.state = 2;
-        this.retrospective.pin = response.data.pin;
+        this.retrospective.pin = newPin;
       }
     }).catch(err => {
       console.log(err);
