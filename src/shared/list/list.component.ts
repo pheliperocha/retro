@@ -36,7 +36,8 @@ export class ListComponent {
         let newCard: Card = {
           listId: this.list.id,
           description: result.feedback,
-          userId: this.user.id
+          userId: this.user.id,
+          retroId: this.list.retroId
         };
 
         this.retrospectiveService.addCard(newCard);

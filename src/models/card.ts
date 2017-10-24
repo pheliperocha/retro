@@ -9,6 +9,7 @@ export class Card {
   votes?: number;
   user?: User;
   userId?: number;
+  retroId?: number;
   list?: List;
   annotation?: Annotation[];
 }

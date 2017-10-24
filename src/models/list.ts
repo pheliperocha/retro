@@ -4,5 +4,6 @@ export class List {
   id?: number;
   title?: string;
   order?: number;
-  cards?: Card[]
+  cards?: Card[];
+  retroId?: number;
 }
