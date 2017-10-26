@@ -25,6 +25,6 @@
   <span class="right">
     <div class="members_picture" *ngFor="let member of retrospective?.members" mdTooltip="{{ member?.name }}"><img src="{{ member?.image }}" /></div>
     <div class="facilitador_picture" mdTooltip="{{ retrospective?.facilitador?.name }}"><img src="{{ retrospective?.facilitador?.image }}" alt="" title="" /></div>
-    <div class="num_members" *ngIf="retrospective?.state === 1">{{ retrospective?.members.length + 1 }} {{ (retrospective?.members.length >= 1) ? 'participantes' : 'participante' }}</div>
+    <div class="num_members" *ngIf="retrospective?.state !== appSettings.PREPARAR">{{ retrospective?.members.length + 1 }} {{ (retrospective?.members.length >= 1) ? 'participantes' : 'participante' }}</div>
   </span>
 </md-toolbar>

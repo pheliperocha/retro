@@ -5,6 +5,7 @@ import { Retrospective } from '../../../models/retrospective';
 import { MdDialog } from '@angular/material';
 import { ContextDialogComponent } from '../../../shared/dialogs/context-dialog.component';
 import { RetrospectiveService } from '../../../providers/retrospective.service';
+import { AppSettings } from '../../../app/app.settings';
 
 @Component({
   selector: 'app-retre-header',
@@ -13,6 +14,7 @@ import { RetrospectiveService } from '../../../providers/retrospective.service';
 })
 export class RetroHeaderComponent {
   public user: User;
+  public appSettings = AppSettings;
   public editing: boolean = false;
   @Input() retrospective: Retrospective;
 
