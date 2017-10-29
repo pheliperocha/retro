@@ -10,6 +10,8 @@ import { Subscription } from 'rxjs/Subscription';
 import { DragulaService } from 'ng2-dragula';
 import { MdDialog } from '@angular/material';
 import { DeleteDialogComponent } from '../../shared/dialogs/delete-dialog.component';
+import { Socket } from 'ng-socket-io';
+import {Observable} from "rxjs/Observable";
 
 @Component({
   selector: 'app-retrospective',
@@ -27,6 +29,8 @@ export class RetrospectiveComponent implements OnInit {
   private addCardSubscribe: Subscription;
   private deleteCardSubscribe: Subscription;
   private dragulaSubscribe: Subscription;
+  private getNewMemberSubscribe: Subscription;
+  private getLeftMemberSubscribe: Subscription;
 
   constructor(
     private authService: AuthService,
@@ -34,13 +38,18 @@ export class RetrospectiveComponent implements OnInit {
     private retrospectiveService: RetrospectiveService,
     public confirmDialog: MdDialog,
     private dragulaService: DragulaService,
+    private socket: Socket
   ) {
     this.user = this.authService.user;
+    this.socket.connect();
   }
 
   ngOnInit() {
     this.retrospective = this.route.snapshot.data['retrospective'];
     this.lists = this.route.snapshot.data['lists'];
+
+    this.socket.emit('subscribe', this.retrospective.id);
+    this.socket.emit('enter', {retroId: this.retrospective.id, user: this.user});
 
     this.deleteListSubscribe = this.retrospectiveService.deleteListSource$.subscribe(list => {
       let index = this.lists.findIndex((elt) => (elt===list));
@@ -64,6 +73,27 @@ export class RetrospectiveComponent implements OnInit {
         let cardIndex = cards.findIndex((elt) => (elt.id === card.id));
 
         cards.splice(cardIndex, 1);
+      }
+    });
+
+
+    this.getNewMemberSubscribe = this.getNewMember().subscribe(user => {
+      if (this.retrospective.facilitador.id != user.id) {
+        let memberIndex = this.retrospective.members.findIndex((member) => (member.id === user.id));
+
+        if (memberIndex < 0) {
+          this.retrospective.members.push(user);
+        }
+      }
+    });
+
+    this.getLeftMemberSubscribe = this.getLeftMember().subscribe(user => {
+      if (this.retrospective.facilitador.id != user.id) {
+        let memberIndex = this.retrospective.members.findIndex((member) => (member.id === user.id));
+
+        if (memberIndex >= 0) {
+          this.retrospective.members.splice(memberIndex, 1);
+        }
       }
     });
 
@@ -162,11 +192,33 @@ export class RetrospectiveComponent implements OnInit {
     })
   }
 
+  getNewMember(): Observable<User> {
+    let observable = new Observable(observer => {
+      this.socket.on('enter_member', user => {
+        observer.next(user);
+      });
+    });
+    return observable;
+  }
+
+  getLeftMember(): Observable<User> {
+    let observable = new Observable(observer => {
+      this.socket.on('left_member', user => {
+        observer.next(user);
+      });
+    });
+    return observable;
+  }
+
   ngOnDestroy() {
     this.deleteListSubscribe.unsubscribe();
     this.addCardSubscribe.unsubscribe();
     this.deleteCardSubscribe.unsubscribe();
     this.dragulaSubscribe.unsubscribe();
+    this.socket.emit('left', {retroId: this.retrospective.id, user: this.user});
+    this.getNewMemberSubscribe.unsubscribe();
+    this.getLeftMemberSubscribe.unsubscribe();
+    this.socket.disconnect();
     this.dragulaService.destroy('bag-list');
     this.dragulaService.destroy('bag-cards');
   }
