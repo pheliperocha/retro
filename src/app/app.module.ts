@@ -24,6 +24,7 @@ import {
 import { OAuthModule } from '../providers/oauth/oauth.module';
 import { DragulaModule } from 'ng2-dragula';
 import { SwiperModule } from 'ngx-swiper-wrapper';
+import { SocketIoModule, SocketIoConfig } from 'ng-socket-io'
 
 // Services
 import { appRoutes } from './app.routes';
@@ -50,6 +51,8 @@ import { ContextDialogComponent } from '../shared/dialogs/context-dialog.compone
 import { CreateRetrospectiveComponent } from '../pages/create-retrospective/create-retrospective.component';
 import { ReflexaoComponent } from '../pages/retrospective/reflexao/reflexao.component';
 import { RetrospectiveService } from '../providers/retrospective.service';
+
+const socketConfig: SocketIoConfig = { url: 'http://localhost:5000', options: {} };
 
 @NgModule({
   declarations: [
@@ -79,6 +82,7 @@ import { RetrospectiveService } from '../providers/retrospective.service';
     ReactiveFormsModule,
     DragulaModule,
     SwiperModule,
+    SocketIoModule.forRoot(socketConfig),
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: false }
