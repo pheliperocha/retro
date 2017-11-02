@@ -13,6 +13,7 @@ import { DeleteDialogComponent } from '../../shared/dialogs/delete-dialog.compon
 import { Socket } from 'ng-socket-io';
 import { Observable } from 'rxjs/Observable';
 import { Card } from '../../models/card';
+import {ApiService} from "../../providers/api/api.service";
 
 @Component({
   selector: 'app-retrospective',
@@ -43,6 +44,7 @@ export class RetrospectiveComponent implements OnInit {
     private retrospectiveService: RetrospectiveService,
     public confirmDialog: MdDialog,
     private dragulaService: DragulaService,
+    private apiService: ApiService,
     private socket: Socket
   ) {
     this.user = this.authService.user;
@@ -55,6 +57,10 @@ export class RetrospectiveComponent implements OnInit {
 
     this.socket.emit('subscribe', this.retrospective.id);
     this.socket.emit('enter', {retroId: this.retrospective.id, user: this.user});
+
+    if (this.retrospective.facilitador.id != this.user.id) {
+      this.apiService.addMember(this.retrospective.id, this.user.id);
+    }
 
     this.getNewCardSubscribe = this.getNewCard().subscribe(card => {
       let index = this.lists.findIndex((list) => (list.id === card.listId));
@@ -326,6 +332,7 @@ export class RetrospectiveComponent implements OnInit {
     this.getUpdatedCardSubscribe.unsubscribe();
     this.getUpvotedCardSubscribe.unsubscribe();
     this.getDownvotedCardSubscribe.unsubscribe();
+    this.apiService.removeMember(this.retrospective.id, this.user.id);
     this.socket.disconnect();
     this.dragulaService.destroy('bag-list');
     this.dragulaService.destroy('bag-cards');

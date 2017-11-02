@@ -14,6 +14,26 @@ export class ApiService {
 
   constructor(private http: Http) {}
 
+  addMember(retroId: number, userId: number): Promise<boolean> {
+    return this.http
+      .post(this.apiUrl + 'retrospective/member', {retroId: retroId, userId: userId})
+      .toPromise()
+      .then((response) => {
+        return response.json();
+      })
+      .catch(this.handleError);
+  }
+
+  removeMember(retroId: number, userId: number): Promise<boolean> {
+    return this.http
+      .delete(this.apiUrl + 'retrospective/' + retroId + '/member/' + userId)
+      .toPromise()
+      .then((response) => {
+        return response.json();
+      })
+      .catch(this.handleError);
+  }
+
   getAllTemplates(): Promise<Template[]> {
     return this.http
       .get(this.apiUrl + 'template')
