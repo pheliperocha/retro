@@ -16,7 +16,6 @@ export class RetrospectiveService {
   public deleteCardSource = new Subject<Card>();
 
   deleteListSource$ = this.deleteListSource.asObservable();
-  addCardSource$ = this.addCardSource.asObservable();
   deleteCardSource$ = this.deleteCardSource.asObservable();
 
   constructor(private apiService: ApiService, private authService: AuthService) {

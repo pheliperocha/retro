@@ -27,7 +27,6 @@ export class RetrospectiveComponent implements OnInit {
   public lists: List[];
   public appSettings = AppSettings;
   private deleteListSubscribe: Subscription;
-  private addCardSubscribe: Subscription;
   private deleteCardSubscribe: Subscription;
   private dragulaSubscribe: Subscription;
   private getNewMemberSubscribe: Subscription;
@@ -223,7 +222,6 @@ export class RetrospectiveComponent implements OnInit {
 
   ngOnDestroy() {
     this.deleteListSubscribe.unsubscribe();
-    this.addCardSubscribe.unsubscribe();
     this.deleteCardSubscribe.unsubscribe();
     this.dragulaSubscribe.unsubscribe();
     this.socket.emit('left', {retroId: this.retrospective.id, user: this.user});
