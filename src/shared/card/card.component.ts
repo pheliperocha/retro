@@ -61,14 +61,12 @@ export class CardComponent {
       this.retrospectiveService.upvoteCard(this.card.id, this.user.id).then(response => {
         if (response === true) {
           this.voted = true;
-          this.card.votes++;
         }
       });
     } else {
       this.retrospectiveService.downvoteCard(this.card.id, this.user.id).then(response => {
         if (response === true) {
           this.voted = false;
-          this.card.votes--;
         }
       });
     }

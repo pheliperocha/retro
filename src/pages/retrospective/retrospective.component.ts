@@ -33,6 +33,9 @@ export class RetrospectiveComponent implements OnInit {
   private getLeftMemberSubscribe: Subscription;
   private getNewCardSubscribe: Subscription;
   private getDeletedCardSubscribe: Subscription;
+  private getUpdatedCardSubscribe: Subscription;
+  private getUpvotedCardSubscribe: Subscription;
+  private getDownvotedCardSubscribe: Subscription;
 
   constructor(
     private authService: AuthService,
@@ -94,7 +97,7 @@ export class RetrospectiveComponent implements OnInit {
       }
     });
 
-    this.getUpdatedCard().subscribe(card => {
+    this.getUpdatedCardSubscribe = this.getUpdatedCard().subscribe(card => {
       let listIndex = this.lists.findIndex((list) => (list.id === card.listId));
 
       if (listIndex != -1) {
@@ -103,6 +106,32 @@ export class RetrospectiveComponent implements OnInit {
 
         if (cardIndex != -1) {
           cards[cardIndex].description = card.description;
+        }
+      }
+    });
+
+    this.getUpvotedCardSubscribe = this.getUpvotedCard().subscribe(card => {
+      let listIndex = this.lists.findIndex((list) => (list.id === card.listId));
+
+      if (listIndex != -1) {
+        let cards = this.lists[listIndex].cards;
+        let cardIndex = cards.findIndex((elt) => (elt.id === card.id));
+
+        if (cardIndex != -1) {
+          cards[cardIndex].votes++;
+        }
+      }
+    });
+
+    this.getDownvotedCardSubscribe = this.getDownvotedCard().subscribe(card => {
+      let listIndex = this.lists.findIndex((list) => (list.id === card.listId));
+
+      if (listIndex != -1) {
+        let cards = this.lists[listIndex].cards;
+        let cardIndex = cards.findIndex((elt) => (elt.id === card.id));
+
+        if (cardIndex != -1) {
+          cards[cardIndex].votes--;
         }
       }
     });
@@ -258,6 +287,24 @@ export class RetrospectiveComponent implements OnInit {
     return observable;
   }
 
+  getUpvotedCard(): Observable<Card> {
+    let observable = new Observable(observer => {
+      this.socket.on('upvoted_card', card => {
+        observer.next(card);
+      });
+    });
+    return observable;
+  }
+
+  getDownvotedCard(): Observable<Card> {
+    let observable = new Observable(observer => {
+      this.socket.on('downvoted_card', card => {
+        observer.next(card);
+      });
+    });
+    return observable;
+  }
+
   getUpdatedCard(): Observable<Card> {
     let observable = new Observable(observer => {
       this.socket.on('updated_card', card => {
@@ -276,6 +323,9 @@ export class RetrospectiveComponent implements OnInit {
     this.getLeftMemberSubscribe.unsubscribe();
     this.getNewCardSubscribe.unsubscribe();
     this.getDeletedCardSubscribe.unsubscribe();
+    this.getUpdatedCardSubscribe.unsubscribe();
+    this.getUpvotedCardSubscribe.unsubscribe();
+    this.getDownvotedCardSubscribe.unsubscribe();
     this.socket.disconnect();
     this.dragulaService.destroy('bag-list');
     this.dragulaService.destroy('bag-cards');
