@@ -51,7 +51,9 @@ export class CardComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result !== 0) {
+      console.log('====');
+      console.log(result);
+      if (result instanceof Object) {
         this.retrospectiveService.deleteCard(card);
       }
     });

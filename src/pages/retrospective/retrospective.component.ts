@@ -32,6 +32,7 @@ export class RetrospectiveComponent implements OnInit {
   private getNewMemberSubscribe: Subscription;
   private getLeftMemberSubscribe: Subscription;
   private getNewCardSubscribe: Subscription;
+  private getDeletedCardSubscribe: Subscription;
 
   constructor(
     private authService: AuthService,
@@ -67,16 +68,31 @@ export class RetrospectiveComponent implements OnInit {
     });
 
     this.deleteCardSubscribe = this.retrospectiveService.deleteCardSource$.subscribe(card => {
+      this.socket.emit('delete_card', {retroId: this.retrospective.id, card: card});
       let listIndex = this.lists.findIndex((list) => (list.id === card.listId));
 
       if (listIndex != -1) {
         let cards = this.lists[listIndex].cards;
         let cardIndex = cards.findIndex((elt) => (elt.id === card.id));
 
-        cards.splice(cardIndex, 1);
+        if (cardIndex != -1) {
+          cards.splice(cardIndex, 1);
+        }
       }
     });
 
+    this.getDeletedCardSubscribe = this.getDeletedCard().subscribe(card => {
+      let listIndex = this.lists.findIndex((list) => (list.id === card.listId));
+
+      if (listIndex != -1) {
+        let cards = this.lists[listIndex].cards;
+        let cardIndex = cards.findIndex((elt) => (elt.id === card.id));
+
+        if (cardIndex != -1) {
+          cards.splice(cardIndex, 1);
+        }
+      }
+    });
 
     this.getNewMemberSubscribe = this.getNewMember().subscribe(user => {
       if (this.retrospective.facilitador.id != user.id) {
@@ -220,6 +236,15 @@ export class RetrospectiveComponent implements OnInit {
     return observable;
   }
 
+  getDeletedCard(): Observable<Card> {
+    let observable = new Observable(observer => {
+      this.socket.on('card_deleted', card => {
+        observer.next(card);
+      });
+    });
+    return observable;
+  }
+
   ngOnDestroy() {
     this.deleteListSubscribe.unsubscribe();
     this.deleteCardSubscribe.unsubscribe();
@@ -228,6 +253,7 @@ export class RetrospectiveComponent implements OnInit {
     this.getNewMemberSubscribe.unsubscribe();
     this.getLeftMemberSubscribe.unsubscribe();
     this.getNewCardSubscribe.unsubscribe();
+    this.getDeletedCardSubscribe.unsubscribe();
     this.socket.disconnect();
     this.dragulaService.destroy('bag-list');
     this.dragulaService.destroy('bag-cards');
