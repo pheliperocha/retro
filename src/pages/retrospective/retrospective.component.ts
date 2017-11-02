@@ -11,7 +11,8 @@ import { DragulaService } from 'ng2-dragula';
 import { MdDialog } from '@angular/material';
 import { DeleteDialogComponent } from '../../shared/dialogs/delete-dialog.component';
 import { Socket } from 'ng-socket-io';
-import {Observable} from "rxjs/Observable";
+import { Observable } from 'rxjs/Observable';
+import { Card } from '../../models/card';
 
 @Component({
   selector: 'app-retrospective',
@@ -31,6 +32,7 @@ export class RetrospectiveComponent implements OnInit {
   private dragulaSubscribe: Subscription;
   private getNewMemberSubscribe: Subscription;
   private getLeftMemberSubscribe: Subscription;
+  private getNewCardSubscribe: Subscription;
 
   constructor(
     private authService: AuthService,
@@ -51,17 +53,17 @@ export class RetrospectiveComponent implements OnInit {
     this.socket.emit('subscribe', this.retrospective.id);
     this.socket.emit('enter', {retroId: this.retrospective.id, user: this.user});
 
+    this.getNewCardSubscribe = this.getNewCard().subscribe(card => {
+      let index = this.lists.findIndex((list) => (list.id === card.listId));
+      if (index != -1) {
+        this.lists[index].cards.push(card);
+      }
+    });
+
     this.deleteListSubscribe = this.retrospectiveService.deleteListSource$.subscribe(list => {
       let index = this.lists.findIndex((elt) => (elt===list));
       if (index != -1) {
         this.lists.splice(index, 1);
-      }
-    });
-
-    this.addCardSubscribe = this.retrospectiveService.addCardSource$.subscribe(card => {
-      let index = this.lists.findIndex((list) => (list.id === card.listId));
-      if (index != -1) {
-        this.lists[index].cards.push(card);
       }
     });
 
@@ -210,6 +212,15 @@ export class RetrospectiveComponent implements OnInit {
     return observable;
   }
 
+  getNewCard(): Observable<Card> {
+    let observable = new Observable(observer => {
+      this.socket.on('new_card', card => {
+        observer.next(card);
+      });
+    });
+    return observable;
+  }
+
   ngOnDestroy() {
     this.deleteListSubscribe.unsubscribe();
     this.addCardSubscribe.unsubscribe();
@@ -218,6 +229,7 @@ export class RetrospectiveComponent implements OnInit {
     this.socket.emit('left', {retroId: this.retrospective.id, user: this.user});
     this.getNewMemberSubscribe.unsubscribe();
     this.getLeftMemberSubscribe.unsubscribe();
+    this.getNewCardSubscribe.unsubscribe();
     this.socket.disconnect();
     this.dragulaService.destroy('bag-list');
     this.dragulaService.destroy('bag-cards');

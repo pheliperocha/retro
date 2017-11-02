@@ -11,9 +11,9 @@ import { User } from '../models/user';
 export class RetrospectiveService {
   public user: User;
 
-  private deleteListSource = new Subject<List>();
-  private addCardSource = new Subject<Card>();
-  private deleteCardSource = new Subject<Card>();
+  public deleteListSource = new Subject<List>();
+  public addCardSource = new Subject<Card>();
+  public deleteCardSource = new Subject<Card>();
 
   deleteListSource$ = this.deleteListSource.asObservable();
   addCardSource$ = this.addCardSource.asObservable();
