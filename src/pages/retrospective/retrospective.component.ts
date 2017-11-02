@@ -94,6 +94,19 @@ export class RetrospectiveComponent implements OnInit {
       }
     });
 
+    this.getUpdatedCard().subscribe(card => {
+      let listIndex = this.lists.findIndex((list) => (list.id === card.listId));
+
+      if (listIndex != -1) {
+        let cards = this.lists[listIndex].cards;
+        let cardIndex = cards.findIndex((elt) => (elt.id === card.id));
+
+        if (cardIndex != -1) {
+          cards[cardIndex].description = card.description;
+        }
+      }
+    });
+
     this.getNewMemberSubscribe = this.getNewMember().subscribe(user => {
       if (this.retrospective.facilitador.id != user.id) {
         let memberIndex = this.retrospective.members.findIndex((member) => (member.id === user.id));
@@ -239,6 +252,15 @@ export class RetrospectiveComponent implements OnInit {
   getDeletedCard(): Observable<Card> {
     let observable = new Observable(observer => {
       this.socket.on('card_deleted', card => {
+        observer.next(card);
+      });
+    });
+    return observable;
+  }
+
+  getUpdatedCard(): Observable<Card> {
+    let observable = new Observable(observer => {
+      this.socket.on('updated_card', card => {
         observer.next(card);
       });
     });

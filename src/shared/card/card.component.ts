@@ -31,7 +31,6 @@ export class CardComponent {
     };
 
     this.retrospectiveService.updateCard(this.card.id, update).then(response => {
-      console.log(response);
       if (response.updated === true) {
         this.card.description = feedback;
         this.editing = false;
@@ -51,8 +50,6 @@ export class CardComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('====');
-      console.log(result);
       if (result instanceof Object) {
         this.retrospectiveService.deleteCard(card);
       }
