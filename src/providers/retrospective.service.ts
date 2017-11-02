@@ -54,6 +54,22 @@ export class RetrospectiveService {
     });
   }
 
+  upvoteCard(cardId, userId): Promise<boolean> {
+    return this.apiService.upvoteCard(cardId, userId).then(response => {
+      return response;
+    }).catch(err => {
+      console.log(err);
+    });
+  }
+
+  downvoteCard(cardId, userId): Promise<boolean> {
+    return this.apiService.downvoteCard(cardId, userId).then(response => {
+      return response;
+    }).catch(err => {
+      console.log(err);
+    });
+  }
+
   createNewRetrospective(title: string, context: string, templateId: number): Promise<number> {
     let retrospective = {
       id: null,

@@ -58,11 +58,19 @@ export class CardComponent {
 
   vote() {
     if (this.voted === false) {
-      this.voted = true;
-      this.card.votes++;
+      this.retrospectiveService.upvoteCard(this.card.id, this.user.id).then(response => {
+        if (response === true) {
+          this.voted = true;
+          this.card.votes++;
+        }
+      });
     } else {
-      this.voted = false;
-      this.card.votes--;
+      this.retrospectiveService.downvoteCard(this.card.id, this.user.id).then(response => {
+        if (response === true) {
+          this.voted = false;
+          this.card.votes--;
+        }
+      });
     }
   }
 }

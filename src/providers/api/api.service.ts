@@ -153,6 +153,26 @@ export class ApiService {
       .catch(this.handleError);
   }
 
+  upvoteCard(cardId: number, userId: number): Promise<boolean> {
+    return this.http
+      .post(this.apiUrl + 'card/' + cardId + '/vote', {userId: userId})
+      .toPromise()
+      .then(response => {
+        return response.json();
+      })
+      .catch(this.handleError);
+  }
+
+  downvoteCard(cardId: number, userId: number): Promise<boolean> {
+    return this.http
+      .delete(this.apiUrl + 'card/' + cardId + '/user/' + userId)
+      .toPromise()
+      .then(response => {
+        return response.json();
+      })
+      .catch(this.handleError);
+  }
+
   private handleError(error: any): Promise<any> {
     console.error('Infelizmente ocorreu um erro ', error);
     return Promise.reject(error.message || error);
