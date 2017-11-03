@@ -51,8 +51,9 @@ import { ContextDialogComponent } from '../shared/dialogs/context-dialog.compone
 import { CreateRetrospectiveComponent } from '../pages/create-retrospective/create-retrospective.component';
 import { ReflexaoComponent } from '../pages/retrospective/reflexao/reflexao.component';
 import { RetrospectiveService } from '../providers/retrospective.service';
+import { environment } from '../environments/environment';
 
-const socketConfig: SocketIoConfig = { url: 'http://localhost:5000', options: {} };
+const socketConfig: SocketIoConfig = { url: environment.apiUrl, options: {} };
 
 @NgModule({
   declarations: [

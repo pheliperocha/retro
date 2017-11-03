@@ -7,10 +7,11 @@ import { List } from '../../models/list';
 import { Card } from '../../models/card';
 import { Template } from '../../models/template';
 import { Annotation } from '../../models/annotation';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class ApiService {
-  private apiUrl = 'http://localhost:5000/';
+  private apiUrl = environment.apiUrl;
 
   constructor(private http: Http) {}
 

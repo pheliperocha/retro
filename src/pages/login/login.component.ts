@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../providers/oauth/auth.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -7,25 +8,25 @@ import { AuthService } from '../../providers/oauth/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  private authApiBaseUrl = 'http://localhost:5000';
-  private authWebBaseUrl = 'http://localhost:4200';
+  private authApiBaseUrl = environment.apiUrl;
+  private authWebBaseUrl = environment.appUrl;
 
   public config = {
     'loginRoute': 'login',
     'linkedin': {
-      'authEndpoint': this.authApiBaseUrl + '/auth/linkedin',
+      'authEndpoint': this.authApiBaseUrl + 'auth/linkedin',
       'clientId': '77m7ad7n38rroh',
-      'redirectURI' : this.authWebBaseUrl + '/dashboard'
+      'redirectURI' : this.authWebBaseUrl + 'dashboard'
     },
     'facebook': {
-      'authEndpoint': this.authApiBaseUrl + '/auth/facebook',
+      'authEndpoint': this.authApiBaseUrl + 'auth/facebook',
       'clientId': '',
-      'redirectURI' : this.authWebBaseUrl + '/dashboard'
+      'redirectURI' : this.authWebBaseUrl + 'dashboard'
     },
     'google': {
-      'authEndpoint': this.authApiBaseUrl + '/auth/google',
+      'authEndpoint': this.authApiBaseUrl + 'auth/google',
       'clientId': '',
-      'redirectURI' : this.authWebBaseUrl + '/dashboard'
+      'redirectURI' : this.authWebBaseUrl + 'dashboard'
     }
   };
 
