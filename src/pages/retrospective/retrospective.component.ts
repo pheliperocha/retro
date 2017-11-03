@@ -183,6 +183,9 @@ export class RetrospectiveComponent implements OnInit {
   }
 
   goToPrepareStep() {
+    if (this.retrospective.facilitador.id != this.user.id) {
+      return false;
+    }
     if (this.retrospective.members.length >= 1) {
 
       let dialogRef = this.confirmDialog.open(DeleteDialogComponent, {
@@ -217,6 +220,9 @@ export class RetrospectiveComponent implements OnInit {
   }
 
   goToFeedbackStep() {
+    if (this.retrospective.facilitador.id != this.user.id) {
+      return false;
+    }
     let newPin = Math.random().toString().substr(-6);
 
     let update = {
@@ -235,6 +241,9 @@ export class RetrospectiveComponent implements OnInit {
   }
 
   goToReflexaoStep() {
+    if (this.retrospective.facilitador.id != this.user.id) {
+      return false;
+    }
     let update = {
       'status_reuniao': 3
     };
