@@ -16,7 +16,6 @@ export class CardComponent {
   @Input() card: Card;
   @Input() retroState: number;
   @Input() reflexao: boolean = false;
-  public voted: boolean = false;
   public editing: boolean = false;
 
   constructor(public deleteDialog: MdDialog,
@@ -57,16 +56,16 @@ export class CardComponent {
   }
 
   vote() {
-    if (this.voted === false) {
+    if (this.card.voted == 0 || this.card.voted == null) {
       this.retrospectiveService.upvoteCard(this.card.id, this.user.id).then(response => {
         if (response === true) {
-          this.voted = true;
+          this.card.voted = 1;
         }
       });
     } else {
       this.retrospectiveService.downvoteCard(this.card.id, this.user.id).then(response => {
         if (response === true) {
-          this.voted = false;
+          this.card.voted = 0;
         }
       });
     }

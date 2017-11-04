@@ -12,7 +12,7 @@
   </div>
 
   <div class="footer">
-    <div class="actions" [ngClass]="{ active: voted === true }">
+    <div class="actions" [ngClass]="{ active: card.voted == 1 }">
       <span class="num">{{ card?.votes }}</span>
 
       <button class="vote" md-icon-button (click)="vote()">

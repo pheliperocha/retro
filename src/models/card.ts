@@ -7,6 +7,7 @@ export class Card {
   listId?: number;
   description: string;
   votes?: number;
+  voted?: number;
   user?: User;
   userId?: number;
   retroId?: number;
