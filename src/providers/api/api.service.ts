@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+import { InterceptorService } from 'ng2-interceptors';
 
 import { Retrospective } from '../../models/retrospective';
 import { List } from '../../models/list';
@@ -13,7 +14,7 @@ import { environment } from '../../environments/environment';
 export class ApiService {
   private apiUrl = environment.apiUrl;
 
-  constructor(private http: Http) {}
+  constructor(private http: InterceptorService) {}
 
   addMember(retroId: number, userId: number): Promise<boolean> {
     return this.http
