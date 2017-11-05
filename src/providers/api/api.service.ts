@@ -145,6 +145,16 @@ export class ApiService {
       .catch(this.handleError);
   }
 
+  sortLists(retroId: number, update: Array<Array<number>>): Promise<any> {
+    return this.http
+      .patch(this.apiUrl + 'retrospective/' + retroId + '/list/sort', update)
+      .toPromise()
+      .then(response => {
+        return response.json();
+      })
+      .catch(this.handleError);
+  }
+
   updateCard(cardId: number, update: object): Promise<any> {
     return this.http
       .patch(this.apiUrl + 'card/' + cardId, update)

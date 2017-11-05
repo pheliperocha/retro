@@ -29,7 +29,8 @@ export class RetrospectiveComponent implements OnInit {
   public appSettings = AppSettings;
   private deleteListSubscribe: Subscription;
   private deleteCardSubscribe: Subscription;
-  private dragulaSubscribe: Subscription;
+  private dragulaDropSubscribe: Subscription;
+  private dragulaPositionSubscribe: Subscription;
   private getNewMemberSubscribe: Subscription;
   private getLeftMemberSubscribe: Subscription;
   private getNewCardSubscribe: Subscription;
@@ -179,7 +180,26 @@ export class RetrospectiveComponent implements OnInit {
       }
     });
 
-    this.dragulaSubscribe = this.dragulaService.drop.subscribe((value) => {});
+    this.dragulaDropSubscribe = this.dragulaService.drop.subscribe((value) => {});
+
+    this.dragulaPositionSubscribe = this.dragulaService.dropModel.subscribe((value, v) => {
+      let itemsProcessed = 0;
+      let newOrder = [];
+
+      this.lists.forEach((item, index) => {
+        itemsProcessed++;
+        item.position = index;
+        newOrder.push(Array(index, item.id));
+
+        if(itemsProcessed === this.lists.length) {
+          this.sortingLists(newOrder);
+        }
+      });
+    });
+  }
+
+  sortingLists(listsOrder) {
+    this.apiService.sortLists(this.retrospective.id, listsOrder);
   }
 
   goToPrepareStep() {
@@ -332,7 +352,8 @@ export class RetrospectiveComponent implements OnInit {
   ngOnDestroy() {
     this.deleteListSubscribe.unsubscribe();
     this.deleteCardSubscribe.unsubscribe();
-    this.dragulaSubscribe.unsubscribe();
+    this.dragulaDropSubscribe.unsubscribe();
+    this.dragulaPositionSubscribe.unsubscribe();
     this.socket.emit('left', {retroId: this.retrospective.id, user: this.user});
     this.getNewMemberSubscribe.unsubscribe();
     this.getLeftMemberSubscribe.unsubscribe();
