@@ -1,4 +1,4 @@
-<md-card fxLayout="column">
+<md-card fxLayout="column" [attr.data-listPosition]="list.position">
   <md-card-header class="handle">
 
     <md-card-title *ngIf="!editing">{{ list.title }}</md-card-title>
@@ -26,7 +26,7 @@
     </div>
   </md-card-header>
 
-  <md-card-content fxFlex [dragula]='"bag-cards"'>
+  <md-card-content fxFlex [dragula]='"bag-cards"' [dragulaModel]="cards">
     <app-card *ngFor="let card of cards" [retroState]="retroState" [ngClass]="{ drag: user?.id == card?.user?.id }" [card]="card"></app-card>
   </md-card-content>
 

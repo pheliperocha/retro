@@ -182,24 +182,45 @@ export class RetrospectiveComponent implements OnInit {
 
     this.dragulaDropSubscribe = this.dragulaService.drop.subscribe((value) => {});
 
-    this.dragulaPositionSubscribe = this.dragulaService.dropModel.subscribe((value, v) => {
-      let itemsProcessed = 0;
-      let newOrder = [];
+    this.dragulaPositionSubscribe = this.dragulaService.dropModel.subscribe((bags) => {
+      if (bags[0] == 'bag-list') {
+        let itemsProcessed = 0;
+        let newOrder = [];
 
-      this.lists.forEach((item, index) => {
-        itemsProcessed++;
-        item.position = index;
-        newOrder.push(Array(index, item.id));
+        this.lists.forEach((item, index) => {
+          itemsProcessed++;
+          item.position = index;
+          newOrder.push(Array(index, item.id));
 
-        if(itemsProcessed === this.lists.length) {
-          this.sortingLists(newOrder);
-        }
-      });
+          if (itemsProcessed === this.lists.length) {
+            this.sortingLists(newOrder);
+          }
+        });
+      } else if (bags[0] == 'bag-cards') {
+        let listPosition = bags[3].offsetParent.getAttribute('data-listPosition');
+        let itemsProcessed = 0;
+        let newOrder = [];
+        let cards = this.lists[listPosition].cards;
+
+        cards.forEach((item, index) => {
+          itemsProcessed++;
+          item.position = index;
+          newOrder.push(Array(index, item.id));
+
+          if (itemsProcessed === cards.length) {
+            this.sortingCards(newOrder);
+          }
+        });
+      }
     });
   }
 
   sortingLists(listsOrder) {
     this.apiService.sortLists(this.retrospective.id, listsOrder);
+  }
+
+  sortingCards(cardsOrder) {
+    this.apiService.sortCards(this.retrospective.id, cardsOrder);
   }
 
   goToPrepareStep() {

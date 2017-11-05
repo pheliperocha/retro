@@ -13,4 +13,5 @@ export class Card {
   retroId?: number;
   list?: List;
   annotation?: Annotation[];
+  position?: number;
 }
