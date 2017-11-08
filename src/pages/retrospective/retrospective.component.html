@@ -25,4 +25,4 @@
   <button *ngIf="retrospective.state === appSettings.PREPARAR" class="add-list" md-raised-button color="primary" (click)="createList()"><md-icon >add</md-icon></button>
 </section>
 
-<reflexao-retrospective *ngIf="retrospective.state === appSettings.REFLEXAO" [retrospectiveId]="retrospective?.id"></reflexao-retrospective>
+<reflexao-retrospective *ngIf="retrospective.state === appSettings.REFLEXAO" [retrospective]="retrospective"></reflexao-retrospective>

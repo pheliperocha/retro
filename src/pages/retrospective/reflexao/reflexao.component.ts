@@ -5,7 +5,7 @@ import { RetrospectiveService } from '../../../providers/retrospective.service';
 import { MdDialog } from '@angular/material';
 import { CreateCardDialogComponent } from '../../../shared/dialogs/createCard-dialog.component';
 import { Annotation } from '../../../models/annotation';
-import {Subscription} from "rxjs/Subscription";
+import { Retrospective } from '../../../models/retrospective';
 
 @Component({
   selector: 'reflexao-retrospective',
@@ -19,14 +19,14 @@ export class ReflexaoComponent {
     nextButton: '.swiper-button-next',
   };
 
-  @Input() retrospectiveId: number;
+  @Input() retrospective: Retrospective;
   public cards: Card[];
 
   constructor(private retrospectiveService: RetrospectiveService,
               public mdDialog: MdDialog) {}
 
   ngOnInit() {
-    this.retrospectiveService.getCards(this.retrospectiveId).then(cards => {
+    this.retrospectiveService.getCards(this.retrospective.id).then(cards => {
       this.cards = cards;
     }).catch(err => {
       console.log(err);

@@ -15,6 +15,32 @@
       border-radius: 4px;
       max-width: 500px;
       margin: 16px auto;
+
+      button {
+        float: right;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        margin-top: -16px;
+        font-size: 12px;
+        color: mat-color($primary, default-contrast);
+
+        md-icon {
+          font-size: 18px;
+        }
+      }
     }
+  }
+}
+
+.mat-menu-item md-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.3);
+
+  img {
+    width: 100%;
   }
 }

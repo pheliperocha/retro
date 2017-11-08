@@ -7,7 +7,20 @@
         <md-icon>chat_bubble</md-icon>
       </button>
 
-      <div class="annotation" *ngFor="let annotation of card?.annotation">{{ annotation.description }}</div>
+      <div class="annotation" *ngFor="let annotation of card?.annotation">
+        <div class="desc">{{ annotation.description }}</div>
+
+        <button md-icon-button color="secundary" [matMenuTriggerFor]="menuResponser">
+          <md-icon aria-label="Atribuir pessoa">add</md-icon>
+        </button>
+
+        <md-menu #menuResponser="mdMenu">
+          <button md-menu-item *ngFor="let member of retrospective.members">
+            <md-icon><img src="{{ member.image }}"></md-icon>
+            <span>{{ member.name }}</span>
+          </button>
+        </md-menu>
+      </div>
     </div>
   </div>
 </swiper>
