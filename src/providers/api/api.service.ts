@@ -215,6 +215,26 @@ export class ApiService {
       .catch(this.handleError);
   }
 
+  addResponsible(annotationId: number, userId: number) {
+    return this.http
+      .post(this.apiUrl + 'annotation/' + annotationId + '/user', {userId: userId})
+      .toPromise()
+      .then(response => {
+        return response.json();
+      })
+      .catch(this.handleError);
+  }
+
+  removeResponsible(annotationId: number, userId: number) {
+    return this.http
+      .delete(this.apiUrl + 'annotation/' + annotationId + '/user/' + userId)
+      .toPromise()
+      .then(response => {
+        return response.json();
+      })
+      .catch(this.handleError);
+  }
+
   private handleError(error: any): Promise<any> {
     console.error('Infelizmente ocorreu um erro ', error);
     return Promise.reject(error.message || error);
