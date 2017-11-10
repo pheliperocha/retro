@@ -53,6 +53,9 @@ import { ReflexaoComponent } from '../pages/retrospective/reflexao/reflexao.comp
 import { RetrospectiveService } from '../providers/retrospective.service';
 import { environment } from '../environments/environment';
 
+// Pipes
+import { RemoveIntersectionPipe } from './remove-intersection.pipe';
+
 const socketConfig: SocketIoConfig = { url: environment.apiUrl, options: {} };
 
 @NgModule({
@@ -70,7 +73,8 @@ const socketConfig: SocketIoConfig = { url: environment.apiUrl, options: {} };
     CreateCardDialogComponent,
     ContextDialogComponent,
     CreateRetrospectiveComponent,
-    ReflexaoComponent
+    ReflexaoComponent,
+    RemoveIntersectionPipe
   ],
   entryComponents: [ DeleteDialogComponent, CreateCardDialogComponent, ContextDialogComponent, CreateRetrospectiveComponent ],
   imports: [

@@ -6,6 +6,7 @@ import { MdDialog } from '@angular/material';
 import { CreateCardDialogComponent } from '../../../shared/dialogs/createCard-dialog.component';
 import { Annotation } from '../../../models/annotation';
 import { Retrospective } from '../../../models/retrospective';
+import { User } from '../../../models/user';
 
 @Component({
   selector: 'reflexao-retrospective',
@@ -42,7 +43,7 @@ export class ReflexaoComponent {
       if (result !== 0) {
         let newAnnotation: Annotation = {
           description: result.feedback,
-          cardId: cardId
+          cardId: cardId,
         };
 
         this.retrospectiveService.createNewAnnotation(newAnnotation).then(annotation => {
@@ -55,5 +56,9 @@ export class ReflexaoComponent {
         })
       }
     });
+  }
+
+  addResponsible(annotation: Annotation, responsible: User) {
+    annotation.responsibles.push(responsible);
   }
 }

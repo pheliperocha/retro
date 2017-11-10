@@ -11,12 +11,12 @@
         <div class="desc">{{ annotation.description }}</div>
 
         <div class="responsibles">
-          <button md-icon-button color="secundary" [matMenuTriggerFor]="menuResponser">
+          <button md-icon-button color="secundary" [hidden]="retrospective.members.length <= annotation.responsibles.length" [matMenuTriggerFor]="menuResponser">
             <md-icon aria-label="Atribuir pessoa">add</md-icon>
           </button>
 
           <md-menu #menuResponser="mdMenu">
-            <button md-menu-item *ngFor="let member of retrospective.members" (click)="addResponsible(annotation, member)">
+            <button md-menu-item *ngFor="let member of retrospective.members | removeIntersection: annotation.responsibles" (click)="addResponsible(annotation, member)">
               <md-icon><img src="{{ member.image }}"></md-icon>
               <span>{{ member.name }}</span>
             </button>
