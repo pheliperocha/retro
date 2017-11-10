@@ -17,12 +17,22 @@
 
           <md-menu #menuResponser="mdMenu">
             <button md-menu-item *ngFor="let member of retrospective.members | removeIntersection: annotation.responsibles" (click)="addResponsible(annotation, member)">
-              <md-icon><img src="{{ member.image }}"></md-icon>
+              <md-icon class="picture"><img src="{{ member.image }}"></md-icon>
               <span>{{ member.name }}</span>
             </button>
           </md-menu>
 
-          <div *ngFor="let responsible of annotation.responsibles" class="user" mdTooltip="{{ responsible.name }}"><img src="{{ responsible.image }}" /></div>
+          <div *ngFor="let responsible of annotation.responsibles" class="user" mdTooltip="{{ responsible.name }}" [matMenuTriggerFor]="menuRemoveResponser">
+            <img src="{{ responsible.image }}" />
+
+            <md-menu #menuRemoveResponser="mdMenu">
+              <button md-menu-item (click)="removeResponser(annotation, responsible)">
+                <md-icon>trash</md-icon>
+                <span>Remover responsabilidade</span>
+              </button>
+            </md-menu>
+          </div>
+
         </div>
       </div>
     </div>

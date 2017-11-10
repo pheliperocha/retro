@@ -61,4 +61,11 @@ export class ReflexaoComponent {
   addResponsible(annotation: Annotation, responsible: User) {
     annotation.responsibles.push(responsible);
   }
+
+  removeResponser(annotation: any, responsible: User) {
+    let index = annotation.responsibles.findIndex((user) => (user.id === responsible.id));
+    if (index != -1) {
+      annotation.responsibles.splice(index,1);
+    }
+  }
 }
