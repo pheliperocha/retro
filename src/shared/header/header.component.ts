@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { AuthService } from '../../providers/oauth/auth.service';
 import { User } from '../../models/user';
 
@@ -9,6 +9,7 @@ import { User } from '../../models/user';
 })
 export class HeaderComponent {
   public user: User;
+  @Input() sidenav: Component;
 
   constructor(private authService: AuthService) {
     this.user = this.authService.user;

@@ -18,6 +18,8 @@ import {
   MatProgressBarModule,
   MatTooltipModule,
   MdInputModule,
+  MdSidenavModule,
+  MdExpansionModule,
 } from '@angular/material';
 
 // Modules
@@ -31,6 +33,8 @@ import { appRoutes } from './app.routes';
 import { ApiService } from '../providers/api/api.service';
 import { RetrospectiveResolverService } from '../providers/resolvers/retrospective-resolver.service';
 import { ListsResolverService } from '../providers/resolvers/lists-resolver.service';
+import { RetrospectiveService } from '../providers/retrospective.service';
+import { environment } from '../environments/environment';
 
 
 // Directives
@@ -50,8 +54,7 @@ import { CreateCardDialogComponent } from '../shared/dialogs/createCard-dialog.c
 import { ContextDialogComponent } from '../shared/dialogs/context-dialog.component';
 import { CreateRetrospectiveComponent } from '../pages/create-retrospective/create-retrospective.component';
 import { ReflexaoComponent } from '../pages/retrospective/reflexao/reflexao.component';
-import { RetrospectiveService } from '../providers/retrospective.service';
-import { environment } from '../environments/environment';
+import { MyActionsComponent } from '../shared/my-actions/myActions.component';
 
 // Pipes
 import { RemoveIntersectionPipe } from './remove-intersection.pipe';
@@ -74,6 +77,7 @@ const socketConfig: SocketIoConfig = { url: environment.apiUrl, options: {} };
     ContextDialogComponent,
     CreateRetrospectiveComponent,
     ReflexaoComponent,
+    MyActionsComponent,
     RemoveIntersectionPipe
   ],
   entryComponents: [ DeleteDialogComponent, CreateCardDialogComponent, ContextDialogComponent, CreateRetrospectiveComponent ],
@@ -102,7 +106,9 @@ const socketConfig: SocketIoConfig = { url: environment.apiUrl, options: {} };
     MatTooltipModule,
     MatDialogModule,
     MatFormFieldModule,
-    MdInputModule
+    MdInputModule,
+    MdSidenavModule,
+    MdExpansionModule,
   ],
   providers: [
     ApiService,

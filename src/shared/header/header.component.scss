@@ -12,6 +12,10 @@ md-toolbar {
   }
 
   .right {
+    .annotation_responsible {
+      float: right;
+    }
+
     .user_name {
       float: right;
       margin-right: 8px;

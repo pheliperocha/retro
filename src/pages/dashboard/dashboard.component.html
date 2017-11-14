@@ -1,19 +1,25 @@
-<!-- HEADER -->
-<app-header></app-header>
+<md-sidenav-container>
+  <!-- HEADER -->
+  <app-header [sidenav]="sidenav"></app-header>
 
-<!-- CONTENT -->
-<section>
+  <md-sidenav #sidenav align="end">
+    <app-my-actions></app-my-actions>
+  </md-sidenav>
 
-  <app-retrospective-thumb
-    *ngFor="let retrospective of retrospectives"
-    id="{{ retrospective.id }}"
-    title="{{ retrospective.title }}"
-    date="{{ retrospective.date }}"
-    image="{{ retrospective.image }}"
-  ></app-retrospective-thumb>
+  <!-- CONTENT -->
+  <section>
 
-</section>
+    <app-retrospective-thumb
+      *ngFor="let retrospective of retrospectives"
+      id="{{ retrospective.id }}"
+      title="{{ retrospective.title }}"
+      date="{{ retrospective.date }}"
+      image="{{ retrospective.image }}"
+    ></app-retrospective-thumb>
 
-<button class="fab" md-fab (click)="createNewRetrospective()">
-  <md-icon>add</md-icon>
-</button>
+  </section>
+
+  <button class="fab" md-fab (click)="createNewRetrospective()">
+    <md-icon>add</md-icon>
+  </button>
+</md-sidenav-container>
