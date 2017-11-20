@@ -1,0 +1,67 @@
+@import '~@angular/material/theming';
+@import '../../theme.scss';
+
+.annotation {
+  background: mat-color($primary);
+  color: mat-color($primary, default-contrast);
+  padding: 8px;
+  border-radius: 4px;
+  max-width: 500px;
+  margin: 16px auto;
+
+  .responsibles {
+    height: 32px;
+    width: 100%;
+
+    .user {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.3);
+      float: right;
+      border: 1px solid #fff;
+      margin-right: -14px;
+      transition: .3s;
+
+      img {
+        width: 100%;
+      }
+
+      &:hover {
+        position: relative;
+        z-index: 1;
+        transform: scale(1.1);
+      }
+
+      &:nth-child(3) {
+        margin-right: 0px;
+      }
+    }
+
+    button {
+      width: 28px;
+      height: 28px;
+      line-height: 28px;
+      font-size: 12px;
+      color: mat-color($primary, default-contrast);
+      float: right;
+
+      md-icon {
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+.mat-menu-item md-icon.picture {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.3);
+
+  img {
+    width: 100%;
+  }
+}

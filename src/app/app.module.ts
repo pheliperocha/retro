@@ -55,6 +55,7 @@ import { ContextDialogComponent } from '../shared/dialogs/context-dialog.compone
 import { CreateRetrospectiveComponent } from '../pages/create-retrospective/create-retrospective.component';
 import { ReflexaoComponent } from '../pages/retrospective/reflexao/reflexao.component';
 import { MyActionsComponent } from '../shared/my-actions/myActions.component';
+import { AnnotationComponent } from '../shared/annotation/annotation.component';
 
 // Pipes
 import { RemoveIntersectionPipe } from './remove-intersection.pipe';
@@ -78,6 +79,7 @@ const socketConfig: SocketIoConfig = { url: environment.apiUrl, options: {} };
     CreateRetrospectiveComponent,
     ReflexaoComponent,
     MyActionsComponent,
+    AnnotationComponent,
     RemoveIntersectionPipe
   ],
   entryComponents: [ DeleteDialogComponent, CreateCardDialogComponent, ContextDialogComponent, CreateRetrospectiveComponent ],

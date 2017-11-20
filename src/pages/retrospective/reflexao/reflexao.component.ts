@@ -6,8 +6,6 @@ import { MdDialog } from '@angular/material';
 import { CreateCardDialogComponent } from '../../../shared/dialogs/createCard-dialog.component';
 import { Annotation } from '../../../models/annotation';
 import { Retrospective } from '../../../models/retrospective';
-import { User } from '../../../models/user';
-import { ApiService } from '../../../providers/api/api.service';
 
 @Component({
   selector: 'reflexao-retrospective',
@@ -25,7 +23,6 @@ export class ReflexaoComponent {
   public cards: Card[];
 
   constructor(private retrospectiveService: RetrospectiveService,
-              private apiService: ApiService,
               public mdDialog: MdDialog) {}
 
   ngOnInit() {
@@ -58,32 +55,5 @@ export class ReflexaoComponent {
         })
       }
     });
-  }
-
-  addResponsible(annotation: Annotation, responsible: User) {
-    this.apiService.addResponsible(annotation.id, responsible.id)
-      .then(response => {
-        if (response == true) {
-          annotation.responsibles.push(responsible);
-        }
-      })
-      .catch(err => {
-        console.error(err);
-      });
-  }
-
-  removeResponsible(annotation: any, responsible: User) {
-    this.apiService.removeResponsible(annotation.id, responsible.id)
-      .then(response => {
-        if (response == true) {
-          let index = annotation.responsibles.findIndex((user) => (user.id === responsible.id));
-          if (index != -1) {
-            annotation.responsibles.splice(index, 1);
-          }
-        }
-      })
-      .catch(err => {
-        console.error(err);
-      });
   }
 }
