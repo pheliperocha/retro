@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import {Card} from "../../models/card";
+import { ApiService } from '../../providers/api/api.service';
+import { Retrospective } from '../../models/retrospective';
 
 @Component({
   selector: 'app-my-actions',
@@ -7,5 +8,11 @@ import {Card} from "../../models/card";
   styleUrls: ['./myActions.component.scss']
 })
 export class MyActionsComponent {
-  constructor() {}
+  public retrospectives: Retrospective[];
+
+  constructor(private apiService: ApiService) {
+    this.apiService.getAllMyActions().then(retrospectives => {
+      this.retrospectives = retrospectives;
+    });
+  }
 }

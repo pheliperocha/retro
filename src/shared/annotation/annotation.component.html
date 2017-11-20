@@ -2,18 +2,18 @@
   <div class="desc">{{ annotation.description }}</div>
 
   <div class="responsibles">
-    <button md-icon-button color="secundary" [hidden]="members.length <= annotation.responsibles.length" [matMenuTriggerFor]="menuResponser">
+    <button *ngIf="members != null" md-icon-button color="secundary" [hidden]="members.length <= annotation.responsibles.length" [matMenuTriggerFor]="menuResponser">
       <md-icon aria-label="Atribuir pessoa">add</md-icon>
     </button>
 
-    <md-menu #menuResponser="mdMenu">
+    <md-menu [hidden]="members != null" #menuResponser="mdMenu">
       <button md-menu-item *ngFor="let member of members | removeIntersection: annotation.responsibles" (click)="addResponsible(annotation, member)">
         <md-icon class="picture"><img src="{{ member.image }}"></md-icon>
         <span>{{ member.name }}</span>
       </button>
     </md-menu>
 
-    <div *ngFor="let responsible of annotation.responsibles" class="user" mdTooltip="{{ responsible.name }}" [matMenuTriggerFor]="menuRemoveResponser">
+    <div *ngFor="let responsible of annotation.responsibles" class="user" [ngClass]="{ withAdd: members != null }" mdTooltip="{{ responsible.name }}" [matMenuTriggerFor]="menuRemoveResponser">
       <img src="{{ responsible.image }}" />
 
       <md-menu #menuRemoveResponser="mdMenu">

@@ -105,6 +105,16 @@ export class ApiService {
       .catch(this.handleError);
   }
 
+  getAllMyActions(): Promise<Array<Retrospective>> {
+    return this.http
+      .get(this.apiUrl + 'actions/')
+      .toPromise()
+      .then((response) => {
+        return response.json() as Retrospective;
+      })
+      .catch(this.handleError);
+  }
+
   getLists(id): Promise<List[]> {
     return this.http
       .get(this.apiUrl + 'retrospective/' + id + '/list')

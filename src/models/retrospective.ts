@@ -1,4 +1,5 @@
 import { User } from './user';
+import { Annotation } from './annotation';
 
 export class Retrospective {
   id: number;
@@ -10,4 +11,5 @@ export class Retrospective {
   pin: string;
   facilitador?: User;
   members?: User[];
+  annotation?: Annotation[];
 }

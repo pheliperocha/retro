@@ -34,7 +34,7 @@
         transform: scale(1.1);
       }
 
-      &:nth-child(3) {
+      &.withAdd:nth-child(3) {
         margin-right: 0px;
       }
     }
