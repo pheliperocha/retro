@@ -2,26 +2,26 @@
   <div class="desc">{{ annotation.description }}</div>
 
   <div class="responsibles">
-    <button *ngIf="members != null" md-icon-button color="secundary" [hidden]="members.length <= annotation.responsibles.length" [matMenuTriggerFor]="menuResponser">
-      <md-icon aria-label="Atribuir pessoa">add</md-icon>
+    <button *ngIf="members != null" mat-icon-button color="secundary" [hidden]="members.length <= annotation.responsibles.length" [matMenuTriggerFor]="menuResponser">
+      <mat-icon aria-label="Atribuir pessoa">add</mat-icon>
     </button>
 
-    <md-menu [hidden]="members != null" #menuResponser="mdMenu">
-      <button md-menu-item *ngFor="let member of members | removeIntersection: annotation.responsibles" (click)="addResponsible(annotation, member)">
-        <md-icon class="picture"><img src="{{ member.image }}"></md-icon>
+    <mat-menu [hidden]="members != null" #menuResponser="matMenu">
+      <button mat-menu-item *ngFor="let member of members | removeIntersection: annotation.responsibles" (click)="addResponsible(annotation, member)">
+        <mat-icon class="picture"><img src="{{ member.image }}"></mat-icon>
         <span>{{ member.name }}</span>
       </button>
-    </md-menu>
+    </mat-menu>
 
-    <div *ngFor="let responsible of annotation.responsibles" class="user" [ngClass]="{ withAdd: members != null }" mdTooltip="{{ responsible.name }}" [matMenuTriggerFor]="menuRemoveResponser">
+    <div *ngFor="let responsible of annotation.responsibles" class="user" [ngClass]="{ withAdd: members != null }" matTooltip="{{ responsible.name }}" [matMenuTriggerFor]="menuRemoveResponser">
       <img src="{{ responsible.image }}" />
 
-      <md-menu #menuRemoveResponser="mdMenu">
-        <button md-menu-item (click)="removeResponsible(annotation, responsible)">
-          <md-icon>delete</md-icon>
+      <mat-menu #menuRemoveResponser="matMenu">
+        <button mat-menu-item (click)="removeResponsible(annotation, responsible)">
+          <mat-icon>delete</mat-icon>
           <span>Remover responsabilidade</span>
         </button>
-      </md-menu>
+      </mat-menu>
     </div>
 
   </div>

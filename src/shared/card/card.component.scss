@@ -1,7 +1,7 @@
 @import '~@angular/material/theming';
 @import '../../theme.scss';
 
-md-card {
+mat-card {
   padding: 0px;
   max-width: 700px;
   margin: 8px auto;
@@ -41,7 +41,7 @@ md-card {
         height: 30px;
         line-height: 30px;
 
-        md-icon {
+        mat-icon {
           font-size: 16px;
           height: auto;
 

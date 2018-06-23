@@ -3,8 +3,8 @@
     <app-card [card]="card" [reflexao]="true"></app-card>
 
     <div class="actions">
-      <button class="fab" md-fab (click)="createAnnotation(card.id)">
-        <md-icon>chat_bubble</md-icon>
+      <button class="fab" mat-fab (click)="createAnnotation(card.id)">
+        <mat-icon>chat_bubble</mat-icon>
       </button>
 
       <app-annotation *ngFor="let annotation of card?.annotation" [annotation]="annotation" [members]="retrospective.members"></app-annotation>

@@ -1,10 +1,10 @@
-<md-sidenav-container>
+<mat-sidenav-container>
   <!-- HEADER -->
   <app-header [sidenav]="sidenav"></app-header>
 
-  <md-sidenav #sidenav align="end">
+  <mat-sidenav #sidenav align="end">
     <app-my-actions></app-my-actions>
-  </md-sidenav>
+  </mat-sidenav>
 
   <!-- CONTENT -->
   <section>
@@ -19,7 +19,7 @@
 
   </section>
 
-  <button class="fab" md-fab (click)="createNewRetrospective()">
-    <md-icon>add</md-icon>
+  <button class="fab" mat-fab (click)="createNewRetrospective()">
+    <mat-icon>add</mat-icon>
   </button>
-</md-sidenav-container>
+</mat-sidenav-container>

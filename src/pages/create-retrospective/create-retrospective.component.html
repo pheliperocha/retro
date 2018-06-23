@@ -1,26 +1,26 @@
 <section>
   <form>
-    <md-form-field fxFill>
+    <mat-form-field fxFill>
       <input MatInput #titleInput placeholder="Nome da reunião de retrospectiva">
-    </md-form-field>
+    </mat-form-field>
 
-    <md-form-field fxFill>
+    <mat-form-field fxFill>
       <textarea MatInput #contextInput placeholder="Contexto da Reunião"></textarea>
-    </md-form-field>
+    </mat-form-field>
 
     <label>Template</label>
 
     <swiper [config]="swiperConfig">
       <div class="card" *ngFor="let template of templates" [ngClass]="{ selected: template?.id === selectedTemplate }" (click)="selectTemplate(template?.id)">
-        <img md-card-sm-image src="{{ template?.image }}">
+        <img mat-card-sm-image src="{{ template?.image }}">
 
         <div class="name">{{ template?.name }}</div>
       </div>
     </swiper>
 
     <div class="actions">
-      <button md-button md-dialog-close>Canclear</button>
-      <button md-button (click)="createNewRetrospective(titleInput?.value, contextInput?.value)">Salvar</button>
+      <button mat-button mat-dialog-close>Canclear</button>
+      <button mat-button (click)="createNewRetrospective(titleInput?.value, contextInput?.value)">Salvar</button>
     </div>
   </form>
 </section>

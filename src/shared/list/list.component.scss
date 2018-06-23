@@ -1,14 +1,14 @@
 @import '~@angular/material/theming';
 @import '../../theme.scss';
 
-md-card {
+mat-card {
   position: relative;
   margin-right: 16px;
   width: 300px;
   padding: 0px;
   height: 100%;
 
-  md-card-header {
+  mat-card-header {
     background: mat-color($primary);
     padding: 16px;
     color: mat-color($primary, default-contrast);
@@ -43,14 +43,14 @@ md-card {
         height: 30px;
         line-height: 30px;
 
-        md-icon {
+        mat-icon {
           font-size: 16px;
         }
       }
     }
   }
 
-  md-card-content {
+  mat-card-content {
     padding: 16px;
     overflow-y: scroll;
     margin-bottom: 0px;

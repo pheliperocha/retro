@@ -1,34 +1,34 @@
-<md-card fxLayout="column" [attr.data-listPosition]="list.position">
-  <md-card-header class="handle">
+<mat-card fxLayout="column" [attr.data-listPosition]="list.position">
+  <mat-card-header class="handle">
 
-    <md-card-title *ngIf="!editing">{{ list.title }}</md-card-title>
+    <mat-card-title *ngIf="!editing">{{ list.title }}</mat-card-title>
 
-    <md-card-title [hidden]="!editing">
+    <mat-card-title [hidden]="!editing">
       <input #titleInput value="{{ list.title }}">
-    </md-card-title>
+    </mat-card-title>
 
     <div class="actions">
-      <button md-icon-button *ngIf="!editing && retroState == 1" (click)="editList(true)">
-        <md-icon>edit</md-icon>
+      <button mat-icon-button *ngIf="!editing && retroState == 1" (click)="editList(true)">
+        <mat-icon>edit</mat-icon>
       </button>
 
-      <button md-icon-button *ngIf="editing" (click)="saveList(titleInput?.value)">
-        <md-icon>save</md-icon>
+      <button mat-icon-button *ngIf="editing" (click)="saveList(titleInput?.value)">
+        <mat-icon>save</mat-icon>
       </button>
 
-      <button md-icon-button *ngIf="editing" (click)="editList(false)">
-        <md-icon>clear</md-icon>
+      <button mat-icon-button *ngIf="editing" (click)="editList(false)">
+        <mat-icon>clear</mat-icon>
       </button>
 
-      <button md-icon-button *ngIf="!editing && retroState == 1" (click)="deleteList()">
-        <md-icon>delete</md-icon>
+      <button mat-icon-button *ngIf="!editing && retroState == 1" (click)="deleteList()">
+        <mat-icon>delete</mat-icon>
       </button>
     </div>
-  </md-card-header>
+  </mat-card-header>
 
-  <md-card-content fxFlex [dragula]='"bag-cards"' [dragulaModel]="cards">
+  <mat-card-content fxFlex [dragula]='"bag-cards"' [dragulaModel]="cards">
     <app-card *ngFor="let card of cards" [retroState]="retroState" [ngClass]="{ drag: user?.id == card?.user?.id }" [card]="card"></app-card>
-  </md-card-content>
+  </mat-card-content>
 
-  <button md-raised-button color="primary" (click)="createCard()"><md-icon >add</md-icon></button>
-</md-card>
+  <button mat-raised-button color="primary" (click)="createCard()"><mat-icon >add</mat-icon></button>
+</mat-card>

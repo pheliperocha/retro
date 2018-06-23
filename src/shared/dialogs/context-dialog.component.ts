@@ -10,16 +10,16 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
     </mat-dialog-content>
     
     <mat-dialog-actions *ngIf="retroState === 1">
-      <button md-icon-button *ngIf="editing" (click)="saveContext(contextInput?.value)">
-        <md-icon class="md-24">save</md-icon>
+      <button mat-icon-button *ngIf="editing" (click)="saveContext(contextInput?.value)">
+        <mat-icon class="mat-24">save</mat-icon>
       </button>
       
-      <button md-icon-button *ngIf="!editing" (click)="editContext(true)">
-        <md-icon class="md-24">edit</md-icon>
+      <button mat-icon-button *ngIf="!editing" (click)="editContext(true)">
+        <mat-icon class="mat-24">edit</mat-icon>
       </button>
 
-      <button md-icon-button *ngIf="editing" (click)="editContext(false)">
-        <md-icon class="md-24">clear</md-icon>
+      <button mat-icon-button *ngIf="editing" (click)="editContext(false)">
+        <mat-icon class="mat-24">clear</mat-icon>
       </button>
     </mat-dialog-actions>
   `,

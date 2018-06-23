@@ -1,4 +1,4 @@
-<md-toolbar color="primary">
+<mat-toolbar color="primary">
   <a href="#" class="logo" routerLink="/dashboard"><img src="../../assets/images/logo.png" /></a>
 
   <span class="center">
@@ -7,24 +7,24 @@
 
       <span [hidden]="!editing"><input #retroTitleInput value="{{ retrospective?.title }}"></span>
 
-      <button md-icon-button *ngIf="!editing && retrospective?.state === 1" (click)="editRetroTitle(true)">
-        <md-icon>edit</md-icon>
+      <button mat-icon-button *ngIf="!editing && retrospective?.state === 1" (click)="editRetroTitle(true)">
+        <mat-icon>edit</mat-icon>
       </button>
 
-      <button md-icon-button *ngIf="editing" (click)="saveRetroTitle(retroTitleInput.value)">
-        <md-icon>save</md-icon>
+      <button mat-icon-button *ngIf="editing" (click)="saveRetroTitle(retroTitleInput.value)">
+        <mat-icon>save</mat-icon>
       </button>
 
-      <button md-icon-button *ngIf="editing" (click)="editRetroTitle(false)">
-        <md-icon>clear</md-icon>
+      <button mat-icon-button *ngIf="editing" (click)="editRetroTitle(false)">
+        <mat-icon>clear</mat-icon>
       </button>
     </div>
     <a class="sub-title" (click)="openRetroContext()">Contexto</a>
   </span>
 
   <span class="right">
-    <div class="members_picture" *ngFor="let member of retrospective?.members" mdTooltip="{{ member?.name }}"><img src="{{ member?.image }}" /></div>
-    <div class="facilitador_picture" mdTooltip="{{ retrospective?.facilitador?.name }}"><img src="{{ retrospective?.facilitador?.image }}" alt="" title="" /></div>
+    <div class="members_picture" *ngFor="let member of retrospective?.members" matTooltip="{{ member?.name }}"><img src="{{ member?.image }}" /></div>
+    <div class="facilitador_picture" matTooltip="{{ retrospective?.facilitador?.name }}"><img src="{{ retrospective?.facilitador?.image }}" alt="" title="" /></div>
     <div class="num_members" *ngIf="retrospective?.state !== appSettings.PREPARAR">{{ retrospective?.members.length + 1 }} {{ (retrospective?.members.length >= 1) ? 'participantes' : 'participante' }}</div>
   </span>
-</md-toolbar>
+</mat-toolbar>

@@ -8,10 +8,10 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
   
   <textarea #feedbackInput></textarea>
   
-  <md-dialog-actions>
-    <button md-button fxFlex (click)="dialogRef.close(0)">Cancelar</button>
-    <button md-button fxFlex (click)="createCard(feedbackInput.value)">Salvar</button>
-  </md-dialog-actions>
+  <mat-dialog-actions>
+    <button mat-button fxFlex (click)="dialogRef.close(0)">Cancelar</button>
+    <button mat-button fxFlex (click)="createCard(feedbackInput.value)">Salvar</button>
+  </mat-dialog-actions>
   `
 })
 export class CreateCardDialogComponent {

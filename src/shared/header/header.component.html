@@ -1,4 +1,4 @@
-<md-toolbar color="primary">
+<mat-toolbar color="primary">
   <span class="logo"><img src="../../assets/images/logo.png" /></span>
 
   <span class="center">
@@ -6,18 +6,18 @@
   </span>
 
   <span class="right">
-    <md-menu #menu="mdMenu" xPosition="after">
-      <button md-menu-item (click)="logout()">
+    <mat-menu #menu="matMenu" xPosition="after">
+      <button mat-menu-item (click)="logout()">
         <span>Sair</span>
       </button>
-    </md-menu>
+    </mat-menu>
 
-    <button class="annotation_responsible" md-icon-button (click)="sidenav.open()">
-      <md-icon>storage</md-icon>
+    <button class="annotation_responsible" mat-icon-button (click)="sidenav.open()">
+      <mat-icon>storage</mat-icon>
     </button>
 
-    <div class="user_picture" [mdMenuTriggerFor]="menu"><img src="{{ user.image }}" /></div>
+    <div class="user_picture" [matMenuTriggerFor]="menu"><img src="{{ user.image }}" /></div>
 
-    <div class="user_name" [mdMenuTriggerFor]="menu">{{ user.name }}</div>
+    <div class="user_name" [matMenuTriggerFor]="menu">{{ user.name }}</div>
   </span>
-</md-toolbar>
+</mat-toolbar>

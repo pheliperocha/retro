@@ -47,14 +47,14 @@
       color: mat-color($primary, default-contrast);
       float: right;
 
-      md-icon {
+      mat-icon {
         font-size: 18px;
       }
     }
   }
 }
 
-.mat-menu-item md-icon.picture {
+.mat-menu-item mat-icon.picture {
   width: 32px;
   height: 32px;
   border-radius: 50%;

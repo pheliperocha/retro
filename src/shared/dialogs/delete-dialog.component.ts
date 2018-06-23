@@ -5,10 +5,10 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
   selector: 'delete-dialog',
   template: `    
   <p>{{ message }}</p>
-  <md-dialog-actions>
-    <button md-button fxFlex (click)="dialogRef.close(0)">Não</button>
-    <button md-button fxFlex (click)="deleteList()">Sim</button>
-  </md-dialog-actions>
+  <mat-dialog-actions>
+    <button mat-button fxFlex (click)="dialogRef.close(0)">Não</button>
+    <button mat-button fxFlex (click)="deleteList()">Sim</button>
+  </mat-dialog-actions>
   `
 })
 export class DeleteDialogComponent {

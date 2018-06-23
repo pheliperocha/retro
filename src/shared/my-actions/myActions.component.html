@@ -1,12 +1,12 @@
-<md-accordion>
-  <md-expansion-panel *ngFor="let retrospective of retrospectives">
-    <md-expansion-panel-header>
-      <md-panel-title>
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let retrospective of retrospectives">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
         {{ retrospective.title }}
-      </md-panel-title>
-    </md-expansion-panel-header>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
 
     <app-annotation *ngFor="let annotation of retrospective?.annotation" [annotation]="annotation"></app-annotation>
 
-  </md-expansion-panel>
-</md-accordion>
+  </mat-expansion-panel>
+</mat-accordion>
