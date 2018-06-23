@@ -9,7 +9,7 @@ import { User } from '../../models/user';
 })
 export class HeaderComponent {
   public user: User;
-  @Input() sidenav: Component;
+  @Input() sidenav: any;
 
   constructor(private authService: AuthService) {
     this.user = this.authService.user;
