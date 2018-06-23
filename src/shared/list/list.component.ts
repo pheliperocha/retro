@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Card } from '../../models/card';
 import { DeleteDialogComponent } from '../dialogs/delete-dialog.component';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { List } from '../../models/list';
 import { RetrospectiveService } from '../../providers/retrospective.service';
 import { CreateCardDialogComponent } from '../dialogs/createCard-dialog.component';
@@ -20,7 +20,7 @@ export class ListComponent {
   @Input() retroState: number;
   public editing: boolean = false;
 
-  constructor(public deleteDialog: MdDialog,
+  constructor(public deleteDialog: MatDialog,
               private retrospectiveService: RetrospectiveService,
               private authService: AuthService) {
     this.user = authService.user;

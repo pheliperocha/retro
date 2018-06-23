@@ -4,7 +4,7 @@ import { Retrospective } from '../../models/retrospective';
 import { AuthService } from '../../providers/oauth/auth.service';
 import { User } from '../../models/user';
 import { CreateRetrospectiveComponent } from '../create-retrospective/create-retrospective.component';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,7 +17,7 @@ export class DashboardComponent {
 
   constructor(private authService: AuthService,
               private apiService: ApiService,
-              public newRetroDialog: MdDialog) {
+              public newRetroDialog: MatDialog) {
     this.user = this.authService.user;
 
     this.apiService.getAllRetrospectives(this.user.id).then(retrospectives => {

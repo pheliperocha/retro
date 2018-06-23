@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { MD_DIALOG_DATA, MdDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { Template } from '../../models/template';
 import { RetrospectiveService } from '../../providers/retrospective.service';
 import { Router } from '@angular/router';
@@ -23,8 +23,8 @@ export class CreateRetrospectiveComponent {
     nextButton: '.swiper-button-next',
   };
 
-  constructor(public dialogRef: MdDialogRef<CreateRetrospectiveComponent>,
-              @Inject(MD_DIALOG_DATA) public data: any,
+  constructor(public dialogRef: MatDialogRef<CreateRetrospectiveComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any,
               private retrospectiveService: RetrospectiveService,
               private apiService: ApiService,
               private router: Router) {

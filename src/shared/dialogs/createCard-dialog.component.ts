@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { MD_DIALOG_DATA, MdDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'create-card-dialog',
@@ -16,8 +16,8 @@ import { MD_DIALOG_DATA, MdDialogRef } from '@angular/material';
 })
 export class CreateCardDialogComponent {
 
-  constructor(public dialogRef: MdDialogRef<CreateCardDialogComponent>,
-              @Inject(MD_DIALOG_DATA) public data: any) {}
+  constructor(public dialogRef: MatDialogRef<CreateCardDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any) {}
 
   createCard(feedback: string) {
     this.dialogRef.close({ feedback: feedback });

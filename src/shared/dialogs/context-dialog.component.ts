@@ -1,15 +1,15 @@
 import { Component, Inject } from '@angular/core';
-import { MD_DIALOG_DATA, MdDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'context-dialog',
   template: `
-    <md-dialog-content>
+    <mat-dialog-content>
       <p style="font-size: 24px" *ngIf="!editing">{{ retroContext }}</p>
       <textarea #contextInput style="font-size: 24px; min-height: 150px; min-width: 400px" [hidden]="!editing">{{ retroContext }}</textarea>
-    </md-dialog-content>
+    </mat-dialog-content>
     
-    <md-dialog-actions *ngIf="retroState === 1">
+    <mat-dialog-actions *ngIf="retroState === 1">
       <button md-icon-button *ngIf="editing" (click)="saveContext(contextInput?.value)">
         <md-icon class="md-24">save</md-icon>
       </button>
@@ -21,7 +21,7 @@ import { MD_DIALOG_DATA, MdDialogRef } from '@angular/material';
       <button md-icon-button *ngIf="editing" (click)="editContext(false)">
         <md-icon class="md-24">clear</md-icon>
       </button>
-    </md-dialog-actions>
+    </mat-dialog-actions>
   `,
 })
 export class ContextDialogComponent {
@@ -29,8 +29,8 @@ export class ContextDialogComponent {
   public retroState: number;
   public editing: boolean = false;
 
-  constructor(public dialogRef: MdDialogRef<ContextDialogComponent>,
-              @Inject(MD_DIALOG_DATA) public data: any) {
+  constructor(public dialogRef: MatDialogRef<ContextDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any) {
     this.retroContext = data.context;
     this.retroState = data.retroState;
   }

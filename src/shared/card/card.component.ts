@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Card } from '../../models/card';
 import { DeleteDialogComponent } from '../dialogs/delete-dialog.component';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { RetrospectiveService } from '../../providers/retrospective.service';
 import { AuthService } from '../../providers/oauth/auth.service';
 import { User } from '../../models/user';
@@ -18,7 +18,7 @@ export class CardComponent {
   @Input() reflexao: boolean = false;
   public editing: boolean = false;
 
-  constructor(public deleteDialog: MdDialog,
+  constructor(public deleteDialog: MatDialog,
               private retrospectiveService: RetrospectiveService,
               private authService: AuthService) {
     this.user = authService.user;

@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { Card } from '../../../models/card';
 import { RetrospectiveService } from '../../../providers/retrospective.service';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { CreateCardDialogComponent } from '../../../shared/dialogs/createCard-dialog.component';
 import { Annotation } from '../../../models/annotation';
 import { Retrospective } from '../../../models/retrospective';
@@ -23,7 +23,7 @@ export class ReflexaoComponent {
   public cards: Card[];
 
   constructor(private retrospectiveService: RetrospectiveService,
-              public mdDialog: MdDialog) {}
+              public matDialog: MatDialog) {}
 
   ngOnInit() {
     this.retrospectiveService.getCards(this.retrospective.id).then(cards => {
@@ -34,7 +34,7 @@ export class ReflexaoComponent {
   }
 
   createAnnotation(cardId: number) {
-    let dialogRef = this.mdDialog.open(CreateCardDialogComponent, {
+    let dialogRef = this.matDialog.open(CreateCardDialogComponent, {
       data: cardId
     });
 

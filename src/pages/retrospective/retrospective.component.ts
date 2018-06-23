@@ -8,7 +8,7 @@ import { AppSettings } from '../../app/app.settings';
 import { RetrospectiveService } from '../../providers/retrospective.service';
 import { Subscription } from 'rxjs/Subscription';
 import { DragulaService } from 'ng2-dragula';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { DeleteDialogComponent } from '../../shared/dialogs/delete-dialog.component';
 import { Socket } from 'ng-socket-io';
 import { Observable } from 'rxjs/Observable';
@@ -43,7 +43,7 @@ export class RetrospectiveComponent implements OnInit {
     private authService: AuthService,
     private route: ActivatedRoute,
     private retrospectiveService: RetrospectiveService,
-    public confirmDialog: MdDialog,
+    public confirmDialog: MatDialog,
     private dragulaService: DragulaService,
     private apiService: ApiService,
     private socket: Socket

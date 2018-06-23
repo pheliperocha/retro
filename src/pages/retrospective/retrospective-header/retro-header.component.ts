@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { AuthService } from '../../../providers/oauth/auth.service';
 import { User } from '../../../models/user';
 import { Retrospective } from '../../../models/retrospective';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { ContextDialogComponent } from '../../../shared/dialogs/context-dialog.component';
 import { RetrospectiveService } from '../../../providers/retrospective.service';
 import { AppSettings } from '../../../app/app.settings';
@@ -19,7 +19,7 @@ export class RetroHeaderComponent {
   @Input() retrospective: Retrospective;
 
   constructor(private authService: AuthService,
-              public contextDialog: MdDialog,
+              public contextDialog: MatDialog,
               private retrospectiveService: RetrospectiveService) {
     this.user = this.authService.user;
   }

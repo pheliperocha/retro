@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
-  MdButtonModule,
+  MatButtonModule,
   MatToolbarModule,
   MatIconModule,
   MatFormFieldModule,
@@ -17,9 +17,9 @@ import {
   MatMenuModule,
   MatProgressBarModule,
   MatTooltipModule,
-  MdInputModule,
-  MdSidenavModule,
-  MdExpansionModule,
+  MatInputModule,
+  MatSidenavModule,
+  MatExpansionModule,
 } from '@angular/material';
 
 // Modules
@@ -98,7 +98,7 @@ const socketConfig: SocketIoConfig = { url: environment.apiUrl, options: {} };
       appRoutes,
       { enableTracing: false }
     ),
-    MdButtonModule,
+    MatButtonModule,
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
@@ -108,9 +108,9 @@ const socketConfig: SocketIoConfig = { url: environment.apiUrl, options: {} };
     MatTooltipModule,
     MatDialogModule,
     MatFormFieldModule,
-    MdInputModule,
-    MdSidenavModule,
-    MdExpansionModule,
+    MatInputModule,
+    MatSidenavModule,
+    MatExpansionModule,
   ],
   providers: [
     ApiService,
