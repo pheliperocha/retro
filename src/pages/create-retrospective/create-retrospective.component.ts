@@ -7,7 +7,7 @@ import { ApiService } from '../../providers/api/api.service';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
 @Component({
-  selector: 'create-retrospective',
+  selector: 'app-create-retrospective',
   templateUrl: './create-retrospective.component.html',
   styleUrls: ['./create-retrospective.component.scss'],
   providers: [
@@ -16,7 +16,7 @@ import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 })
 export class CreateRetrospectiveComponent {
   public templates: Template[];
-  public selectedTemplate: number = 1;
+  public selectedTemplate = 1;
   public swiperConfig: SwiperConfigInterface = {
     slidesPerView: 3,
     prevButton: '.swiper-button-prev',
@@ -42,7 +42,7 @@ export class CreateRetrospectiveComponent {
   createNewRetrospective(title: string, context: string) {
     this.retrospectiveService.createNewRetrospective(title, context, this.selectedTemplate).then(retrospectiveId => {
       this.dialogRef.close();
-      this.router.navigate(['/retrospective/' + retrospectiveId]);
+      return this.router.navigate(['/retrospective/' + retrospectiveId]);
     }).catch(err => {
       console.log(JSON.stringify(err));
     });

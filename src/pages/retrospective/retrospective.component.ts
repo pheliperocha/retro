@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../../providers/oauth/auth.service';
 import { User } from '../../models/user';
 import { Retrospective } from '../../models/retrospective';
@@ -13,7 +13,7 @@ import { DeleteDialogComponent } from '../../shared/dialogs/delete-dialog.compon
 import { Socket } from 'ng-socket-io';
 import { Observable } from 'rxjs/Observable';
 import { Card } from '../../models/card';
-import {ApiService} from "../../providers/api/api.service";
+import { ApiService } from '../../providers/api/api.service';
 
 @Component({
   selector: 'app-retrospective',
@@ -21,7 +21,7 @@ import {ApiService} from "../../providers/api/api.service";
   styleUrls: ['./retrospective.component.scss'],
   providers: [ RetrospectiveService ]
 })
-export class RetrospectiveComponent implements OnInit {
+export class RetrospectiveComponent implements OnInit, OnDestroy {
   public user: User;
   public id: number;
   public retrospective: Retrospective;
@@ -59,93 +59,93 @@ export class RetrospectiveComponent implements OnInit {
     this.socket.emit('subscribe', this.retrospective.id);
     this.socket.emit('enter', {retroId: this.retrospective.id, user: this.user});
 
-    if (this.retrospective.facilitador.id != this.user.id) {
+    if (this.retrospective.facilitador.id !== this.user.id) {
       this.apiService.addMember(this.retrospective.id, this.user.id);
     }
 
     this.getNewCardSubscribe = this.getNewCard().subscribe(card => {
-      let index = this.lists.findIndex((list) => (list.id === card.listId));
-      if (index != -1) {
+      const index = this.lists.findIndex((list) => (list.id === card.listId));
+      if (index !== -1) {
         this.lists[index].cards.push(card);
       }
     });
 
     this.deleteListSubscribe = this.retrospectiveService.deleteListSource$.subscribe(list => {
-      let index = this.lists.findIndex((elt) => (elt===list));
-      if (index != -1) {
+      const index = this.lists.findIndex((elt) => (elt === list));
+      if (index !== -1) {
         this.lists.splice(index, 1);
       }
     });
 
     this.deleteCardSubscribe = this.retrospectiveService.deleteCardSource$.subscribe(card => {
       this.socket.emit('delete_card', {retroId: this.retrospective.id, card: card});
-      let listIndex = this.lists.findIndex((list) => (list.id === card.listId));
+      const listIndex = this.lists.findIndex((list) => (list.id === card.listId));
 
-      if (listIndex != -1) {
-        let cards = this.lists[listIndex].cards;
-        let cardIndex = cards.findIndex((elt) => (elt.id === card.id));
+      if (listIndex !== -1) {
+        const cards = this.lists[listIndex].cards;
+        const cardIndex = cards.findIndex((elt) => (elt.id === card.id));
 
-        if (cardIndex != -1) {
+        if (cardIndex !== -1) {
           cards.splice(cardIndex, 1);
         }
       }
     });
 
     this.getDeletedCardSubscribe = this.getDeletedCard().subscribe(card => {
-      let listIndex = this.lists.findIndex((list) => (list.id === card.listId));
+      const listIndex = this.lists.findIndex((list) => (list.id === card.listId));
 
-      if (listIndex != -1) {
-        let cards = this.lists[listIndex].cards;
-        let cardIndex = cards.findIndex((elt) => (elt.id === card.id));
+      if (listIndex !== -1) {
+        const cards = this.lists[listIndex].cards;
+        const cardIndex = cards.findIndex((elt) => (elt.id === card.id));
 
-        if (cardIndex != -1) {
+        if (cardIndex !== -1) {
           cards.splice(cardIndex, 1);
         }
       }
     });
 
     this.getUpdatedCardSubscribe = this.getUpdatedCard().subscribe(card => {
-      let listIndex = this.lists.findIndex((list) => (list.id === card.listId));
+      const listIndex = this.lists.findIndex((list) => (list.id === card.listId));
 
-      if (listIndex != -1) {
-        let cards = this.lists[listIndex].cards;
-        let cardIndex = cards.findIndex((elt) => (elt.id === card.id));
+      if (listIndex !== -1) {
+        const cards = this.lists[listIndex].cards;
+        const cardIndex = cards.findIndex((elt) => (elt.id === card.id));
 
-        if (cardIndex != -1) {
+        if (cardIndex !== -1) {
           cards[cardIndex].description = card.description;
         }
       }
     });
 
     this.getUpvotedCardSubscribe = this.getUpvotedCard().subscribe(card => {
-      let listIndex = this.lists.findIndex((list) => (list.id === card.listId));
+      const listIndex = this.lists.findIndex((list) => (list.id === card.listId));
 
-      if (listIndex != -1) {
-        let cards = this.lists[listIndex].cards;
-        let cardIndex = cards.findIndex((elt) => (elt.id === card.id));
+      if (listIndex !== -1) {
+        const cards = this.lists[listIndex].cards;
+        const cardIndex = cards.findIndex((elt) => (elt.id === card.id));
 
-        if (cardIndex != -1) {
+        if (cardIndex !== -1) {
           cards[cardIndex].votes++;
         }
       }
     });
 
     this.getDownvotedCardSubscribe = this.getDownvotedCard().subscribe(card => {
-      let listIndex = this.lists.findIndex((list) => (list.id === card.listId));
+      const listIndex = this.lists.findIndex((list) => (list.id === card.listId));
 
-      if (listIndex != -1) {
-        let cards = this.lists[listIndex].cards;
-        let cardIndex = cards.findIndex((elt) => (elt.id === card.id));
+      if (listIndex !== -1) {
+        const cards = this.lists[listIndex].cards;
+        const cardIndex = cards.findIndex((elt) => (elt.id === card.id));
 
-        if (cardIndex != -1) {
+        if (cardIndex !== -1) {
           cards[cardIndex].votes--;
         }
       }
     });
 
     this.getNewMemberSubscribe = this.getNewMember().subscribe(user => {
-      if (this.retrospective.facilitador.id != user.id) {
-        let memberIndex = this.retrospective.members.findIndex((member) => (member.id === user.id));
+      if (this.retrospective.facilitador.id !== user.id) {
+        const memberIndex = this.retrospective.members.findIndex((member) => (member.id === user.id));
 
         if (memberIndex < 0) {
           this.retrospective.members.push(user);
@@ -154,8 +154,8 @@ export class RetrospectiveComponent implements OnInit {
     });
 
     this.getLeftMemberSubscribe = this.getLeftMember().subscribe(user => {
-      if (this.retrospective.facilitador.id != user.id) {
-        let memberIndex = this.retrospective.members.findIndex((member) => (member.id === user.id));
+      if (this.retrospective.facilitador.id !== user.id) {
+        const memberIndex = this.retrospective.members.findIndex((member) => (member.id === user.id));
 
         if (memberIndex >= 0) {
           this.retrospective.members.splice(memberIndex, 1);
@@ -175,17 +175,17 @@ export class RetrospectiveComponent implements OnInit {
 
     this.dragulaService.setOptions('bag-cards', {
       revertOnSpill: true,
-      moves: (el: any, container: any, handle: any): any => {
+      moves: (el: any): any => {
         return el.classList.contains('drag');
       }
     });
 
-    this.dragulaDropSubscribe = this.dragulaService.drop.subscribe((value) => {});
+    this.dragulaDropSubscribe = this.dragulaService.drop.subscribe();
 
     this.dragulaPositionSubscribe = this.dragulaService.dropModel.subscribe((bags) => {
-      if (bags[0] == 'bag-list') {
+      if (bags[0] === 'bag-list') {
         let itemsProcessed = 0;
-        let newOrder = [];
+        const newOrder = [];
 
         this.lists.forEach((item, index) => {
           itemsProcessed++;
@@ -196,11 +196,11 @@ export class RetrospectiveComponent implements OnInit {
             this.sortingLists(newOrder);
           }
         });
-      } else if (bags[0] == 'bag-cards') {
-        let listPosition = bags[3].offsetParent.getAttribute('data-listPosition');
+      } else if (bags[0] === 'bag-cards') {
+        const listPosition = bags[3].offsetParent.getAttribute('data-listPosition');
         let itemsProcessed = 0;
-        let newOrder = [];
-        let cards = this.lists[listPosition].cards;
+        const newOrder = [];
+        const cards = this.lists[listPosition].cards;
 
         cards.forEach((item, index) => {
           itemsProcessed++;
@@ -224,13 +224,15 @@ export class RetrospectiveComponent implements OnInit {
   }
 
   goToPrepareStep() {
-    if (this.retrospective.facilitador.id != this.user.id) {
+    if (this.retrospective.facilitador.id !== this.user.id) {
       return false;
     }
     if (this.retrospective.members.length >= 1) {
 
-      let dialogRef = this.confirmDialog.open(DeleteDialogComponent, {
-        data: { message: 'Existe outras pessoas acessando essa reunião, ao voltar para etapa de preparação, todos os outros participantes serão desconectador. Tem certeza que deseja continuar?' }
+      const dialogRef = this.confirmDialog.open(DeleteDialogComponent, {
+        data: {
+          message: 'Existe outras pessoas acessando essa reunião, ao voltar para etapa de preparação, todos os outros participantes serão desconectador. Tem certeza que deseja continuar?'
+        }
       });
 
       dialogRef.afterClosed().subscribe(result => {
@@ -244,7 +246,7 @@ export class RetrospectiveComponent implements OnInit {
   }
 
   private changeToPrepareStep() {
-    let update = {
+    const update = {
       'op': 'replace',
       'path': 'state',
       'value': 1
@@ -255,18 +257,16 @@ export class RetrospectiveComponent implements OnInit {
         this.retrospective.state = 1;
         this.retrospective.pin = null;
       }
-    }).catch(err => {
-      console.log(err);
-    });
+    }).catch(console.error);
   }
 
   goToFeedbackStep() {
-    if (this.retrospective.facilitador.id != this.user.id) {
+    if (this.retrospective.facilitador.id !== this.user.id) {
       return false;
     }
-    let newPin = Math.random().toString().substr(-6);
+    const newPin = Math.random().toString().substr(-6);
 
-    let update = {
+    const update = {
       'status_reuniao': 2,
       'pin': newPin
     };
@@ -276,16 +276,15 @@ export class RetrospectiveComponent implements OnInit {
         this.retrospective.state = 2;
         this.retrospective.pin = newPin;
       }
-    }).catch(err => {
-      console.log(err);
-    });
+    }).catch(console.error);
   }
 
   goToReflexaoStep() {
-    if (this.retrospective.facilitador.id != this.user.id) {
+    if (this.retrospective.facilitador.id !== this.user.id) {
       return false;
     }
-    let update = {
+
+    const update = {
       'status_reuniao': 3
     };
 
@@ -293,22 +292,18 @@ export class RetrospectiveComponent implements OnInit {
       if (response.updated === true) {
         this.retrospective.state = 3;
       }
-    }).catch(err => {
-      console.log(err);
-    });
+    }).catch(console.error);
   }
 
   createList() {
     this.retrospectiveService.createNewList(this.retrospective.id).then(list => {
       list.cards = [];
       this.lists.push(list);
-    }).catch(err => {
-      console.log(err);
-    })
+    }).catch(console.error);
   }
 
   getNewMember(): Observable<User> {
-    let observable = new Observable(observer => {
+    const observable = new Observable(observer => {
       this.socket.on('enter_member', user => {
         observer.next(user);
       });
@@ -317,7 +312,7 @@ export class RetrospectiveComponent implements OnInit {
   }
 
   getLeftMember(): Observable<User> {
-    let observable = new Observable(observer => {
+    const observable = new Observable(observer => {
       this.socket.on('left_member', user => {
         observer.next(user);
       });
@@ -326,7 +321,7 @@ export class RetrospectiveComponent implements OnInit {
   }
 
   getNewCard(): Observable<Card> {
-    let observable = new Observable(observer => {
+    const observable = new Observable(observer => {
       this.socket.on('new_card', card => {
         observer.next(card);
       });
@@ -335,7 +330,7 @@ export class RetrospectiveComponent implements OnInit {
   }
 
   getDeletedCard(): Observable<Card> {
-    let observable = new Observable(observer => {
+    const observable = new Observable(observer => {
       this.socket.on('card_deleted', card => {
         observer.next(card);
       });
@@ -344,7 +339,7 @@ export class RetrospectiveComponent implements OnInit {
   }
 
   getUpvotedCard(): Observable<Card> {
-    let observable = new Observable(observer => {
+    const observable = new Observable(observer => {
       this.socket.on('upvoted_card', card => {
         observer.next(card);
       });
@@ -353,7 +348,7 @@ export class RetrospectiveComponent implements OnInit {
   }
 
   getDownvotedCard(): Observable<Card> {
-    let observable = new Observable(observer => {
+    const observable = new Observable(observer => {
       this.socket.on('downvoted_card', card => {
         observer.next(card);
       });
@@ -362,7 +357,7 @@ export class RetrospectiveComponent implements OnInit {
   }
 
   getUpdatedCard(): Observable<Card> {
-    let observable = new Observable(observer => {
+    const observable = new Observable(observer => {
       this.socket.on('updated_card', card => {
         observer.next(card);
       });

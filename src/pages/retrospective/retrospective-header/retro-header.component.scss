@@ -61,7 +61,7 @@ mat-toolbar {
       cursor: pointer;
       margin-right: -28px;
       border: 1px solid #fff;
-      box-shadow: 0px 3px 3px rgba(0, 0, 0, .3);
+      box-shadow: 0 3px 3px rgba(0, 0, 0, .3);
       transition: .3s;
 
       &:hover {
@@ -71,7 +71,7 @@ mat-toolbar {
       }
 
       &:first-child {
-        margin-right: 0px;
+        margin-right: 0;
       }
 
       img {

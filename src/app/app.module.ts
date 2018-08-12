@@ -26,7 +26,7 @@ import {
 import { OAuthModule } from '../providers/oauth/oauth.module';
 import { DragulaModule } from 'ng2-dragula';
 import { SwiperModule } from 'ngx-swiper-wrapper';
-import { SocketIoModule, SocketIoConfig } from 'ng-socket-io'
+import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 
 // Services
 import { appRoutes } from './app.routes';

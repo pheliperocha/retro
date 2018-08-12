@@ -17,7 +17,7 @@ export class AnnotationComponent {
   addResponsible(annotation: Annotation, responsible: User) {
     this.apiService.addResponsible(annotation.id, responsible.id)
       .then(response => {
-        if (response == true) {
+        if (response === true) {
           annotation.responsibles.push(responsible);
         }
       })
@@ -29,9 +29,9 @@ export class AnnotationComponent {
   removeResponsible(annotation: any, responsible: User) {
     this.apiService.removeResponsible(annotation.id, responsible.id)
       .then(response => {
-        if (response == true) {
-          let index = annotation.responsibles.findIndex((user) => (user.id === responsible.id));
-          if (index != -1) {
+        if (response === true) {
+          const index = annotation.responsibles.findIndex((user) => (user.id === responsible.id));
+          if (index !== -1) {
             annotation.responsibles.splice(index, 1);
           }
         }

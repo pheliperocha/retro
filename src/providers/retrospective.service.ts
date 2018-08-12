@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject }    from 'rxjs/Subject';
+import { Subject } from 'rxjs/Subject';
 import { List } from '../models/list';
 import { Card } from '../models/card';
 import { ApiService } from './api/api.service';
@@ -25,53 +25,41 @@ export class RetrospectiveService {
   getCards(retrospectiveId: number): Promise<Card[]> {
     return this.apiService.getCards(retrospectiveId).then(cards => {
       return cards;
-    }).catch(err => {
-      console.log(err);
-    })
+    }).catch(console.error);
   }
 
   updateRetrospective(retrospectiveId, update): Promise<any> {
     return this.apiService.updateRetrospective(retrospectiveId, update).then(response => {
       return response;
-    }).catch(err => {
-      console.log(err);
-    });
+    }).catch(console.error);
   }
 
   updateList(listId, update): Promise<any> {
     return this.apiService.updateList(listId, update).then(response => {
       return response;
-    }).catch(err => {
-      console.log(err);
-    });
+    }).catch(console.error);
   }
 
   updateCard(cardId, update): Promise<any> {
     return this.apiService.updateCard(cardId, update).then(response => {
       return response;
-    }).catch(err => {
-      console.log(err);
-    });
+    }).catch(console.error);
   }
 
   upvoteCard(cardId, userId): Promise<boolean> {
     return this.apiService.upvoteCard(cardId, userId).then(response => {
       return response;
-    }).catch(err => {
-      console.log(err);
-    });
+    }).catch(console.error);
   }
 
   downvoteCard(cardId, userId): Promise<boolean> {
     return this.apiService.downvoteCard(cardId, userId).then(response => {
       return response;
-    }).catch(err => {
-      console.log(err);
-    });
+    }).catch(console.error);
   }
 
   createNewRetrospective(title: string, context: string, templateId: number): Promise<number> {
-    let retrospective = {
+    const retrospective = {
       id: null,
       title: title,
       context: context,
@@ -89,38 +77,30 @@ export class RetrospectiveService {
 
     return this.apiService.createNewRetrospective(retrospective).then(newRetrospective => {
       return newRetrospective.id;
-    }).catch(err => {
-      console.log(err);
-    });
+    }).catch(console.error);
   }
 
   createNewList(retroId): Promise<List> {
-    let list = {
+    const list = {
       title: '',
       retroId: retroId
     };
 
     return this.apiService.createNewList(list).then(newList => {
       return newList;
-    }).catch(err => {
-      console.log(err);
-    });
+    }).catch(console.error);
   }
 
   createNewAnnotation(annotation: Annotation): Promise<Annotation> {
     return this.apiService.createNewAnnotation(annotation).then(newAnnotation => {
       return newAnnotation;
-    }).catch(err => {
-      console.log(err);
-    });
+    }).catch(console.error);
   }
 
   addCard(card: Card) {
-    this.apiService.createNewCard(card).then(card => {
-      this.addCardSource.next(card);
-    }).catch(err => {
-      console.log(err);
-    });
+    this.apiService.createNewCard(card).then(newCard => {
+      this.addCardSource.next(newCard);
+    }).catch(console.error);
   }
 
   deleteCard(card: Card) {
@@ -128,9 +108,7 @@ export class RetrospectiveService {
       if (response === true) {
         this.deleteCardSource.next(card);
       }
-    }).catch(err => {
-      console.log(err);
-    });
+    }).catch(console.error);
   }
 
   deleteList(list: List) {
@@ -138,8 +116,6 @@ export class RetrospectiveService {
       if (response === true) {
         this.deleteListSource.next(list);
       }
-    }).catch(err => {
-      console.log(err);
-    });
+    }).catch(console.error);
   }
 }

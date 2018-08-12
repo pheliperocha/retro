@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { Card } from '../../../models/card';
 import { RetrospectiveService } from '../../../providers/retrospective.service';
@@ -8,11 +8,11 @@ import { Annotation } from '../../../models/annotation';
 import { Retrospective } from '../../../models/retrospective';
 
 @Component({
-  selector: 'reflexao-retrospective',
+  selector: 'app-reflexao-retrospective',
   templateUrl: './reflexao.component.html',
   styleUrls: ['./reflexao.component.scss'],
 })
-export class ReflexaoComponent {
+export class ReflexaoComponent implements OnInit {
   public swiperConfig: SwiperConfigInterface = {
     slidesPerView: 1,
     prevButton: '.swiper-button-prev',
@@ -22,37 +22,35 @@ export class ReflexaoComponent {
   @Input() retrospective: Retrospective;
   public cards: Card[];
 
-  constructor(private retrospectiveService: RetrospectiveService,
-              public matDialog: MatDialog) {}
+  constructor(
+    private retrospectiveService: RetrospectiveService,
+    public matDialog: MatDialog
+  ) {}
 
   ngOnInit() {
     this.retrospectiveService.getCards(this.retrospective.id).then(cards => {
       this.cards = cards;
-    }).catch(err => {
-      console.log(err);
-    });
+    }).catch(console.error);
   }
 
   createAnnotation(cardId: number) {
-    let dialogRef = this.matDialog.open(CreateCardDialogComponent, {
+    const dialogRef = this.matDialog.open(CreateCardDialogComponent, {
       data: cardId
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result !== 0) {
-        let newAnnotation: Annotation = {
+        const newAnnotation: Annotation = {
           description: result.feedback,
           cardId: cardId,
         };
 
         this.retrospectiveService.createNewAnnotation(newAnnotation).then(annotation => {
-          let index = this.cards.findIndex((card) => (card.id === annotation.cardId));
-          if (index != -1) {
+          const index = this.cards.findIndex((card) => (card.id === annotation.cardId));
+          if (index !== -1) {
             this.cards[index].annotation.push(annotation);
           }
-        }).catch(err => {
-          console.log(err);
-        })
+        }).catch(console.error);
       }
     });
   }

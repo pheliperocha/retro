@@ -1,11 +1,9 @@
 <mat-toolbar color="primary">
   <span class="logo"><img src="../../assets/images/logo.png" /></span>
 
-  <span class="center">
+  <span class="center"></span>
 
-  </span>
-
-  <span class="right">
+  <div class="right">
     <mat-menu #menu="matMenu" xPosition="after">
       <button mat-menu-item (click)="logout()">
         <span>Sair</span>
@@ -19,5 +17,5 @@
     <div class="user_picture" [matMenuTriggerFor]="menu"><img src="{{ user.image }}" /></div>
 
     <div class="user_name" [matMenuTriggerFor]="menu">{{ user.name }}</div>
-  </span>
+  </div>
 </mat-toolbar>

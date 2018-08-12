@@ -30,7 +30,7 @@ export class LoginComponent {
     }
   };
 
-  constructor(public authService: AuthService) {}
+  constructor(private authService: AuthService) {}
 
   linkedinLogin() {
     this.authService.auth('linkedin', this.config);

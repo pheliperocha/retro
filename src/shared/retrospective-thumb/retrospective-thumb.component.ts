@@ -12,5 +12,4 @@ export class RetrospectiveThumbComponent {
   @Input() date: string;
 
   constructor() {}
-
 }

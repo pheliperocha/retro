@@ -26,7 +26,7 @@ export class DashboardComponent {
   }
 
   createNewRetrospective() {
-    let dialogRef = this.newRetroDialog.open(CreateRetrospectiveComponent, {
+    this.newRetroDialog.open(CreateRetrospectiveComponent, {
       width: '700px'
     });
   }

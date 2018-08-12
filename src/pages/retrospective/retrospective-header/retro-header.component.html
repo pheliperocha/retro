@@ -1,7 +1,7 @@
 <mat-toolbar color="primary">
   <a href="#" class="logo" routerLink="/dashboard"><img src="../../assets/images/logo.png" /></a>
 
-  <span class="center">
+  <div class="center">
     <div class="title">
       <span *ngIf="!editing">{{ retrospective?.title }}</span>
 
@@ -20,11 +20,11 @@
       </button>
     </div>
     <a class="sub-title" (click)="openRetroContext()">Contexto</a>
-  </span>
+  </div>
 
-  <span class="right">
+  <div class="right">
     <div class="members_picture" *ngFor="let member of retrospective?.members" matTooltip="{{ member?.name }}"><img src="{{ member?.image }}" /></div>
     <div class="facilitador_picture" matTooltip="{{ retrospective?.facilitador?.name }}"><img src="{{ retrospective?.facilitador?.image }}" alt="" title="" /></div>
     <div class="num_members" *ngIf="retrospective?.state !== appSettings.PREPARAR">{{ retrospective?.members.length + 1 }} {{ (retrospective?.members.length >= 1) ? 'participantes' : 'participante' }}</div>
-  </span>
+  </div>
 </mat-toolbar>

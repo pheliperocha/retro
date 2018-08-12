@@ -15,7 +15,7 @@ import { AppSettings } from '../../../app/app.settings';
 export class RetroHeaderComponent {
   public user: User;
   public appSettings = AppSettings;
-  public editing: boolean = false;
+  public editing = false;
   @Input() retrospective: Retrospective;
 
   constructor(private authService: AuthService,
@@ -25,7 +25,7 @@ export class RetroHeaderComponent {
   }
 
   openRetroContext() {
-    let dialogRef = this.contextDialog.open(ContextDialogComponent, {
+    const dialogRef = this.contextDialog.open(ContextDialogComponent, {
       data: { context: this.retrospective.context, retroState: this.retrospective.state }
     });
 
@@ -41,7 +41,7 @@ export class RetroHeaderComponent {
   }
 
   saveRetroTitle(newTitle: string) {
-    let update = {
+    const update = {
       'nome': newTitle
     };
 
@@ -56,7 +56,7 @@ export class RetroHeaderComponent {
   }
 
   updateRetroContext(newContext: string) {
-    let update = {
+    const update = {
       'contexto': newContext
     };
 

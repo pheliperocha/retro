@@ -18,7 +18,7 @@
 
 section.steps {
   .step {
-    padding: 0px;
+    padding: 0;
     margin: 16px 32px;
     transition: .3s;
     cursor: pointer;
@@ -32,8 +32,7 @@ section.steps {
       height: 32px;
       background: mat-color($primary, lighter);
       border-radius: 8px;
-      margin: 0 auto;
-      margin-bottom: 8px;
+      margin: 0 auto 8px;
       color: mat-color($primary, default-contrast);
     }
 
@@ -54,7 +53,7 @@ section.steps {
 
 section.lists {
   box-sizing: border-box;
-  padding: 0px 0px 32px 32px;
+  padding: 0 0 32px 32px;
   overflow-x: scroll;
   position: fixed;
   height: calc(100% - 176px);
@@ -64,13 +63,5 @@ section.lists {
     height: 46px;
     width: 316px;
     margin-right: 16px;
-  }
-}
-
-swiper {
-  .slide {
-
-
-
   }
 }

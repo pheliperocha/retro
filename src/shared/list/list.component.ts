@@ -18,22 +18,24 @@ export class ListComponent {
   @Input() list: List;
   @Input() cards: Card[];
   @Input() retroState: number;
-  public editing: boolean = false;
+  public editing = false;
 
-  constructor(public deleteDialog: MatDialog,
-              private retrospectiveService: RetrospectiveService,
-              private authService: AuthService) {
+  constructor(
+    public deleteDialog: MatDialog,
+    private retrospectiveService: RetrospectiveService,
+    private authService: AuthService
+  ) {
     this.user = authService.user;
   }
 
   createCard() {
-    let dialogRef = this.deleteDialog.open(CreateCardDialogComponent, {
+    const dialogRef = this.deleteDialog.open(CreateCardDialogComponent, {
       data: this.list
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result !== 0) {
-        let newCard: Card = {
+        const newCard: Card = {
           listId: this.list.id,
           description: result.feedback,
           userId: this.user.id,
@@ -50,7 +52,7 @@ export class ListComponent {
   }
 
   saveList(newTitle: string) {
-    let update = {
+    const update = {
       'nome': newTitle
     };
 
@@ -59,19 +61,17 @@ export class ListComponent {
         this.list.title = newTitle;
         this.editing = false;
       }
-    }).catch(err => {
-      console.log(err);
-    });
+    }).catch(console.error);
   }
 
   deleteList() {
-    let dialogRef = this.deleteDialog.open(DeleteDialogComponent, {
+    const dialogRef = this.deleteDialog.open(DeleteDialogComponent, {
       data: { message: 'Tem certeza que deseja remover essa lista?' }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === 1) {
-        this.retrospectiveService.deleteList(this.list);
+        return this.retrospectiveService.deleteList(this.list);
       }
     });
   }

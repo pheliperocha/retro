@@ -1,24 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Location } from '@angular/common';
-import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
+import { Http, Response, URLSearchParams } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/delay';
-import { InterceptorService } from 'ng2-interceptors';
-import {  Router, Route, NavigationStart,
-          Event as NavigationEvent,
-          NavigationCancel,
-          RoutesRecognized,
-          CanActivate, CanActivateChild, CanLoad,
-          ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import {
+  Router, Route,
+  CanActivate, CanActivateChild, CanLoad,
+  ActivatedRouteSnapshot, RouterStateSnapshot
+} from '@angular/router';
 import { User } from '../../models/user';
 
 @Injectable()
 export class AuthService implements CanActivate, CanActivateChild, CanLoad {
-
-  private configObj = {'authEndpoint': '', 'clientId': '', 'redirectURI': ''};
   private code: string;
   private cachedURL: string;
   private loginProvider: string;
@@ -26,11 +21,17 @@ export class AuthService implements CanActivate, CanActivateChild, CanLoad {
   private loginURI: string;
   public user: User;
 
+  private configObj = {
+    'authEndpoint': '',
+    'clientId': '',
+    'redirectURI': ''
+  };
+
   constructor(private _http: Http, private router: Router, private location: Location) {
-    let config = localStorage.getItem('authConfig');
-    let provider = localStorage.getItem('provider');
-    let cachedURL = localStorage.getItem('cachedurl');
-    let params = new URLSearchParams(this.location.path(false).split('?')[1]);
+    const config = localStorage.getItem('authConfig');
+    const provider = localStorage.getItem('provider');
+    const cachedURL = localStorage.getItem('cachedurl');
+    const params = new URLSearchParams(this.location.path(false).split('?')[1]);
     this.code = params.get('code');
 
     if (config) {
@@ -50,7 +51,7 @@ export class AuthService implements CanActivate, CanActivateChild, CanLoad {
 
     if (this.code) {
       this.login(this.code, this.configObj.clientId, this.configObj.redirectURI, this.configObj.authEndpoint)
-      .then((data: any) => {
+      .then(() => {
         this.loading = false;
         this.router.navigate([this.cachedURL]);
 
@@ -61,7 +62,6 @@ export class AuthService implements CanActivate, CanActivateChild, CanLoad {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const url: string = state.url;
-
     return this.verifyLogin(url);
   }
 
@@ -71,12 +71,10 @@ export class AuthService implements CanActivate, CanActivateChild, CanLoad {
 
   canLoad(route: Route): boolean {
     const url = `/${route.path}`;
-
     return this.verifyLogin(url);
   }
 
   login(code: any, clientId: any, redirectURI: any, authEndpoint: any): Promise<any> {
-
     const body = {'code' : code, 'clientId' : clientId, 'redirectUri': redirectURI};
 
     return this._http.post(authEndpoint, body, {})
@@ -85,10 +83,8 @@ export class AuthService implements CanActivate, CanActivateChild, CanLoad {
       localStorage.setItem('token', r.json().token);
       localStorage.setItem('user', JSON.stringify(r.json().user));
       this.user = r.json().user;
-
       return r.json();
     }).catch(this.handleError);
-   // return Observable.of(true).delay(1000).do(val => this.isLoggedIn = localStorage.getItem('isLoggedIn'));
   }
 
   private handleError(error: any): Promise<any> {
@@ -113,7 +109,6 @@ export class AuthService implements CanActivate, CanActivateChild, CanLoad {
       localStorage.setItem('cachedurl', url);
       this.router.navigate(['login']);
     } else if (this.isLoggedIn()) {
-
       if (!this.user && localStorage.getItem('user')) {
         this.user = JSON.parse(localStorage.getItem('user'));
       } else if (!this.user) {
@@ -124,7 +119,7 @@ export class AuthService implements CanActivate, CanActivateChild, CanLoad {
 
       return true;
     } else if (!this.isLoggedIn() && this.code != null) {
-      let params = new URLSearchParams(this.location.path(false).split('?')[1]);
+      const params = new URLSearchParams(this.location.path(false).split('?')[1]);
 
       if (params.get('code') && (localStorage.getItem('cachedurl') === '' || localStorage.getItem('cachedurl') === undefined || localStorage.getItem('cachedurl') === null)) {
         localStorage.setItem('cachedurl', this.location.path(false).split('?')[0]);
@@ -176,5 +171,4 @@ export class AuthService implements CanActivate, CanActivateChild, CanLoad {
         this.router.navigate([this.cachedURL]);
     }
   }
-
 }

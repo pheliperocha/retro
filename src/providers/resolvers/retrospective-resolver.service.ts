@@ -7,10 +7,13 @@ import { ApiService } from '../api/api.service';
 
 @Injectable()
 export class RetrospectiveResolverService implements Resolve<Retrospective> {
-  constructor(private apiService: ApiService, private router: Router) {}
+  constructor(
+    private apiService: ApiService,
+    private router: Router
+  ) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<Retrospective> {
-    let id = route.paramMap.get('id');
+    const id = route.paramMap.get('id');
 
     return this.apiService.getRetrospectives(id).then(retrospective => {
       return retrospective;

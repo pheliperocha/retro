@@ -8,7 +8,6 @@
 
   <!-- CONTENT -->
   <section>
-
     <app-retrospective-thumb
       *ngFor="let retrospective of retrospectives"
       id="{{ retrospective.id }}"
@@ -16,7 +15,6 @@
       date="{{ retrospective.date }}"
       image="{{ retrospective.image }}"
     ></app-retrospective-thumb>
-
   </section>
 
   <button class="fab" mat-fab (click)="createNewRetrospective()">

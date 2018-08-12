@@ -7,7 +7,7 @@ import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Rout
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  loading: boolean = true;
+  loading = true;
 
   constructor(private router: Router) {
     router.events.subscribe(routerEvent => {

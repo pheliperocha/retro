@@ -2,7 +2,7 @@
 @import '../../theme.scss';
 
 mat-card {
-  padding: 0px;
+  padding: 0;
   max-width: 700px;
   margin: 8px auto;
 
@@ -23,7 +23,7 @@ mat-card {
   }
 
   .list_title {
-    padding: 8px 8px 0px 8px;
+    padding: 8px 8px 0 8px;
     color: mat-color($mat-grey, 500);
     font-size: 20px;
   }
@@ -35,7 +35,7 @@ mat-card {
       button {
         border: none;
         background: none;
-        padding: 0px;
+        padding: 0;
         cursor: pointer;
         width: 30px;
         height: 30px;
@@ -65,7 +65,7 @@ mat-card {
       width: 36px;
       height: 36px;
       margin-top: -36px;
-      border-radius: 999px 0px 0px 0px;
+      border-radius: 999px 0 0 0;
       overflow: hidden;
       transition: .3s;
       background: mat-color($mat-grey, 300);
@@ -85,5 +85,5 @@ mat-card {
 
 .reflexao {
   font-size: 26px;
-  padding: 16px 0px 0px 16px;
+  padding: 16px 0 0 16px;
 }

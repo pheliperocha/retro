@@ -15,17 +15,19 @@ export class CardComponent {
   public user: User;
   @Input() card: Card;
   @Input() retroState: number;
-  @Input() reflexao: boolean = false;
-  public editing: boolean = false;
+  @Input() reflexao = false;
+  public editing = false;
 
-  constructor(public deleteDialog: MatDialog,
-              private retrospectiveService: RetrospectiveService,
-              private authService: AuthService) {
+  constructor(
+    public deleteDialog: MatDialog,
+    private retrospectiveService: RetrospectiveService,
+    private authService: AuthService
+  ) {
     this.user = authService.user;
   }
 
   saveCard(feedback: string) {
-    let update = {
+    const update = {
       'comentario': feedback
     };
 
@@ -34,9 +36,7 @@ export class CardComponent {
         this.card.description = feedback;
         this.editing = false;
       }
-    }).catch(err => {
-      console.log(err);
-    });
+    }).catch(console.error);
   }
 
   editCard(state: boolean) {
@@ -44,7 +44,7 @@ export class CardComponent {
   }
 
   deleteCard(card) {
-    let dialogRef = this.deleteDialog.open(DeleteDialogComponent, {
+    const dialogRef = this.deleteDialog.open(DeleteDialogComponent, {
       data: { message: 'Tem certeza que deseja remover esse feedback?', object: card }
     });
 
@@ -56,7 +56,7 @@ export class CardComponent {
   }
 
   vote() {
-    if (this.card.voted == 0 || this.card.voted == null) {
+    if (this.card.voted === 0 || this.card.voted == null) {
       this.retrospectiveService.upvoteCard(this.card.id, this.user.id).then(response => {
         if (response === true) {
           this.card.voted = 1;
