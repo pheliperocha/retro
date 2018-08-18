@@ -9,7 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --prod"
+    "postinstall": "ng build --prod",
+    "release": "standard-version"
   },
   "private": true,
   "dependencies": {
@@ -63,5 +64,11 @@
     "tslint": "^5.11.0",
     "typescript": "^2.9.2",
     "webpack": "^4.16.5"
+  },
+  "standard-version": {
+    "skip": {
+      "tag": true,
+      "commit": true
+    }
   }
 }
