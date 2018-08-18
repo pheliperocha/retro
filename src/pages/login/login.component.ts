@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../providers/oauth/auth.service';
-import { environment } from '../../environments/environment';
+import { AuthService } from '../../core/authentication/auth.service';
+import { environment } from '../../config/environments/environment';
 
 @Component({
   selector: 'app-login',

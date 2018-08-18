@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { ApiService } from '../../providers/api/api.service';
-import { User } from '../../models/user';
-import { Annotation } from '../../models/annotation';
+import { Annotation } from '../../../models/annotation';
+import { User } from '../../../models/user';
+import { ApiService } from '../../http/api.service';
 
 @Component({
   selector: 'app-annotation',

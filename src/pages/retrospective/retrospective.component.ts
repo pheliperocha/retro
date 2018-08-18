@@ -1,18 +1,18 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AuthService } from '../../providers/oauth/auth.service';
+import { AuthService } from '../../core/authentication/auth.service';
 import { User } from '../../models/user';
 import { Retrospective } from '../../models/retrospective';
 import { ActivatedRoute } from '@angular/router';
 import { List } from '../../models/list';
-import { AppSettings } from '../../app/app.settings';
-import { RetrospectiveService } from '../../providers/retrospective.service';
+import { Settings } from '../../config/settings';
+import { RetrospectiveService } from '../../core/services/retrospective.service';
 import { DragulaService } from 'ng2-dragula';
 import { MatDialog } from '@angular/material';
-import { DeleteDialogComponent } from '../../shared/dialogs/delete-dialog.component';
 import { Socket } from 'ng-socket-io';
 import { Card } from '../../models/card';
-import { ApiService } from '../../providers/api/api.service';
+import { ApiService } from '../../core/http/api.service';
 import { Observable, Subscription} from 'rxjs/Rx';
+import { DeleteDialogComponent } from '../../core/components/dialogs/delete-dialog.component';
 
 @Component({
   selector: 'app-retrospective',
@@ -25,7 +25,7 @@ export class RetrospectiveComponent implements OnInit, OnDestroy {
   public id: number;
   public retrospective: Retrospective;
   public lists: List[];
-  public appSettings = AppSettings;
+  public appSettings = Settings;
   private deleteListSubscribe: Subscription;
   private deleteCardSubscribe: Subscription;
   private dragulaDropSubscribe: Subscription;

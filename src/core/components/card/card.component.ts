@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { Card } from '../../models/card';
 import { DeleteDialogComponent } from '../dialogs/delete-dialog.component';
 import { MatDialog } from '@angular/material';
-import { RetrospectiveService } from '../../providers/retrospective.service';
-import { AuthService } from '../../providers/oauth/auth.service';
-import { User } from '../../models/user';
+import { RetrospectiveService } from '../../../core/services/retrospective.service';
+import { AuthService } from '../../authentication/auth.service';
+import { User } from '../../../models/user';
+import { Card } from '../../../models/card';
 
 @Component({
   selector: 'app-card',

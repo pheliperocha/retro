@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
-import { AuthService } from '../../../providers/oauth/auth.service';
 import { User } from '../../../models/user';
 import { Retrospective } from '../../../models/retrospective';
 import { MatDialog } from '@angular/material';
-import { ContextDialogComponent } from '../../../shared/dialogs/context-dialog.component';
-import { RetrospectiveService } from '../../../providers/retrospective.service';
-import { AppSettings } from '../../../app/app.settings';
+import { Settings } from '../../../config/settings';
+import { ContextDialogComponent } from '../../../core/components/dialogs/context-dialog.component';
+import { AuthService } from '../../../core/authentication/auth.service';
+import { RetrospectiveService } from '../../../core/services/retrospective.service';
 
 @Component({
   selector: 'app-retre-header',
@@ -14,7 +14,7 @@ import { AppSettings } from '../../../app/app.settings';
 })
 export class RetroHeaderComponent {
   public user: User;
-  public appSettings = AppSettings;
+  public appSettings = Settings;
   public editing = false;
   @Input() retrospective: Retrospective;
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ApiService } from '../../providers/api/api.service';
-import { Retrospective } from '../../models/retrospective';
+import { Retrospective } from '../../../models/retrospective';
+import { ApiService } from '../../http/api.service';
 
 @Component({
   selector: 'app-my-actions',

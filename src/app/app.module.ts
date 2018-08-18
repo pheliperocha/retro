@@ -23,18 +23,18 @@ import {
 } from '@angular/material';
 
 // Modules
-import { OAuthModule } from '../providers/oauth/oauth.module';
+import { OAuthModule } from '../core/authentication/oauth.module';
 import { DragulaModule } from 'ng2-dragula';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 
 // Services
 import { appRoutes } from './app.routes';
-import { ApiService } from '../providers/api/api.service';
-import { RetrospectiveResolverService } from '../providers/resolvers/retrospective-resolver.service';
-import { ListsResolverService } from '../providers/resolvers/lists-resolver.service';
-import { RetrospectiveService } from '../providers/retrospective.service';
-import { environment } from '../environments/environment';
+import { ApiService } from '../core/http/api.service';
+import { RetrospectiveResolverService } from '../core/resolvers/retrospective-resolver.service';
+import { ListsResolverService } from '../core/resolvers/lists-resolver.service';
+import { RetrospectiveService } from '../core/services/retrospective.service';
+import { environment } from '../config/environments/environment';
 
 
 // Directives
@@ -44,21 +44,21 @@ import { AppComponent } from './app.component';
 import { RetrospectiveComponent } from '../pages/retrospective/retrospective.component';
 import { LoginComponent } from '../pages/login/login.component';
 import { DashboardComponent } from '../pages/dashboard/dashboard.component';
-import { HeaderComponent } from '../shared/header/header.component';
-import { RetrospectiveThumbComponent } from '../shared/retrospective-thumb/retrospective-thumb.component';
-import { ListComponent } from '../shared/list/list.component';
-import { CardComponent } from '../shared/card/card.component';
 import { RetroHeaderComponent } from '../pages/retrospective/retrospective-header/retro-header.component';
-import { DeleteDialogComponent } from '../shared/dialogs/delete-dialog.component';
-import { CreateCardDialogComponent } from '../shared/dialogs/createCard-dialog.component';
-import { ContextDialogComponent } from '../shared/dialogs/context-dialog.component';
 import { CreateRetrospectiveComponent } from '../pages/create-retrospective/create-retrospective.component';
 import { ReflexaoComponent } from '../pages/retrospective/reflexao/reflexao.component';
-import { MyActionsComponent } from '../shared/my-actions/myActions.component';
-import { AnnotationComponent } from '../shared/annotation/annotation.component';
+import { DeleteDialogComponent } from '../core/components/dialogs/delete-dialog.component';
+import { CreateCardDialogComponent } from '../core/components/dialogs/createCard-dialog.component';
+import { ContextDialogComponent } from '../core/components/dialogs/context-dialog.component';
+import { MyActionsComponent } from '../core/components/my-actions/myActions.component';
+import { AnnotationComponent } from '../core/components/annotation/annotation.component';
+import { HeaderComponent } from '../core/components/header/header.component';
+import { RetrospectiveThumbComponent } from '../core/components/retrospective-thumb/retrospective-thumb.component';
+import { CardComponent } from '../core/components/card/card.component';
+import { ListComponent } from '../core/components/list/list.component';
 
 // Pipes
-import { RemoveIntersectionPipe } from './remove-intersection.pipe';
+import { RemoveIntersectionPipe } from '../core/pipes/remove-intersection.pipe';
 
 const socketConfig: SocketIoConfig = { url: environment.apiUrl, options: {} };
 
@@ -82,7 +82,12 @@ const socketConfig: SocketIoConfig = { url: environment.apiUrl, options: {} };
     AnnotationComponent,
     RemoveIntersectionPipe
   ],
-  entryComponents: [ DeleteDialogComponent, CreateCardDialogComponent, ContextDialogComponent, CreateRetrospectiveComponent ],
+  entryComponents: [
+    DeleteDialogComponent,
+    CreateCardDialogComponent,
+    ContextDialogComponent,
+    CreateRetrospectiveComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

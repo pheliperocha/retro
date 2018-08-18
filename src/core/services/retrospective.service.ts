@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { List } from '../models/list';
-import { Card } from '../models/card';
-import { ApiService } from './api/api.service';
-import { Annotation } from '../models/annotation';
-import { AuthService } from './oauth/auth.service';
-import { User } from '../models/user';
+import { List } from '../../models/list';
+import { Card } from '../../models/card';
+import { ApiService } from '../http/api.service';
+import { Annotation } from '../../models/annotation';
+import { AuthService } from '../authentication/auth.service';
+import { User } from '../../models/user';
 
 @Injectable()
 export class RetrospectiveService {
   public user: User;
-
   public deleteListSource = new Subject<List>();
   public addCardSource = new Subject<Card>();
   public deleteCardSource = new Subject<Card>();
@@ -20,6 +19,11 @@ export class RetrospectiveService {
 
   constructor(private apiService: ApiService, private authService: AuthService) {
     this.user = this.authService.user;
+  }
+
+  private static handleError(error: any): Promise<any> {
+    console.error('Infelizmente ocorreu um erro ', error);
+    return Promise.reject(error.message || error);
   }
 
   getCards(retrospectiveId: number): Promise<Card[]> {
@@ -49,13 +53,13 @@ export class RetrospectiveService {
   upvoteCard(cardId, userId): Promise<boolean> {
     return this.apiService.upvoteCard(cardId, userId).then(response => {
       return response;
-    }).catch(this.handleError);
+    }).catch(RetrospectiveService.handleError);
   }
 
   downvoteCard(cardId, userId): Promise<boolean> {
     return this.apiService.downvoteCard(cardId, userId).then(response => {
       return response;
-    }).catch(this.handleError);
+    }).catch(RetrospectiveService.handleError);
   }
 
   createNewRetrospective(title: string, context: string, templateId: number): Promise<number> {
@@ -88,13 +92,13 @@ export class RetrospectiveService {
 
     return this.apiService.createNewList(list).then(newList => {
       return newList;
-    }).catch(this.handleError);
+    }).catch(RetrospectiveService.handleError);
   }
 
   createNewAnnotation(annotation: Annotation): Promise<Annotation> {
     return this.apiService.createNewAnnotation(annotation).then(newAnnotation => {
       return newAnnotation;
-    }).catch(this.handleError);
+    }).catch(RetrospectiveService.handleError);
   }
 
   addCard(card: Card) {
@@ -117,10 +121,5 @@ export class RetrospectiveService {
         this.deleteListSource.next(list);
       }
     }).catch(console.error);
-  }
-
-  private handleError(error: any): Promise<any> {
-    console.error('Infelizmente ocorreu um erro ', error);
-    return Promise.reject(error.message || error);
   }
 }

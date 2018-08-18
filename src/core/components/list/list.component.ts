@@ -1,12 +1,12 @@
 import { Component, Input } from '@angular/core';
-import { Card } from '../../models/card';
 import { DeleteDialogComponent } from '../dialogs/delete-dialog.component';
 import { MatDialog } from '@angular/material';
-import { List } from '../../models/list';
-import { RetrospectiveService } from '../../providers/retrospective.service';
+import { User } from '../../../models/user';
+import { List } from '../../../models/list';
+import { Card } from '../../../models/card';
+import { RetrospectiveService } from '../../../core/services/retrospective.service';
+import { AuthService } from '../../authentication/auth.service';
 import { CreateCardDialogComponent } from '../dialogs/createCard-dialog.component';
-import { AuthService } from '../../providers/oauth/auth.service';
-import { User } from '../../models/user';
 
 @Component({
   selector: 'app-list',

@@ -3,7 +3,7 @@
 import { Injectable } from '@angular/core';
 import { Router, Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 import { Retrospective } from '../../models/retrospective';
-import { ApiService } from '../api/api.service';
+import { ApiService } from '../http/api.service';
 
 @Injectable()
 export class RetrospectiveResolverService implements Resolve<Retrospective> {

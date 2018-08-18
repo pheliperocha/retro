@@ -1,9 +1,9 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { Template } from '../../models/template';
-import { RetrospectiveService } from '../../providers/retrospective.service';
+import { RetrospectiveService } from '../../core/services/retrospective.service';
 import { Router } from '@angular/router';
-import { ApiService } from '../../providers/api/api.service';
+import { ApiService } from '../../core/http/api.service';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
 @Component({
