@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Location } from '@angular/common';
 import { Http, Response, URLSearchParams } from '@angular/http';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/delay';
+
+
+
+
 import {
   Router, Route,
   CanActivate, CanActivateChild, CanLoad,

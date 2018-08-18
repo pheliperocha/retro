@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import 'rxjs/add/operator/toPromise';
+
 import { InterceptorService } from 'ng2-interceptors';
 
 import { Retrospective } from '../../models/retrospective';

@@ -6,14 +6,13 @@ import { ActivatedRoute } from '@angular/router';
 import { List } from '../../models/list';
 import { AppSettings } from '../../app/app.settings';
 import { RetrospectiveService } from '../../providers/retrospective.service';
-import { Subscription } from 'rxjs/Subscription';
 import { DragulaService } from 'ng2-dragula';
 import { MatDialog } from '@angular/material';
 import { DeleteDialogComponent } from '../../shared/dialogs/delete-dialog.component';
 import { Socket } from 'ng-socket-io';
-import { Observable } from 'rxjs/Observable';
 import { Card } from '../../models/card';
 import { ApiService } from '../../providers/api/api.service';
+import { Observable, Subscription} from 'rxjs/Rx';
 
 @Component({
   selector: 'app-retrospective',
@@ -231,7 +230,9 @@ export class RetrospectiveComponent implements OnInit, OnDestroy {
 
       const dialogRef = this.confirmDialog.open(DeleteDialogComponent, {
         data: {
-          message: 'Existe outras pessoas acessando essa reunião, ao voltar para etapa de preparação, todos os outros participantes serão desconectador. Tem certeza que deseja continuar?'
+          message: 'Existe outras pessoas acessando essa reunião,' +
+          'ao voltar para etapa de preparação, todos os outros participantes serão desconectador.' +
+          ' Tem certeza que deseja continuar?'
         }
       });
 
@@ -303,66 +304,59 @@ export class RetrospectiveComponent implements OnInit, OnDestroy {
   }
 
   getNewMember(): Observable<User> {
-    const observable = new Observable(observer => {
+    return new Observable(observer => {
       this.socket.on('enter_member', user => {
         observer.next(user);
       });
     });
-    return observable;
   }
 
   getLeftMember(): Observable<User> {
-    const observable = new Observable(observer => {
+    return new Observable(observer => {
       this.socket.on('left_member', user => {
         observer.next(user);
       });
     });
-    return observable;
   }
 
   getNewCard(): Observable<Card> {
-    const observable = new Observable(observer => {
+    return new Observable(observer => {
       this.socket.on('new_card', card => {
         observer.next(card);
       });
     });
-    return observable;
   }
 
   getDeletedCard(): Observable<Card> {
-    const observable = new Observable(observer => {
+    return new Observable(observer => {
       this.socket.on('card_deleted', card => {
         observer.next(card);
       });
     });
-    return observable;
   }
 
   getUpvotedCard(): Observable<Card> {
-    const observable = new Observable(observer => {
+    return new Observable(observer => {
       this.socket.on('upvoted_card', card => {
         observer.next(card);
       });
     });
-    return observable;
   }
 
   getDownvotedCard(): Observable<Card> {
-    const observable = new Observable(observer => {
+    return new Observable(observer => {
       this.socket.on('downvoted_card', card => {
         observer.next(card);
       });
     });
-    return observable;
   }
 
   getUpdatedCard(): Observable<Card> {
-    const observable = new Observable(observer => {
+    return new Observable(observer => {
       this.socket.on('updated_card', card => {
         observer.next(card);
       });
     });
-    return observable;
   }
 
   ngOnDestroy() {
