@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Location } from '@angular/common';
 import { Http, Response, URLSearchParams } from '@angular/http';
-
-
-
-
 import {
   Router, Route,
   CanActivate, CanActivateChild, CanLoad,
@@ -121,7 +117,10 @@ export class AuthService implements CanActivate, CanActivateChild, CanLoad {
     } else if (!this.isLoggedIn() && this.code != null) {
       const params = new URLSearchParams(this.location.path(false).split('?')[1]);
 
-      if (params.get('code') && (localStorage.getItem('cachedurl') === '' || localStorage.getItem('cachedurl') === undefined || localStorage.getItem('cachedurl') === null)) {
+      if (params.get('code')
+        && (localStorage.getItem('cachedurl') === ''
+          || localStorage.getItem('cachedurl') === undefined
+          || localStorage.getItem('cachedurl') === null)) {
         localStorage.setItem('cachedurl', this.location.path(false).split('?')[0]);
       }
       if (this.cachedURL != null || this.cachedURL !== '') {
