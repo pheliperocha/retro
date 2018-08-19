@@ -1,4 +1,4 @@
-<app-retre-header [retrospective]="retrospective"></app-retre-header>
+<retro-retre-header [retrospective]="retrospective"></retro-retre-header>
 
 <div class="pin_code" *ngIf="retrospective?.state === appSettings.FEEDBACK">PIN: {{ retrospective?.pin }}</div>
 
@@ -20,9 +20,9 @@
 </section>
 
 <section *ngIf="retrospective.state === appSettings.PREPARAR || retrospective.state === appSettings.FEEDBACK" class="lists" fxLayout="row" [dragula]='"bag-list"' [dragulaModel]='lists'>
-  <app-list fxLayout="column" fxLayoutAlign="start" [retroState]="retrospective.state" *ngFor="let list of lists" [list]="list" [cards]="list.cards"></app-list>
+  <retro-list fxLayout="column" fxLayoutAlign="start" [retroState]="retrospective.state" *ngFor="let list of lists" [list]="list" [cards]="list.cards"></retro-list>
 
   <button *ngIf="retrospective.state === appSettings.PREPARAR" class="add-list" mat-raised-button color="primary" (click)="createList()"><mat-icon >add</mat-icon></button>
 </section>
 
-<app-reflexao-retrospective *ngIf="retrospective.state === appSettings.REFLEXAO" [retrospective]="retrospective"></app-reflexao-retrospective>
+<retro-reflexao-retrospective *ngIf="retrospective.state === appSettings.REFLEXAO" [retrospective]="retrospective"></retro-reflexao-retrospective>

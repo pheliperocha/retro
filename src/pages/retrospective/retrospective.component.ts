@@ -15,7 +15,7 @@ import { Observable, Subscription} from 'rxjs/Rx';
 import { DeleteDialogComponent } from '../../core/components/dialogs/delete-dialog.component';
 
 @Component({
-  selector: 'app-retrospective',
+  selector: 'retro-retrospective',
   templateUrl: './retrospective.component.html',
   styleUrls: ['./retrospective.component.scss'],
   providers: [ RetrospectiveService ]

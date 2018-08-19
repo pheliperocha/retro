@@ -3,7 +3,7 @@ import { AuthService } from '../../core/authentication/auth.service';
 import { environment } from '../../config/environments/environment';
 
 @Component({
-  selector: 'app-login',
+  selector: 'retro-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })

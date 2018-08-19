@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-retrospective-thumb',
+  selector: 'retro-retrospective-thumb',
   templateUrl: './retrospective-thumb.component.html',
   styleUrls: ['./retrospective-thumb.component.scss']
 })

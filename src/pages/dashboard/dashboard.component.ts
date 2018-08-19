@@ -7,7 +7,7 @@ import { CreateRetrospectiveComponent } from '../create-retrospective/create-ret
 import { MatDialog } from '@angular/material';
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'retro-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })

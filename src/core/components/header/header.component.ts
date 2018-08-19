@@ -3,7 +3,7 @@ import { User } from '../../../models/user';
 import { AuthService } from '../../authentication/auth.service';
 
 @Component({
-  selector: 'app-header',
+  selector: 'retro-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })

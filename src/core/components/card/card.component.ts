@@ -7,7 +7,7 @@ import { User } from '../../../models/user';
 import { Card } from '../../../models/card';
 
 @Component({
-  selector: 'app-card',
+  selector: 'retro-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })

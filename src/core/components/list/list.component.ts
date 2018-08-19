@@ -9,7 +9,7 @@ import { AuthService } from '../../authentication/auth.service';
 import { CreateCardDialogComponent } from '../dialogs/createCard-dialog.component';
 
 @Component({
-  selector: 'app-list',
+  selector: 'retro-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })

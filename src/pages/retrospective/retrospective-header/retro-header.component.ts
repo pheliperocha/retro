@@ -8,7 +8,7 @@ import { AuthService } from '../../../core/authentication/auth.service';
 import { RetrospectiveService } from '../../../core/services/retrospective.service';
 
 @Component({
-  selector: 'app-retre-header',
+  selector: 'retro-retre-header',
   templateUrl: './retro-header.component.html',
   styleUrls: ['./retro-header.component.scss']
 })

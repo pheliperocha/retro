@@ -8,7 +8,7 @@ import { Retrospective } from '../../../models/retrospective';
 import { CreateCardDialogComponent } from '../../../core/components/dialogs/createCard-dialog.component';
 
 @Component({
-  selector: 'app-reflexao-retrospective',
+  selector: 'retro-reflexao-retrospective',
   templateUrl: './reflexao.component.html',
   styleUrls: ['./reflexao.component.scss'],
 })

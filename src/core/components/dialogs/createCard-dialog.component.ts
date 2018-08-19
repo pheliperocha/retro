@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 @Component({
-  selector: 'app-create-card-dialog',
+  selector: 'retro-create-card-dialog',
   template: `
   <p>Informe seu feedback</p>
   <textarea #feedbackInput></textarea>

@@ -7,6 +7,7 @@
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
+      "prefix": "retro",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -127,11 +128,11 @@
   "defaultProject": "retrospective-desktop",
   "schematics": {
     "@schematics/angular:component": {
-      "prefix": "app",
+      "prefix": "retro",
       "styleext": "scss"
     },
     "@schematics/angular:directive": {
-      "prefix": "app"
+      "prefix": "retro"
     }
   }
 }

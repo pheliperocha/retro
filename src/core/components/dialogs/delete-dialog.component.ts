@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 @Component({
-  selector: 'app-delete-dialog',
+  selector: 'retro-delete-dialog',
   template: `
   <p>{{ message }}</p>
   <mat-dialog-actions>

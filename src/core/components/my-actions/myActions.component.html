@@ -6,7 +6,7 @@
       </mat-panel-title>
     </mat-expansion-panel-header>
 
-    <app-annotation *ngFor="let annotation of retrospective?.annotation" [annotation]="annotation"></app-annotation>
+    <retro-annotation *ngFor="let annotation of retrospective?.annotation" [annotation]="annotation"></retro-annotation>
 
   </mat-expansion-panel>
 </mat-accordion>

@@ -7,7 +7,7 @@ import { ApiService } from '../../core/http/api.service';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
 @Component({
-  selector: 'app-create-retrospective',
+  selector: 'retro-create-retrospective',
   templateUrl: './create-retrospective.component.html',
   styleUrls: ['./create-retrospective.component.scss'],
   providers: [

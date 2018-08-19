@@ -27,11 +27,11 @@
   </mat-card-header>
 
   <mat-card-content fxFlex [dragula]='"bag-cards"' [dragulaModel]="cards">
-    <app-card *ngFor="let card of cards"
+    <retro-card *ngFor="let card of cards"
               [retroState]="retroState"
               [ngClass]="{ drag: user?.id == card?.user?.id }"
               [card]="card">
-    </app-card>
+    </retro-card>
   </mat-card-content>
 
   <button mat-raised-button color="primary" (click)="createCard()"><mat-icon >add</mat-icon></button>

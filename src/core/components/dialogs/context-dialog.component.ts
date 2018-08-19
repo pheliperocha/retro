@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 @Component({
-  selector: 'app-context-dialog',
+  selector: 'retro-context-dialog',
   template: `
     <mat-dialog-content>
       <p style="font-size: 24px" *ngIf="!editing">{{ retroContext }}</p>

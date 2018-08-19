@@ -1,13 +1,13 @@
 <swiper [config]="swiperConfig">
   <div class="slide" *ngFor="let card of cards">
-    <app-card [card]="card" [reflexao]="true"></app-card>
+    <retro-card [card]="card" [reflexao]="true"></retro-card>
 
     <div class="actions">
       <button class="fab" mat-fab (click)="createAnnotation(card.id)">
         <mat-icon>chat_bubble</mat-icon>
       </button>
 
-      <app-annotation *ngFor="let annotation of card?.annotation" [annotation]="annotation" [members]="retrospective.members"></app-annotation>
+      <retro-annotation *ngFor="let annotation of card?.annotation" [annotation]="annotation" [members]="retrospective.members"></retro-annotation>
     </div>
   </div>
 </swiper>

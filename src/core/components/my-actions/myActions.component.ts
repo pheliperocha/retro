@@ -3,7 +3,7 @@ import { Retrospective } from '../../../models/retrospective';
 import { ApiService } from '../../http/api.service';
 
 @Component({
-  selector: 'app-my-actions',
+  selector: 'retro-my-actions',
   templateUrl: './myActions.component.html',
   styleUrls: ['./myActions.component.scss']
 })

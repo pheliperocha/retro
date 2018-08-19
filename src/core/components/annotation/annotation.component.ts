@@ -4,7 +4,7 @@ import { User } from '../../../models/user';
 import { ApiService } from '../../http/api.service';
 
 @Component({
-  selector: 'app-annotation',
+  selector: 'retro-annotation',
   templateUrl: './annotation.component.html',
   styleUrls: ['./annotation.component.scss']
 })

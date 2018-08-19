@@ -1,20 +1,20 @@
 <mat-sidenav-container>
   <!-- HEADER -->
-  <app-header [sidenav]="sidenav"></app-header>
+  <retro-header [sidenav]="sidenav"></retro-header>
 
   <mat-sidenav #sidenav align="end">
-    <app-my-actions></app-my-actions>
+    <retro-my-actions></retro-my-actions>
   </mat-sidenav>
 
   <!-- CONTENT -->
   <section>
-    <app-retrospective-thumb
+    <retro-retrospective-thumb
       *ngFor="let retrospective of retrospectives"
       id="{{ retrospective.id }}"
       title="{{ retrospective.title }}"
       date="{{ retrospective.date }}"
       image="{{ retrospective.image }}"
-    ></app-retrospective-thumb>
+    ></retro-retrospective-thumb>
   </section>
 
   <button class="fab" mat-fab (click)="createNewRetrospective()">
