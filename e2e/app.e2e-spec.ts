@@ -7,8 +7,8 @@ describe('retrospective-desktop App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display a login button', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    expect(page.getButtonText()).toEqual('Acessar com Linkedin');
   });
 });
