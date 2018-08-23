@@ -1,27 +1,22 @@
 import { Injectable } from '@angular/core';
-
-import { InterceptorService } from 'ng2-interceptors';
-
 import { Retrospective } from '../../models/retrospective';
 import { List } from '../../models/list';
 import { Card } from '../../models/card';
 import { Template } from '../../models/template';
 import { Annotation } from '../../models/annotation';
 import { environment } from '../../config/environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class ApiService {
   private apiUrl = environment.apiUrl;
 
-  constructor(private http: InterceptorService) {}
+  constructor(private http: HttpClient) {}
 
   addMember(retroId: number, userId: number): Promise<boolean> {
     return this.http
       .post(this.apiUrl + 'retrospective/member', {retroId: retroId, userId: userId})
       .toPromise()
-      .then((response) => {
-        return response.json();
-      })
       .catch(this.handleError);
   }
 
@@ -29,9 +24,6 @@ export class ApiService {
     return this.http
       .delete(this.apiUrl + 'retrospective/' + retroId + '/member/' + userId)
       .toPromise()
-      .then((response) => {
-        return response.json();
-      })
       .catch(this.handleError);
   }
 
@@ -39,18 +31,13 @@ export class ApiService {
     return this.http
       .get(this.apiUrl + 'template')
       .toPromise()
-      .then(response => {
-        return response.json();
-      }).catch(this.handleError);
+      .catch(this.handleError);
   }
 
   createNewCard(card: Card): Promise<Card> {
     return this.http
       .post(this.apiUrl + 'card', card)
       .toPromise()
-      .then((response) => {
-        return response.json();
-      })
       .catch(this.handleError);
   }
 
@@ -58,9 +45,6 @@ export class ApiService {
     return this.http
       .post(this.apiUrl + 'retrospective', retrospective)
       .toPromise()
-      .then((response) => {
-        return response.json();
-      })
       .catch(this.handleError);
   }
 
@@ -68,9 +52,6 @@ export class ApiService {
     return this.http
       .post(this.apiUrl + 'list', list)
       .toPromise()
-      .then((response) => {
-        return response.json();
-      })
       .catch(this.handleError);
   }
 
@@ -78,19 +59,13 @@ export class ApiService {
     return this.http
       .post(this.apiUrl + 'annotation', annotation)
       .toPromise()
-      .then((response) => {
-        return response.json();
-      })
       .catch(this.handleError);
   }
 
-  getAllRetrospectives(userId): Promise<Array<Retrospective>> {
+  getAllRetrospectives(userId): Promise<Retrospective[]> {
     return this.http
       .get(this.apiUrl + 'facilitador/' + userId + '/retrospective')
       .toPromise()
-      .then((response) => {
-        return response.json() as Retrospective[];
-      })
       .catch(this.handleError);
   }
 
@@ -98,9 +73,6 @@ export class ApiService {
     return this.http
       .get(this.apiUrl + 'retrospective/' + id)
       .toPromise()
-      .then((response) => {
-        return response.json() as Retrospective;
-      })
       .catch(this.handleError);
   }
 
@@ -108,9 +80,6 @@ export class ApiService {
     return this.http
       .get(this.apiUrl + 'actions/')
       .toPromise()
-      .then((response) => {
-        return response.json() as Retrospective;
-      })
       .catch(this.handleError);
   }
 
@@ -118,9 +87,6 @@ export class ApiService {
     return this.http
       .get(this.apiUrl + 'retrospective/' + id + '/list')
       .toPromise()
-      .then((response) => {
-        return response.json() as List;
-      })
       .catch(this.handleError);
   }
 
@@ -128,9 +94,6 @@ export class ApiService {
     return this.http
       .get(this.apiUrl + 'retrospective/' + retrospectiveId + '/card')
       .toPromise()
-      .then((response) => {
-        return response.json() as Card;
-      })
       .catch(this.handleError);
   }
 
@@ -138,9 +101,6 @@ export class ApiService {
     return this.http
       .patch(this.apiUrl + 'retrospective/' + retrospectiveId, update)
       .toPromise()
-      .then(response => {
-        return response.json();
-      })
       .catch(this.handleError);
   }
 
@@ -148,9 +108,6 @@ export class ApiService {
     return this.http
       .patch(this.apiUrl + 'list/' + listId, update)
       .toPromise()
-      .then(response => {
-        return response.json();
-      })
       .catch(this.handleError);
   }
 
@@ -158,9 +115,6 @@ export class ApiService {
     return this.http
       .patch(this.apiUrl + 'retrospective/' + retroId + '/list/sort', update)
       .toPromise()
-      .then(response => {
-        return response.json();
-      })
       .catch(this.handleError);
   }
 
@@ -168,9 +122,6 @@ export class ApiService {
     return this.http
       .patch(this.apiUrl + 'retrospective/' + retroId + '/card/sort', update)
       .toPromise()
-      .then(response => {
-        return response.json();
-      })
       .catch(this.handleError);
   }
 
@@ -178,9 +129,6 @@ export class ApiService {
     return this.http
       .patch(this.apiUrl + 'card/' + cardId, update)
       .toPromise()
-      .then(response => {
-        return response.json();
-      })
       .catch(this.handleError);
   }
 
@@ -188,9 +136,6 @@ export class ApiService {
     return this.http
       .delete(this.apiUrl + 'list/' + listId)
       .toPromise()
-      .then(response => {
-        return response.json() as Card;
-      })
       .catch(this.handleError);
   }
 
@@ -198,9 +143,6 @@ export class ApiService {
     return this.http
       .delete(this.apiUrl + 'card/' + cardId)
       .toPromise()
-      .then(response => {
-        return response.json() as Card;
-      })
       .catch(this.handleError);
   }
 
@@ -208,9 +150,6 @@ export class ApiService {
     return this.http
       .post(this.apiUrl + 'card/' + cardId + '/vote', {userId: userId})
       .toPromise()
-      .then(response => {
-        return response.json();
-      })
       .catch(this.handleError);
   }
 
@@ -218,9 +157,6 @@ export class ApiService {
     return this.http
       .delete(this.apiUrl + 'card/' + cardId + '/user/' + userId)
       .toPromise()
-      .then(response => {
-        return response.json();
-      })
       .catch(this.handleError);
   }
 
@@ -228,9 +164,6 @@ export class ApiService {
     return this.http
       .post(this.apiUrl + 'annotation/' + annotationId + '/user', {userId: userId})
       .toPromise()
-      .then(response => {
-        return response.json();
-      })
       .catch(this.handleError);
   }
 
@@ -238,9 +171,6 @@ export class ApiService {
     return this.http
       .delete(this.apiUrl + 'annotation/' + annotationId + '/user/' + userId)
       .toPromise()
-      .then(response => {
-        return response.json();
-      })
       .catch(this.handleError);
   }
 
