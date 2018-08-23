@@ -12,7 +12,7 @@ import { UserAuthToken } from '../interfaces/UserAuthToken';
 
 @Injectable()
 export class AuthService implements CanActivate {
-  public user: User;
+  private user: User;
   private token: string;
 
   private code: string;
@@ -50,7 +50,15 @@ export class AuthService implements CanActivate {
     }
   }
 
-  loginOAuth(code: string): Promise<UserAuthToken> {
+  public getUser(): User {
+    return this.user;
+  }
+
+  public getToken(): string {
+    return this.token;
+  }
+
+  private loginOAuth(code: string): Promise<UserAuthToken> {
     const body = {
       'code' : code,
       'clientId': OAuthConfig.linkedin.clientId,
@@ -67,7 +75,7 @@ export class AuthService implements CanActivate {
       }).catch(this.handleError);
   }
 
-  logout(): void {
+  public logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     localStorage.removeItem('cachedURL');

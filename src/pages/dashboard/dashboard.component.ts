@@ -18,7 +18,7 @@ export class DashboardComponent {
   constructor(private authService: AuthService,
               private apiService: ApiService,
               public newRetroDialog: MatDialog) {
-    this.user = this.authService.user;
+    this.user = this.authService.getUser();
 
     this.apiService.getAllRetrospectives(this.user.id).then(retrospectives => {
       this.retrospectives = retrospectives;

@@ -47,7 +47,7 @@ export class RetrospectiveComponent implements OnInit, OnDestroy {
     private apiService: ApiService,
     private socket: Socket
   ) {
-    this.user = this.authService.user;
+    this.user = this.authService.getUser();
     this.socket.connect();
   }
 

@@ -12,7 +12,7 @@ export class HeaderComponent {
   @Input() sidenav: any;
 
   constructor(private authService: AuthService) {
-    this.user = this.authService.user;
+    this.user = this.authService.getUser();
   }
 
   logout() {

@@ -18,7 +18,7 @@ export class RetrospectiveService {
   deleteCardSource$ = this.deleteCardSource.asObservable();
 
   constructor(private apiService: ApiService, private authService: AuthService) {
-    this.user = this.authService.user;
+    this.user = this.authService.getUser();
   }
 
   private static handleError(error: any): Promise<any> {

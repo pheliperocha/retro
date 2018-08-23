@@ -21,7 +21,7 @@ export class RetroHeaderComponent {
   constructor(private authService: AuthService,
               public contextDialog: MatDialog,
               private retrospectiveService: RetrospectiveService) {
-    this.user = this.authService.user;
+    this.user = this.authService.getUser();
   }
 
   openRetroContext() {

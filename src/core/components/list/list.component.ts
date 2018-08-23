@@ -25,7 +25,7 @@ export class ListComponent {
     private retrospectiveService: RetrospectiveService,
     private authService: AuthService
   ) {
-    this.user = authService.user;
+    this.user = authService.getUser();
   }
 
   createCard() {

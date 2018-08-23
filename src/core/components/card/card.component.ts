@@ -23,7 +23,7 @@ export class CardComponent {
     private retrospectiveService: RetrospectiveService,
     private authService: AuthService
   ) {
-    this.user = authService.user;
+    this.user = authService.getUser();
   }
 
   saveCard(feedback: string) {
