@@ -7,6 +7,7 @@ import { RetrospectiveResolverService } from '../core/resolvers/retrospective-re
 import { ListsResolverService } from '../core/resolvers/lists-resolver.service';
 import { AuthGuard } from '../core/guards/auth.guard';
 import { CustomComponent } from '../pages/custom/custom.component';
+import { NoAuthGuard } from '../core/guards/no.auth.guard';
 
 export const appRoutes: Routes = [
   {
@@ -17,7 +18,8 @@ export const appRoutes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [NoAuthGuard]
   },
   {
     path: 'auth',
