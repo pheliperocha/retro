@@ -59,6 +59,8 @@ import { ListComponent } from '../core/components/list/list.component';
 
 // Pipes
 import { RemoveIntersectionPipe } from '../core/pipes/remove-intersection.pipe';
+import { HttpClientModule } from '@angular/common/http';
+import { CustomComponent } from '../pages/custom/custom.component';
 
 const socketConfig: SocketIoConfig = { url: environment.apiUrl, options: {} };
 
@@ -80,7 +82,8 @@ const socketConfig: SocketIoConfig = { url: environment.apiUrl, options: {} };
     ReflexaoComponent,
     MyActionsComponent,
     AnnotationComponent,
-    RemoveIntersectionPipe
+    RemoveIntersectionPipe,
+    CustomComponent,
   ],
   entryComponents: [
     DeleteDialogComponent,
@@ -92,6 +95,7 @@ const socketConfig: SocketIoConfig = { url: environment.apiUrl, options: {} };
     BrowserModule,
     BrowserAnimationsModule,
     HttpModule,
+    HttpClientModule,
     FlexLayoutModule,
     OAuthModule,
     FormsModule,
@@ -121,7 +125,7 @@ const socketConfig: SocketIoConfig = { url: environment.apiUrl, options: {} };
     ApiService,
     RetrospectiveResolverService,
     ListsResolverService,
-    RetrospectiveService
+    RetrospectiveService,
   ],
   bootstrap: [AppComponent]
 })

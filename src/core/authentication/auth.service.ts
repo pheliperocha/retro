@@ -1,173 +1,103 @@
 import { Injectable } from '@angular/core';
-import { Location } from '@angular/common';
-import { Http, Response, URLSearchParams } from '@angular/http';
 import {
-  Router, Route,
-  CanActivate, CanActivateChild, CanLoad,
-  ActivatedRouteSnapshot, RouterStateSnapshot
+  Router,
+  CanActivate,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot
 } from '@angular/router';
 import { User } from '../../models/user';
+import { OAuthConfig } from '../../config/settings';
+import { HttpClient } from '@angular/common/http';
+import { UserAuthToken } from '../interfaces/UserAuthToken';
 
 @Injectable()
-export class AuthService implements CanActivate, CanActivateChild, CanLoad {
+export class AuthService implements CanActivate {
+  public user: User;
+  private token: string;
+
   private code: string;
   private cachedURL: string;
-  private loginProvider: string;
-  private loading: boolean;
-  private loginURI: string;
-  public user: User;
 
-  private configObj = {
-    'authEndpoint': '',
-    'clientId': '',
-    'redirectURI': ''
-  };
+  constructor(
+    private http: HttpClient,
+    private router: Router
+  ) {
+    this.user = (localStorage.getItem('user')) ? JSON.parse(localStorage.getItem('user')) : null;
+    this.token = (localStorage.getItem('token')) ? localStorage.getItem('token') : null;
+  }
 
-  constructor(private _http: Http, private router: Router, private location: Location) {
-    const config = localStorage.getItem('authConfig');
-    const provider = localStorage.getItem('provider');
-    const cachedURL = localStorage.getItem('cachedurl');
-    const params = new URLSearchParams(this.location.path(false).split('?')[1]);
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Promise<boolean> | boolean {
+    const url: string = state.url;
+    const params = new URLSearchParams(url.split('?')[1]);
     this.code = params.get('code');
 
-    if (config) {
-      this.configObj = JSON.parse(config)[provider];
-      this.loginURI =  JSON.parse(config).loginRoute;
-    }
-
-    if (provider) {
-      this.loginProvider =  provider;
-    }
-
-    if (cachedURL) {
-      this.cachedURL = cachedURL;
-    } else {
-      this.cachedURL = '';
-    }
-
     if (this.code) {
-      this.login(this.code, this.configObj.clientId, this.configObj.redirectURI, this.configObj.authEndpoint)
-      .then(() => {
-        this.loading = false;
-        this.router.navigate([this.cachedURL]);
+      this.cachedURL = (localStorage.getItem('cachedURL')) ? localStorage.getItem('cachedURL') : '/dashboard';
 
+      return this.loginOAuth(this.code).then(() => {
+        this.router.navigate([this.cachedURL]);
         return true;
+      }).catch(() => {
+        this.router.navigate(['/login']);
+        return false;
       });
+    } else {
+      this.router.navigate(['/login']);
+      return false;
     }
   }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    const url: string = state.url;
-    return this.verifyLogin(url);
-  }
+  loginOAuth(code: string): Promise<UserAuthToken> {
+    const body = {
+      'code' : code,
+      'clientId': OAuthConfig.linkedin.clientId,
+      'redirectUri': OAuthConfig.linkedin.redirectURI
+    };
 
-  canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    return this.canActivate(route, state);
-  }
-
-  canLoad(route: Route): boolean {
-    const url = `/${route.path}`;
-    return this.verifyLogin(url);
-  }
-
-  login(code: any, clientId: any, redirectURI: any, authEndpoint: any): Promise<any> {
-    const body = {'code' : code, 'clientId' : clientId, 'redirectUri': redirectURI};
-
-    return this._http.post(authEndpoint, body, {})
-    .toPromise().then((r: Response) => {
-      localStorage.setItem('isLoggedIn', 'true');
-      localStorage.setItem('token', r.json().token);
-      localStorage.setItem('user', JSON.stringify(r.json().user));
-      this.user = r.json().user;
-      return r.json();
-    }).catch(this.handleError);
-  }
-
-  private handleError(error: any): Promise<any> {
-    return Promise.reject(error.message || error);
+    return this.http.post(OAuthConfig.linkedin.authEndpoint, body, {})
+      .toPromise().then((r: UserAuthToken) => {
+        localStorage.setItem('token', r.token);
+        localStorage.setItem('user', JSON.stringify(r.user));
+        this.user = r.user;
+        this.token = r.token;
+        return r;
+      }).catch(this.handleError);
   }
 
   logout(): void {
-    localStorage.setItem('isLoggedIn', 'false');
     localStorage.removeItem('token');
-    localStorage.removeItem('cachedurl');
+    localStorage.removeItem('user');
+    localStorage.removeItem('cachedURL');
     localStorage.removeItem('provider');
-     this.router.navigate([this.loginURI]);
+    this.user = null;
+    this.token = null;
+    this.cachedURL = null;
+    this.router.navigate(['login']);
   }
 
-  verifyLogin(url): boolean {
-    if (!this.isLoggedIn() && this.code == null && this.loginURI) {
-      localStorage.setItem('cachedurl', url);
-      this.router.navigate([this.loginURI]);
-
-      return false;
-    } else if (!this.isLoggedIn() && this.code == null && !this.loginURI) {
-      localStorage.setItem('cachedurl', url);
-      this.router.navigate(['login']);
-    } else if (this.isLoggedIn()) {
-      if (!this.user && localStorage.getItem('user')) {
-        this.user = JSON.parse(localStorage.getItem('user'));
-      } else if (!this.user) {
-        this.logout();
-        this.router.navigate([this.loginURI]);
-        return false;
-      }
-
-      return true;
-    } else if (!this.isLoggedIn() && this.code != null) {
-      const params = new URLSearchParams(this.location.path(false).split('?')[1]);
-
-      if (params.get('code')
-        && (localStorage.getItem('cachedurl') === ''
-          || localStorage.getItem('cachedurl') === undefined
-          || localStorage.getItem('cachedurl') === null)) {
-        localStorage.setItem('cachedurl', this.location.path(false).split('?')[0]);
-      }
-      if (this.cachedURL != null || this.cachedURL !== '') {
-        this.cachedURL = localStorage.getItem('cachedurl');
-      }
-    }
+  public isLoggedIn(): boolean {
+    return (this.token && this.user && this.user.id > 0);
   }
 
-  private isLoggedIn(): boolean {
-    let status = false;
-
-    if ( localStorage.getItem('isLoggedIn') === 'true') {
-      status = true;
-    } else {
-      status = false;
-    }
-    return status;
-  }
-
-  public auth(provider: string, authConfig: any): void {
-    localStorage.setItem('authConfig', JSON.stringify(authConfig));
+  public auth(provider: string): void {
     localStorage.setItem('provider', provider);
 
     if (provider === 'linkedin' && !this.isLoggedIn()) {
       window.location.href = 'https://www.linkedin.com/oauth/v2/authorization?client_id='
-        + authConfig.linkedin.clientId
+        + OAuthConfig.linkedin.clientId
         + '&redirect_uri='
-        + authConfig.linkedin.redirectURI
+        + OAuthConfig.linkedin.redirectURI
         + '&response_type=code';
-    }
-
-    if (provider === 'facebook' && !this.isLoggedIn()) {
-       window.location.href = 'https: //www.facebook.com/v2.8/dialog/oauth?client_id='
-         + authConfig.facebook.clientId
-         + '&redirect_uri='
-         + authConfig.facebook.redirectURI
-         + '&scope=email';
-    }
-
-    if (provider === 'google' && !this.isLoggedIn()) {
-       window.location.href = 'https: //accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id='
-         + authConfig.google.clientId
-         + '&redirect_uri='
-         + authConfig.google.redirectURI
-         + '&scope=email%20profile';
+      return;
     } else {
-        this.router.navigate([this.cachedURL]);
+      this.router.navigate([this.cachedURL]);
     }
+  }
+
+  private handleError(error: any): Promise<any> {
+    return Promise.reject(error.message || error);
   }
 }

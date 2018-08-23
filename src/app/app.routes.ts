@@ -5,25 +5,34 @@ import { DashboardComponent } from '../pages/dashboard/dashboard.component';
 import { AuthService } from '../core/authentication/auth.service';
 import { RetrospectiveResolverService } from '../core/resolvers/retrospective-resolver.service';
 import { ListsResolverService } from '../core/resolvers/lists-resolver.service';
+import { AuthGuard } from '../core/guards/auth.guard';
+import { CustomComponent } from '../pages/custom/custom.component';
 
 export const appRoutes: Routes = [
   {
     path: '',
-    component: LoginComponent
+    redirectTo: 'dashboard',
+    canActivate: [AuthGuard],
+    pathMatch: 'full'
   },
   {
     path: 'login',
     component: LoginComponent
   },
   {
+    path: 'auth',
+    component: CustomComponent,
+    canActivate: [AuthService]
+  },
+  {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [AuthService]
+    canActivate: [AuthGuard]
   },
   {
     path: 'retrospective/:id',
     component: RetrospectiveComponent,
-    canActivate: [AuthService],
+    canActivate: [AuthGuard],
     resolve: {
       retrospective: RetrospectiveResolverService,
       lists: ListsResolverService
@@ -32,7 +41,7 @@ export const appRoutes: Routes = [
   {
     path: 'retrospective',
     component: DashboardComponent,
-    canActivate: [AuthService]
+    canActivate: [AuthGuard]
   },
   {
     path: '**',

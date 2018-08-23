@@ -4,6 +4,7 @@ import { AuthService } from './auth.service';
 import { InterceptorService } from 'ng2-interceptors';
 import { XHRBackend, RequestOptions } from '@angular/http';
 import { ServerURLInterceptor } from '../interceptors/interceptor';
+import { AuthGuard } from '../guards/auth.guard';
 
 export function interceptorFactory(
   xhrBackend: XHRBackend,
@@ -21,6 +22,7 @@ export function interceptorFactory(
     exports: [],
     providers: [
       AuthService,
+      AuthGuard,
       ServerURLInterceptor,
       {
         provide: InterceptorService,
