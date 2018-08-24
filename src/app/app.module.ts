@@ -1,4 +1,3 @@
-// Core Angular
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -21,23 +20,16 @@ import {
   MatExpansionModule,
 } from '@angular/material';
 
-// Modules
 import { OAuthModule } from '../core/authentication/oauth.module';
 import { DragulaModule } from 'ng2-dragula';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 import { HttpClientModule } from '@angular/common/http';
-
-// Services
 import { appRoutes } from './app.routes';
 import { ApiService } from '../core/http/api.service';
 import { RetrospectiveResolverService } from '../core/resolvers/retrospective-resolver.service';
 import { ListsResolverService } from '../core/resolvers/lists-resolver.service';
 import { RetrospectiveService } from '../core/services/retrospective.service';
-
-// Directives
-
-// Components
 import { AppComponent } from './app.component';
 import { RetrospectiveComponent } from '../pages/retrospective/retrospective.component';
 import { LoginComponent } from '../pages/login/login.component';
@@ -55,12 +47,9 @@ import { RetrospectiveThumbComponent } from '../core/components/retrospective-th
 import { CardComponent } from '../core/components/card/card.component';
 import { ListComponent } from '../core/components/list/list.component';
 import { CustomComponent } from '../pages/custom/custom.component';
-
-// Pipes
 import { RemoveIntersectionPipe } from '../core/pipes/remove-intersection.pipe';
-
-// Others
 import { environment } from '../config/environments/environment';
+import { CookieService } from '../core/services/cookie.service';
 
 const socketConfig: SocketIoConfig = { url: environment.apiUrl, options: {} };
 
@@ -125,6 +114,7 @@ const socketConfig: SocketIoConfig = { url: environment.apiUrl, options: {} };
     RetrospectiveResolverService,
     ListsResolverService,
     RetrospectiveService,
+    CookieService,
   ],
   bootstrap: [AppComponent]
 })
