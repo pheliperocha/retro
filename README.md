@@ -7,6 +7,7 @@
 </h4>
 
 <p align="center">
+    <a href="https://travis-ci.com/pheliperocha/retro"><img src="https://travis-ci.com/pheliperocha/retro.svg?branch=master"></a>
     <a href="https://github.com/pheliperocha/retro/issues"><img src="https://img.shields.io/github/issues/pheliperocha/retro.svg"></a>
     <a href="https://conventionalcommits.org"><img src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg"></a>
     <a href="https://www.conventionalcommits.org/"><img src="https://img.shields.io/packagist/l/doctrine/orm.svg"></a>
