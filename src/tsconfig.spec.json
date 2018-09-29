@@ -11,14 +11,16 @@
     ],
     "paths": {
       "@config/*": ["config/*"],
-      "@components/*": ["core/components/*"],
-      "@guards/*": ["core/guards/*"],
-      "@interceptors/*": ["core/interceptors/*"],
-      "@interfaces/*": ["core/interfaces/*"],
-      "@models/*": ["models/*"],
-      "@pipes/*": ["core/pipes/*"],
-      "@resolvers/*": ["core/resolvers/*"],
-      "@services/*": ["core/services/*"]
+      "@components/*": ["app/components/*"],
+      "@directives/*": ["app/directives/*"],
+      "@guards/*": ["app/guards/*"],
+      "@interceptors/*": ["app/interceptors/*"],
+      "@interfaces/*": ["app/interfaces/*"],
+      "@models/*": ["app/models/*"],
+      "@modules/*": ["app/modules/*"],
+      "@pipes/*": ["app/pipes/*"],
+      "@resolvers/*": ["app/resolvers/*"],
+      "@services/*": ["app/services/*"]
     }
   },
   "files": [

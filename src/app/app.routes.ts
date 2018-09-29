@@ -1,12 +1,12 @@
 import { Routes } from '@angular/router';
-import { RetrospectiveComponent } from '../pages/retrospective/retrospective.component';
-import { LoginComponent } from '../pages/login/login.component';
-import { DashboardComponent } from '../pages/dashboard/dashboard.component';
+import { RetrospectiveComponent } from '@modules/retrospective/retrospective.component';
+import { LoginComponent } from '@modules/login/login.component';
+import { DashboardComponent } from '@modules/dashboard/dashboard.component';
 import { AuthService } from '@services/auth/auth.service';
 import { RetrospectiveResolverService } from '@resolvers/retrospective-resolver.service';
 import { ListsResolverService } from '@resolvers/lists-resolver.service';
 import { AuthGuard } from '@guards/auth.guard';
-import { CustomComponent } from '../pages/custom/custom.component';
+import { CustomComponent } from '@modules/custom/custom.component';
 import { NoAuthGuard } from '@guards/no.auth.guard';
 
 export const appRoutes: Routes = [

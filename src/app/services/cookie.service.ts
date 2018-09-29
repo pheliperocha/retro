@@ -27,8 +27,7 @@ export class CookieService {
     console.log(expires);
     key = this.injectPrefix(key);
     this.cookies[key] = value;
-    const cookie = `${key}=${encodeURI(value)}; path=/${expires ? `; expires=${ expires.toUTCString() }` : ''}`;
-    window.document.cookie = cookie;
+    window.document.cookie = `${key}=${encodeURI(value)}; path=/${expires ? `; expires=${ expires.toUTCString() }` : ''}`;
   }
 
   remove(key: string) {

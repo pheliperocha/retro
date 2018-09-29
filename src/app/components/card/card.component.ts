@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { DeleteDialogComponent } from '../dialogs/delete-dialog.component';
+import { DeleteDialogComponent } from '@components/dialogs/delete-dialog.component';
 import { MatDialog } from '@angular/material';
 import { RetrospectiveService } from '@services/retrospective.service';
 import { AuthService } from '@services/auth/auth.service';

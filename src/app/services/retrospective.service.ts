@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { List } from '@models/list';
 import { Card } from '@models/card';
-import { ApiService } from './api.service';
+import { ApiService } from '@services/api.service';
 import { Annotation } from '@models/annotation';
 import { User } from '@models/user';
 import { AuthService } from '@services/auth/auth.service';

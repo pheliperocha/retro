@@ -4,7 +4,7 @@
     <mat-card-title *ngIf="!editing">{{ list.title }}</mat-card-title>
 
     <mat-card-title [hidden]="!editing">
-      <input #titleInput value="{{ list.title }}">
+      <input #titleInput value="{{ list.title }}" title="Título do Lista">
     </mat-card-title>
 
     <div class="actions">

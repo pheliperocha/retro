@@ -15,7 +15,7 @@ export class RetrospectiveResolverService implements Resolve<Retrospective> {
 
     return this.apiService.getRetrospectives(id).then(retrospective => {
       return retrospective;
-    }).catch(err => {
+    }).catch(() => {
       this.router.navigate(['dashboard']);
       return null;
     });

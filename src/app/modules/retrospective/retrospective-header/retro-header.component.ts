@@ -18,9 +18,11 @@ export class RetroHeaderComponent {
   public editing = false;
   @Input() retrospective: Retrospective;
 
-  constructor(private authService: AuthService,
-              public contextDialog: MatDialog,
-              private retrospectiveService: RetrospectiveService) {
+  constructor(
+    private authService: AuthService,
+    public contextDialog: MatDialog,
+    private retrospectiveService: RetrospectiveService
+  ) {
     this.user = this.authService.getUser();
   }
 

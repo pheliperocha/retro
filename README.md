@@ -25,6 +25,42 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 We also use [Conventional Commits](http://conventionalcommits.org/) and [Standard Version](https://github.com/conventional-changelog/standard-version), to automatic versioning and [CHANGELOG](CHANGELOG.md) generation
 
+## Project Structure
+
+```
+src
+|
+|-- app
+|   |-- app.module.ts
+|   |-- app.routes.ts
+|   |-- app.component.component.ts|html|scss|spec.ts
+|   |
+|   |-- [+] components
+|   |-- [+] directives
+|   |-- [+] guards
+|   |-- [+] interceptors
+|   |-- [+] interfaces
+|   |-- [+] models
+|   |-- [+] modules
+|   |-- [+] pipes
+|   |-- [+] resolvers
+|   |-- [+] services
+|
+|-- assets
+|   |-- [+] icons
+|   |-- [+] images
+|
+|-- config
+|   |-- [+] environments
+|   |-- [+] settings.ts
+|
+|-- styles
+    |-- [+] externals
+    |-- [+] partials
+    |-- styles.scss
+    |-- theme.scss
+```
+
 ## Credits
 
 This software uses code from several open source packages.

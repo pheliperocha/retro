@@ -10,9 +10,7 @@ import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
   selector: 'retro-create-retrospective',
   templateUrl: './create-retrospective.component.html',
   styleUrls: ['./create-retrospective.component.scss'],
-  providers: [
-    RetrospectiveService
-  ]
+  providers: [ RetrospectiveService ]
 })
 export class CreateRetrospectiveComponent {
   public templates: Template[];

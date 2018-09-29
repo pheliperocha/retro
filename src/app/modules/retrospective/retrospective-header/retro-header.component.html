@@ -1,11 +1,11 @@
 <mat-toolbar color="primary">
-  <a href="#" class="logo" routerLink="/dashboard"><img src="../../assets/images/logo.png" /></a>
+  <a href="#" class="logo" routerLink="/dashboard"><img src="assets/images/logo.png" /></a>
 
   <div class="center">
     <div class="title">
       <span *ngIf="!editing">{{ retrospective?.title }}</span>
 
-      <span [hidden]="!editing"><input #retroTitleInput value="{{ retrospective?.title }}"></span>
+      <span [hidden]="!editing"><input #retroTitleInput value="{{ retrospective?.title }}" title="Título da Reunião"></span>
 
       <button mat-icon-button *ngIf="!editing && retrospective?.state === 1" (click)="editRetroTitle(true)">
         <mat-icon>edit</mat-icon>

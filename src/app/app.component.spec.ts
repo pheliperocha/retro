@@ -6,8 +6,8 @@ import {
   MatProgressBarModule,
   MatTooltipModule
 } from '@angular/material';
-import { CardComponent } from '../core/components/card/card.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { CardComponent } from '@components/card/card.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
