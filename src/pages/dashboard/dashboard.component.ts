@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { ApiService } from '../../core/http/api.service';
+import { ApiService } from '@services/api.service';
 import { Retrospective } from '@models/retrospective';
-import { AuthService } from '../../core/authentication/auth.service';
+import { AuthService } from '@services/auth/auth.service';
 import { User } from '@models/user';
 import { CreateRetrospectiveComponent } from '../create-retrospective/create-retrospective.component';
 import { MatDialog } from '@angular/material';

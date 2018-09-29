@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Retrospective } from '@models/retrospective';
-import { List } from '@models/list';
-import { Card } from '@models/card';
-import { Template } from '@models/template';
-import { Annotation } from '@models/annotation';
-import { environment } from '@config/environments/environment';
+import { Retrospective } from '../../models/retrospective';
+import { List } from '../../models/list';
+import { Card } from '../../models/card';
+import { Template } from '../../models/template';
+import { Annotation } from '../../models/annotation';
+import { environment } from '../../config/environments/environment';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()

@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { Annotation } from '../../../models/annotation';
-import { User } from '../../../models/user';
-import { ApiService } from '../../http/api.service';
+import { Annotation } from '@models/annotation';
+import { User } from '@models/user';
+import { ApiService } from '@services/api.service';
 
 @Component({
   selector: 'retro-annotation',

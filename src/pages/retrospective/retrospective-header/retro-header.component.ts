@@ -4,7 +4,7 @@ import { Retrospective } from '@models/retrospective';
 import { MatDialog } from '@angular/material';
 import { Settings } from '@config/settings';
 import { ContextDialogComponent } from '@components/dialogs/context-dialog.component';
-import { AuthService } from '../../../core/authentication/auth.service';
+import { AuthService } from '@services/auth/auth.service';
 import { RetrospectiveService } from '@services/retrospective.service';
 
 @Component({

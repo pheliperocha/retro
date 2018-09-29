@@ -3,7 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { Template } from '@models/template';
 import { RetrospectiveService } from '@services/retrospective.service';
 import { Router } from '@angular/router';
-import { ApiService } from '../../core/http/api.service';
+import { ApiService } from '@services/api.service';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
 @Component({

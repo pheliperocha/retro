@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { DeleteDialogComponent } from '../dialogs/delete-dialog.component';
 import { MatDialog } from '@angular/material';
-import { User } from '../../../models/user';
-import { List } from '../../../models/list';
-import { Card } from '../../../models/card';
-import { RetrospectiveService } from '../../../core/services/retrospective.service';
-import { AuthService } from '../../authentication/auth.service';
+import { User } from '@models/user';
+import { List } from '@models/list';
+import { Card } from '@models/card';
+import { RetrospectiveService } from '@services/retrospective.service';
+import { AuthService } from '@services/auth/auth.service';
 import { CreateCardDialogComponent } from '../dialogs/createCard-dialog.component';
 
 @Component({

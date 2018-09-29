@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Retrospective } from '../../../models/retrospective';
-import { ApiService } from '../../http/api.service';
+import { Retrospective } from '@models/retrospective';
+import { ApiService } from '@services/api.service';
 
 @Component({
   selector: 'retro-my-actions',

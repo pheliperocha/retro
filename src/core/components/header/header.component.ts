@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { User } from '../../../models/user';
-import { AuthService } from '../../authentication/auth.service';
+import { User } from '@models/user';
+import { AuthService } from '@services/auth/auth.service';
 
 @Component({
   selector: 'retro-header',

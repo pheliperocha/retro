@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AuthService } from '../../core/authentication/auth.service';
+import { AuthService } from '@services/auth/auth.service';
 import { User } from '@models/user';
 import { Retrospective } from '@models/retrospective';
 import { ActivatedRoute } from '@angular/router';
@@ -10,7 +10,7 @@ import { DragulaService } from 'ng2-dragula';
 import { MatDialog } from '@angular/material';
 import { Socket } from 'ng-socket-io';
 import { Card } from '@models/card';
-import { ApiService } from '../../core/http/api.service';
+import { ApiService } from '@services/api.service';
 import { Observable, Subscription} from 'rxjs/Rx';
 import { DeleteDialogComponent } from '@components/dialogs/delete-dialog.component';
 

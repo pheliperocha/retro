@@ -20,16 +20,14 @@ import {
   MatExpansionModule,
 } from '@angular/material';
 
-import { OAuthModule } from '../core/authentication/oauth.module';
 import { DragulaModule } from 'ng2-dragula';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 import { HttpClientModule } from '@angular/common/http';
 import { appRoutes } from './app.routes';
-import { ApiService } from '../core/http/api.service';
-import { RetrospectiveResolverService } from '../core/resolvers/retrospective-resolver.service';
-import { ListsResolverService } from '../core/resolvers/lists-resolver.service';
-import { RetrospectiveService } from '../core/services/retrospective.service';
+import { RetrospectiveResolverService } from '@resolvers/retrospective-resolver.service';
+import { ListsResolverService } from '@resolvers/lists-resolver.service';
+import { RetrospectiveService } from '@services/retrospective.service';
 import { AppComponent } from './app.component';
 import { RetrospectiveComponent } from '../pages/retrospective/retrospective.component';
 import { LoginComponent } from '../pages/login/login.component';
@@ -37,19 +35,21 @@ import { DashboardComponent } from '../pages/dashboard/dashboard.component';
 import { RetroHeaderComponent } from '../pages/retrospective/retrospective-header/retro-header.component';
 import { CreateRetrospectiveComponent } from '../pages/create-retrospective/create-retrospective.component';
 import { ReflexaoComponent } from '../pages/retrospective/reflexao/reflexao.component';
-import { DeleteDialogComponent } from '../core/components/dialogs/delete-dialog.component';
-import { CreateCardDialogComponent } from '../core/components/dialogs/createCard-dialog.component';
-import { ContextDialogComponent } from '../core/components/dialogs/context-dialog.component';
-import { MyActionsComponent } from '../core/components/my-actions/myActions.component';
-import { AnnotationComponent } from '../core/components/annotation/annotation.component';
-import { HeaderComponent } from '../core/components/header/header.component';
-import { RetrospectiveThumbComponent } from '../core/components/retrospective-thumb/retrospective-thumb.component';
-import { CardComponent } from '../core/components/card/card.component';
-import { ListComponent } from '../core/components/list/list.component';
+import { DeleteDialogComponent } from '@components/dialogs/delete-dialog.component';
+import { CreateCardDialogComponent } from '@components/dialogs/createCard-dialog.component';
+import { ContextDialogComponent } from '@components/dialogs/context-dialog.component';
+import { MyActionsComponent } from '@components/my-actions/myActions.component';
+import { AnnotationComponent } from '@components/annotation/annotation.component';
+import { HeaderComponent } from '@components/header/header.component';
+import { RetrospectiveThumbComponent } from '@components/retrospective-thumb/retrospective-thumb.component';
+import { CardComponent } from '@components/card/card.component';
+import { ListComponent } from '@components/list/list.component';
 import { CustomComponent } from '../pages/custom/custom.component';
-import { RemoveIntersectionPipe } from '../core/pipes/remove-intersection.pipe';
-import { environment } from '../config/environments/environment';
-import { CookieService } from '../core/services/cookie.service';
+import { RemoveIntersectionPipe } from '@pipes/remove-intersection.pipe';
+import { environment } from '@config/environments/environment';
+import { CookieService } from '@services/cookie.service';
+import { OAuthModule } from '@services/auth/oauth.module';
+import { ApiService } from '@services/api.service';
 
 const socketConfig: SocketIoConfig = { url: environment.apiUrl, options: {} };
 

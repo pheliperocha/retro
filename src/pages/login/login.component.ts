@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../core/authentication/auth.service';
+import { AuthService } from '@services/auth/auth.service';
 
 @Component({
   selector: 'retro-login',

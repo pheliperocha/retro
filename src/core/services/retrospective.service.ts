@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { List } from '@models/list';
 import { Card } from '@models/card';
-import { ApiService } from '../http/api.service';
-import { Annotation } from "../../models/annotation";
-import { AuthService } from '../authentication/auth.service';
+import { ApiService } from './api.service';
+import { Annotation } from '@models/annotation';
 import { User } from '@models/user';
+import { AuthService } from '@services/auth/auth.service';
 
 @Injectable()
 export class RetrospectiveService {
@@ -17,7 +17,10 @@ export class RetrospectiveService {
   deleteListSource$ = this.deleteListSource.asObservable();
   deleteCardSource$ = this.deleteCardSource.asObservable();
 
-  constructor(private apiService: ApiService, private authService: AuthService) {
+  constructor(
+    private apiService: ApiService,
+    private authService: AuthService
+  ) {
     this.user = this.authService.getUser();
   }
 
