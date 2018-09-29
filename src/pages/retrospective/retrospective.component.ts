@@ -1,18 +1,18 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../../core/authentication/auth.service';
-import { User } from '../../models/user';
-import { Retrospective } from '../../models/retrospective';
+import { User } from '@models/user';
+import { Retrospective } from '@models/retrospective';
 import { ActivatedRoute } from '@angular/router';
-import { List } from '../../models/list';
-import { Settings } from '../../config/settings';
-import { RetrospectiveService } from '../../core/services/retrospective.service';
+import { List } from '@models/list';
+import { Settings } from '@config/settings';
+import { RetrospectiveService } from '@services/retrospective.service';
 import { DragulaService } from 'ng2-dragula';
 import { MatDialog } from '@angular/material';
 import { Socket } from 'ng-socket-io';
-import { Card } from '../../models/card';
+import { Card } from '@models/card';
 import { ApiService } from '../../core/http/api.service';
 import { Observable, Subscription} from 'rxjs/Rx';
-import { DeleteDialogComponent } from '../../core/components/dialogs/delete-dialog.component';
+import { DeleteDialogComponent } from '@components/dialogs/delete-dialog.component';
 
 @Component({
   selector: 'retro-retrospective',

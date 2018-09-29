@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
-import { User } from '../../../models/user';
-import { Retrospective } from '../../../models/retrospective';
+import { User } from '@models/user';
+import { Retrospective } from '@models/retrospective';
 import { MatDialog } from '@angular/material';
-import { Settings } from '../../../config/settings';
-import { ContextDialogComponent } from '../../../core/components/dialogs/context-dialog.component';
+import { Settings } from '@config/settings';
+import { ContextDialogComponent } from '@components/dialogs/context-dialog.component';
 import { AuthService } from '../../../core/authentication/auth.service';
-import { RetrospectiveService } from '../../../core/services/retrospective.service';
+import { RetrospectiveService } from '@services/retrospective.service';
 
 @Component({
   selector: 'retro-retre-header',

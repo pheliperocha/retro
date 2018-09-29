@@ -5,10 +5,10 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot
 } from '@angular/router';
-import { User } from '../../models/user';
-import { OAuthConfig } from '../../config/settings';
+import { User } from '@models/user';
+import { OAuthConfig } from '@config/settings';
 import { HttpClient } from '@angular/common/http';
-import { UserAuthToken } from '../interfaces/UserAuthToken';
+import { UserAuthToken } from '@interfaces/UserAuthToken';
 
 @Injectable()
 export class AuthService implements CanActivate {

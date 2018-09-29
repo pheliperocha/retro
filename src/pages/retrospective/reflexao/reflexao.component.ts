@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
-import { Card } from '../../../models/card';
-import { RetrospectiveService } from '../../../core/services/retrospective.service';
+import { Card } from '@models/card';
+import { RetrospectiveService } from '@services/retrospective.service';
 import { MatDialog } from '@angular/material';
-import { Annotation } from '../../../models/annotation';
-import { Retrospective } from '../../../models/retrospective';
-import { CreateCardDialogComponent } from '../../../core/components/dialogs/createCard-dialog.component';
+import { Annotation } from '@models/annotation';
+import { Retrospective } from '@models/retrospective';
+import { CreateCardDialogComponent } from '@components/dialogs/createCard-dialog.component';
 
 @Component({
   selector: 'retro-reflexao-retrospective',

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { List } from '../../models/list';
-import { Card } from '../../models/card';
+import { List } from '@models/list';
+import { Card } from '@models/card';
 import { ApiService } from '../http/api.service';
-import { Annotation } from '../../models/annotation';
+import { Annotation } from "../../models/annotation";
 import { AuthService } from '../authentication/auth.service';
-import { User } from '../../models/user';
+import { User } from '@models/user';
 
 @Injectable()
 export class RetrospectiveService {
