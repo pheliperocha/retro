@@ -1,29 +1,52 @@
-# RetrospectiveDesktop
+<h1 align="center">
+  Retrospective - Desktop
+</h1>
 
-[![GitHub Issues](https://img.shields.io/github/issues/pheliperocha/retro.svg)](https://github.com/pheliperocha/retro/issues)
-[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
-![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)
+<h4 align="center">
+  A tool that helps to perform the Retrospective of Sprints, organizing and bringing better results.
+</h4>
 
-> A tool that helps to perform the Retrospective of Sprints, organizing and bringing better results.
-  
- ## Features
+<p align="center">
+    <a href="https://github.com/pheliperocha/retro/issues"><img src="https://img.shields.io/github/issues/pheliperocha/retro.svg"></a>
+    <a href="https://conventionalcommits.org"><img src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg"></a>
+    <a href="https://www.conventionalcommits.org/"><img src="https://img.shields.io/packagist/l/doctrine/orm.svg"></a>
+</p>
+
+---
+
+## Features
  
- A few of the things you can do with Retro:
+A few of the things you can do with Retro:
  
- * Sign in / Sign up with Linkedin
- * Create new sprint retrospective using a template
- * Customizing a sprint retrospective
- * Let user access the retrospective session through a pin code
- * Add card representing opinions to a specific topic
- * Vote in a card
- * Slideshow with the most relevant cards
- * Add actions to a specific card
+* Sign in / Sign up with Linkedin
+* Create new sprint retrospective using a template
+* Customizing a sprint retrospective
+* Let user access the retrospective session through a pin code
+* Add card representing opinions to a specific topic
+* Vote in a card
+* Slideshow with the most relevant cards
+* Add actions to a specific card
 
 ## Versioning
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/pheliperocha/retro).
 
 We also use [Conventional Commits](http://conventionalcommits.org/) and [Standard Version](https://github.com/conventional-changelog/standard-version), to automatic versioning and [CHANGELOG](CHANGELOG.md) generation
+
+## NPM Commands
+
+|Command|Description|
+|-------:|--------|
+| npm start | Builds the application and starts a web server for development purpose, with live-reload on change files. |
+| npm run ng | Run Angular CLI without the necessity of it been installed globally. Check Angular CLI documentation: https://cli.angular.io/ |
+| npm run build | Compiles the application for production into an output directory (`/dist`). |
+| npm run test | Execute unit tests via Karma with live-reload on file changes. |
+| npm run test:no-watch | Execute unit tests via Karma a single time and with chrome headless. |
+| npm run test:coverage | Execute unit tests outputting a code coverage report on `/src/coverage` folder. |
+| npm run lint | Execute a lint using tslint. |
+| npm run e2e | Execute end-to-end tests via Protractor. |
+| npm run ci | Run lint, unit tests, end-to-end tests and build in a single command to check for any error. |
+| npm run release | Run Standard-Version CLI to make the changelog and bump version. |
 
 ## Project Structure
 
@@ -76,6 +99,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ---
 
-> [pheliperocha.com](https://pheliperocha.com) &nbsp;&middot;&nbsp;
+> Website [pheliperocha.com](https://pheliperocha.com) &nbsp;&middot;&nbsp;
 > GitHub [@pheliperocha](https://github.com/pheliperocha) &nbsp;&middot;&nbsp;
 > Linkedin [@pheliperocha](https://www.linkedin.com/in/pheliperocha/)

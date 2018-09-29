@@ -4,11 +4,14 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
-    "build": "ng build",
+    "start": "ng serve",
+    "build": "ng build --prod",
     "test": "ng test",
+    "test:no-watch": "ng test --browsers ChromeHeadless --watch false",
+    "test:coverage": "ng test --browsers ChromeHeadless --watch false --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "ci": "npm run lint && npm run test:no-watch && npm run e2e && ng build --prod",
     "postinstall": "ng build --prod",
     "release": "standard-version"
   },
