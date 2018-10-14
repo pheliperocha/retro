@@ -10,7 +10,7 @@ export class Settings {
 
 export const OAuthConfig = {
   linkedin: {
-    authEndpoint: environment.apiUrl + 'auth/linkedin',
+    authEndpoint: environment.apiUrl + 'users/login',
     clientId: '77m7ad7n38rroh',
     redirectURI: environment.appUrl + 'auth'
   }
