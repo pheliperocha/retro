@@ -23,8 +23,8 @@
   </div>
 
   <div class="right">
-    <div class="members_picture" *ngFor="let member of retrospective?.members" matTooltip="{{ member?.name }}"><img src="{{ member?.image }}" /></div>
-    <div class="facilitador_picture" matTooltip="{{ retrospective?.facilitador?.name }}"><img src="{{ retrospective?.facilitador?.image }}" alt="" title="" /></div>
+    <div class="members_picture" *ngFor="let member of retrospective?.members" matTooltip="{{ member?.firstname }}"><img src="{{ member?.image }}" /></div>
+    <div class="facilitador_picture" matTooltip="{{ retrospective?.facilitator?.firstname }}"><img src="{{ retrospective?.facilitator?.image }}" alt="" title="" /></div>
     <div class="num_members" *ngIf="retrospective?.state !== appSettings.PREPARAR">{{ retrospective?.members.length + 1 }} {{ (retrospective?.members.length >= 1) ? 'participantes' : 'participante' }}</div>
   </div>
 </mat-toolbar>

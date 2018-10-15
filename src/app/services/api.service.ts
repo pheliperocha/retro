@@ -29,7 +29,7 @@ export class ApiService {
 
   getAllTemplates(): Promise<Template[]> {
     return this.http
-      .get(this.apiUrl + 'template')
+      .get(this.apiUrl + 'templates')
       .toPromise()
       .catch(this.handleError);
   }
@@ -43,7 +43,7 @@ export class ApiService {
 
   createNewRetrospective(retrospective: Retrospective): Promise<any> {
     return this.http
-      .post(this.apiUrl + 'retrospective', retrospective)
+      .post(this.apiUrl + 'retro', retrospective)
       .toPromise()
       .catch(this.handleError);
   }
@@ -64,35 +64,35 @@ export class ApiService {
 
   getAllRetrospectives(userId): Promise<Retrospective[]> {
     return this.http
-      .get(this.apiUrl + 'facilitador/' + userId + '/retrospective')
+      .get(this.apiUrl + 'users/retro')
       .toPromise()
       .catch(this.handleError);
   }
 
   getRetrospectives(id): Promise<Retrospective> {
     return this.http
-      .get(this.apiUrl + 'retrospective/' + id)
+      .get(this.apiUrl + 'retro/' + id)
       .toPromise()
       .catch(this.handleError);
   }
 
   getAllMyActions(): Promise<Array<Retrospective>> {
     return this.http
-      .get(this.apiUrl + 'actions/')
+      .get(this.apiUrl + 'users/actions')
       .toPromise()
       .catch(this.handleError);
   }
 
   getLists(id): Promise<List[]> {
     return this.http
-      .get(this.apiUrl + 'retrospective/' + id + '/list')
+      .get(this.apiUrl + 'retro/' + id + '/lists')
       .toPromise()
       .catch(this.handleError);
   }
 
   getCards(retrospectiveId): Promise<Card[]> {
     return this.http
-      .get(this.apiUrl + 'retrospective/' + retrospectiveId + '/card')
+      .get(this.apiUrl + 'retro/' + retrospectiveId + '/cards')
       .toPromise()
       .catch(this.handleError);
   }
