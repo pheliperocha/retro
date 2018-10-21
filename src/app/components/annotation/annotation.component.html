@@ -9,11 +9,11 @@
     <mat-menu [hidden]="members != null" #menuResponser="matMenu">
       <button mat-menu-item *ngFor="let member of members | removeIntersection: annotation.responsibles" (click)="addResponsible(annotation, member)">
         <mat-icon class="picture"><img src="{{ member.image }}"></mat-icon>
-        <span>{{ member.name }}</span>
+        <span>{{ member.firstname }}</span>
       </button>
     </mat-menu>
 
-    <div *ngFor="let responsible of annotation.responsibles" class="user" [ngClass]="{ withAdd: members != null }" matTooltip="{{ responsible.name }}" [matMenuTriggerFor]="menuRemoveResponser">
+    <div *ngFor="let responsible of annotation.responsibles" class="user" [ngClass]="{ withAdd: members != null }" matTooltip="{{ responsible.firstname }}" [matMenuTriggerFor]="menuRemoveResponser">
       <img src="{{ responsible.image }}" />
 
       <mat-menu #menuRemoveResponser="matMenu">

@@ -76,7 +76,7 @@ export class RetrospectiveService {
       image: null,
       facilitator: {
         id: this.user.id,
-        name: this.user.name,
+        firstname: this.user.firstname,
         image: this.user.image
       },
       pin: null
