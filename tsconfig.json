@@ -16,7 +16,20 @@
       "dom"
     ],
     "module": "es2015",
-    "baseUrl": "./"
+    "baseUrl": "./",
+    "paths": {
+      "@config/*": ["src/config/*"],
+      "@components/*": ["src/app/components/*"],
+      "@directives/*": ["src/app/directives/*"],
+      "@guards/*": ["src/app/guards/*"],
+      "@interceptors/*": ["src/app/interceptors/*"],
+      "@interfaces/*": ["src/app/interfaces/*"],
+      "@models/*": ["src/app/models/*"],
+      "@modules/*": ["src/app/modules/*"],
+      "@pipes/*": ["src/app/pipes/*"],
+      "@resolvers/*": ["src/app/resolvers/*"],
+      "@services/*": ["src/app/services/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableIvy": true
