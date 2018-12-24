@@ -11,7 +11,7 @@ import { MatDialog } from '@angular/material';
 import { Socket } from 'ng-socket-io';
 import { Card } from '@models/card';
 import { ApiService } from '@services/api.service';
-import { Observable, Subscription} from 'rxjs/Rx';
+import { Observable, Subscription } from 'rxjs';
 import { DeleteDialogComponent } from '@components/dialogs/delete-dialog.component';
 
 @Component({

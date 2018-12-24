@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router, Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 import { ApiService } from '@services/api.service';
 import { List } from '@models/list';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class ListsResolverService implements Resolve<List[]> {
