@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import { AuthService } from './auth.service';
-import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router, RouterStateSnapshot } from '@angular/router';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 let authService: AuthService;
 
@@ -16,12 +16,12 @@ const fakeUser = {
 const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
 const mockSnapshot: any = jasmine.createSpyObj<RouterStateSnapshot>('RouterStateSnapshot', ['toString']);
 
-describe('LoginComponent', () => {
+describe('AuthService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             declarations: [],
             imports: [
-                HttpClientModule,
+                HttpClientTestingModule,
                 RouterTestingModule
             ],
             providers: [

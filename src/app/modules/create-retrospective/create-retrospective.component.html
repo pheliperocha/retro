@@ -10,13 +10,21 @@
 
     <label>Template</label>
 
-    <swiper [config]="swiperConfig">
-      <div class="card" *ngFor="let template of templates" [ngClass]="{ selected: template?.id === selectedTemplate }" (click)="selectTemplate(template?.id)">
-        <img mat-card-sm-image src="{{ template?.image }}">
+    <ng-container *ngIf="templates?.length > 0">
+      <swiper [config]="swiperConfig">
+        <div class="card" *ngFor="let template of templates" [ngClass]="{ selected: template?.id === selectedTemplate }" (click)="selectTemplate(template?.id)">
+          <img mat-card-sm-image src="{{ template?.image }}">
 
-        <div class="name">{{ template?.name }}</div>
+          <div class="name">{{ template?.title }}</div>
+        </div>
+      </swiper>
+    </ng-container>
+
+    <ng-container *ngIf="templates?.length <= 0">
+      <div style="padding: 8px 0;">
+        <p>Nenhum template cadastrado</p>
       </div>
-    </swiper>
+    </ng-container>
 
     <div class="actions">
       <button mat-button mat-dialog-close>Canclear</button>
