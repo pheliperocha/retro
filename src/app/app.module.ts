@@ -23,7 +23,7 @@ import {
 import { DragulaModule } from 'ng2-dragula';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { appRoutes } from './app.routes';
 import { RetrospectiveResolverService } from '@resolvers/retrospective-resolver.service';
 import { ListsResolverService } from '@resolvers/lists-resolver.service';
@@ -50,6 +50,7 @@ import { environment } from '@config/environments/environment';
 import { CookieService } from '@services/cookie.service';
 import { OAuthModule } from '@services/auth/oauth.module';
 import { ApiService } from '@services/api.service';
+import { HttpErrorInterceptor } from '@interceptors/http-error.interceptor';
 
 const socketConfig: SocketIoConfig = { url: environment.apiUrl, options: {} };
 @NgModule({
@@ -114,6 +115,11 @@ const socketConfig: SocketIoConfig = { url: environment.apiUrl, options: {} };
     ListsResolverService,
     RetrospectiveService,
     CookieService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

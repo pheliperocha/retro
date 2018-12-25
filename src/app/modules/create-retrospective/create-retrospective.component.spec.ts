@@ -47,6 +47,8 @@ describe('CreateRetrospectiveComponent', () => {
             ]
         }).compileComponents();
 
+        spyOn(AuthService.prototype, 'checkTokenExpiration').and.stub().and.returnValue(true);
+
     }));
 
     it('SHOULD create the CreateRetrospectiveComponent', async(() => {

@@ -16,6 +16,8 @@ describe('LoginComponent', () => {
             ],
             providers: [AuthService]
         }).compileComponents();
+
+        spyOn(AuthService.prototype, 'checkTokenExpiration').and.stub().and.returnValue(true);
     }));
 
     it('SHOULD create the Login', async(() => {

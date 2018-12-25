@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import {
   Router,
   CanActivate,
@@ -9,6 +9,7 @@ import { User } from '@models/user';
 import { OAuthConfig } from '@config/settings';
 import { HttpClient } from '@angular/common/http';
 import { UserAuthToken } from '@interfaces/UserAuthToken';
+import * as jwt_decode from 'jwt-decode';
 
 @Injectable()
 export class AuthService implements CanActivate {
@@ -24,6 +25,19 @@ export class AuthService implements CanActivate {
   ) {
     this.user = (localStorage.getItem('user')) ? JSON.parse(localStorage.getItem('user')) : null;
     this.token = (localStorage.getItem('token')) ? localStorage.getItem('token') : null;
+    this.checkTokenExpiration();
+  }
+
+  checkTokenExpiration() {
+    const tokenInfo = this.getDecodedToken();
+    const now = Math.round(+new Date() / 1000);
+
+    if (!tokenInfo || now >= tokenInfo.exp) {
+      this.logout();
+      return false;
+    }
+
+    return true;
   }
 
   canActivate(
@@ -56,6 +70,14 @@ export class AuthService implements CanActivate {
 
   public getToken(): string {
     return this.token;
+  }
+
+  public getDecodedToken(): any {
+    try {
+      return jwt_decode(this.token);
+    } catch (Error) {
+      return null;
+    }
   }
 
   private loginOAuth(code: string): Promise<UserAuthToken> {

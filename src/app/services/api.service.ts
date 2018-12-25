@@ -16,166 +16,138 @@ export class ApiService {
   addMember(retroId: number, userId: number): Promise<boolean> {
     return this.http
       .post(this.apiUrl + 'retros/members', {retroId: retroId, userId: userId})
-      .toPromise()
-      .catch(this.handleError);
+      .toPromise<any>();
   }
 
   removeMember(retroId: number, userId: number): Promise<boolean> {
     return this.http
       .delete(this.apiUrl + 'retros/' + retroId + '/members/' + userId)
-      .toPromise()
-      .catch(this.handleError);
+      .toPromise<any>();
   }
 
   getAllTemplates(): Promise<Template[]> {
     return this.http
-      .get(this.apiUrl + 'templates')
-      .toPromise()
-      .catch(this.handleError);
+      .get(`${this.apiUrl}templates`)
+      .toPromise<any>();
   }
 
   createNewCard(card: Card): Promise<Card> {
     return this.http
       .post(this.apiUrl + 'cards', card)
-      .toPromise()
-      .catch(this.handleError);
+      .toPromise<any>();
   }
 
   createNewRetrospective(retrospective: Retrospective): Promise<any> {
     return this.http
       .post(this.apiUrl + 'retros', retrospective)
-      .toPromise()
-      .catch(this.handleError);
+      .toPromise();
   }
 
   createNewList(list: List): Promise<List> {
     return this.http
       .post(this.apiUrl + 'lists', list)
-      .toPromise()
-      .catch(this.handleError);
+      .toPromise();
   }
 
   createNewAnnotation(annotation: Annotation): Promise<Annotation> {
     return this.http
       .post(this.apiUrl + 'annotations', annotation)
-      .toPromise()
-      .catch(this.handleError);
+      .toPromise();
   }
 
   getAllRetrospectives(userId): Promise<Retrospective[]> {
     return this.http
       .get(this.apiUrl + 'users/retros')
-      .toPromise()
-      .catch(this.handleError);
+      .toPromise<any>();
   }
 
   getRetrospectives(id): Promise<Retrospective> {
     return this.http
       .get(this.apiUrl + 'retros/' + id)
-      .toPromise()
-      .catch(this.handleError);
+      .toPromise<any>();
   }
 
   getAllMyActions(): Promise<Array<Retrospective>> {
     return this.http
       .get(this.apiUrl + 'users/actions')
-      .toPromise()
-      .catch(this.handleError);
+      .toPromise<any>();
   }
 
   getLists(id): Promise<List[]> {
     return this.http
       .get(this.apiUrl + 'retros/' + id + '/lists')
-      .toPromise()
-      .catch(this.handleError);
+      .toPromise<any>();
   }
 
   getCards(retrospectiveId): Promise<Card[]> {
     return this.http
       .get(this.apiUrl + 'retros/' + retrospectiveId + '/cards')
-      .toPromise()
-      .catch(this.handleError);
+      .toPromise<any>();
   }
 
   updateRetrospective(retrospectiveId: number, update: object): Promise<any> {
     return this.http
       .patch(this.apiUrl + 'retros/' + retrospectiveId, update)
-      .toPromise()
-      .catch(this.handleError);
+      .toPromise();
   }
 
   updateList(listId: number, update: object): Promise<any> {
     return this.http
       .patch(this.apiUrl + 'lists/' + listId, update)
-      .toPromise()
-      .catch(this.handleError);
+      .toPromise();
   }
 
   sortLists(retroId: number, update: Array<Array<number>>): Promise<any> {
     return this.http
       .patch(this.apiUrl + 'retros/' + retroId + '/lists/positions', update)
-      .toPromise()
-      .catch(this.handleError);
+      .toPromise();
   }
 
   sortCards(retroId: number, update: Array<Array<number>>): Promise<any> {
     return this.http
       .patch(this.apiUrl + 'retros/' + retroId + '/cards/positions', update)
-      .toPromise()
-      .catch(this.handleError);
+      .toPromise();
   }
 
   updateCard(cardId: number, update: object): Promise<any> {
     return this.http
       .patch(this.apiUrl + 'cards/' + cardId, update)
-      .toPromise()
-      .catch(this.handleError);
+      .toPromise<any>();
   }
 
   deleteList(listId: number): Promise<boolean> {
     return this.http
       .delete(this.apiUrl + 'lists/' + listId)
-      .toPromise()
-      .catch(this.handleError);
+      .toPromise<any>();
   }
 
   deleteCard(cardId: number): Promise<boolean> {
     return this.http
       .delete(this.apiUrl + 'cards/' + cardId)
-      .toPromise()
-      .catch(this.handleError);
+      .toPromise<any>();
   }
 
   upvoteCard(cardId: number, userId: number): Promise<boolean> {
     return this.http
       .post(this.apiUrl + 'cards/' + cardId + '/votes', {userId: userId})
-      .toPromise()
-      .catch(this.handleError);
+      .toPromise<any>();
   }
 
   downvoteCard(cardId: number, userId: number): Promise<boolean> {
     return this.http
       .delete(this.apiUrl + 'cards/' + cardId + '/users/' + userId)
-      .toPromise()
-      .catch(this.handleError);
+      .toPromise<any>();
   }
 
   addResponsible(annotationId: number, userId: number) {
     return this.http
       .post(this.apiUrl + 'annotations/' + annotationId + '/users', {userId: userId})
-      .toPromise()
-      .catch(this.handleError);
+      .toPromise();
   }
 
   removeResponsible(annotationId: number, userId: number) {
     return this.http
       .delete(this.apiUrl + 'annotations/' + annotationId + '/users/' + userId)
-      .toPromise()
-      .catch(this.handleError);
-  }
-
-  private handleError(error: any): Promise<any> {
-    console.error('Infelizmente ocorreu um erro ', error);
-    return Promise.reject(error.message || error);
+      .toPromise();
   }
 }
