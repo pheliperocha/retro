@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from '@services/api.service';
 import { Retrospective } from '@models/retrospective';
 import { AuthService } from '@services/auth/auth.service';
@@ -11,13 +11,17 @@ import { MatDialog } from '@angular/material';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
   public user: User;
   public retrospectives: Retrospective[];
 
-  constructor(private authService: AuthService,
-              private apiService: ApiService,
-              public newRetroDialog: MatDialog) {
+  constructor(
+    private authService: AuthService,
+    private apiService: ApiService,
+    public newRetroDialog: MatDialog
+  ) {}
+
+  ngOnInit() {
     this.user = this.authService.getUser();
 
     this.apiService.getAllRetrospectives(this.user.id).then(retrospectives => {

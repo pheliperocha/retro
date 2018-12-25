@@ -52,7 +52,6 @@ import { OAuthModule } from '@services/auth/oauth.module';
 import { ApiService } from '@services/api.service';
 
 const socketConfig: SocketIoConfig = { url: environment.apiUrl, options: {} };
-
 @NgModule({
   declarations: [
     AppComponent,
