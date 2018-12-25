@@ -71,6 +71,7 @@ describe('CreateRetrospectiveComponent', () => {
             expect(spyGetAllTemplates).toHaveBeenCalled();
             expect(component.templates.length).toBe(2);
             expect(html.querySelector('swiper')).toBeTruthy();
+            expect(html.querySelectorAll('.card').length).toBe(2);
             expect(html.textContent).not.toContain('Nenhum template cadastrado');
             expect(html.textContent).toContain('Hopes and Concerns');
             expect(html.textContent).toContain('Nice and Ok');

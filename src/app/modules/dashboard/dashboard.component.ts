@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.user = this.authService.getUser();
 
-    this.apiService.getAllRetrospectives(this.user.id).then(retrospectives => {
+    this.apiService.getAllRetrospectives().then(retrospectives => {
       this.retrospectives = retrospectives;
     });
   }

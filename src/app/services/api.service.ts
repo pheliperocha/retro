@@ -55,7 +55,7 @@ export class ApiService {
       .toPromise();
   }
 
-  getAllRetrospectives(userId): Promise<Retrospective[]> {
+  getAllRetrospectives(): Promise<Retrospective[]> {
     return this.http
       .get(this.apiUrl + 'users/retros')
       .toPromise<any>();
