@@ -7,6 +7,9 @@
     </mat-expansion-panel-header>
 
     <retro-annotation *ngFor="let annotation of retrospective?.annotations" [annotation]="annotation"></retro-annotation>
-
   </mat-expansion-panel>
+
+  <ng-container *ngIf="retrospectives?.length <= 0">
+    <div style="padding: 32px; text-align: center;">Você não está atribuido em nenhuma anotação</div>
+  </ng-container>
 </mat-accordion>
