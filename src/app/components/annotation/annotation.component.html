@@ -2,7 +2,7 @@
   <div class="desc">{{ annotation.description }}</div>
 
   <div class="responsibles">
-    <button *ngIf="members != null" mat-icon-button color="secundary" [hidden]="members.length <= annotation.responsibles.length" [matMenuTriggerFor]="menuResponser">
+    <button *ngIf="members != null" mat-icon-button color="secundary" class="add-responsible" [hidden]="members.length <= annotation.responsibles.length" [matMenuTriggerFor]="menuResponser">
       <mat-icon aria-label="Atribuir pessoa">add</mat-icon>
     </button>
 

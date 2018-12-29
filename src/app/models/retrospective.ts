@@ -11,5 +11,5 @@ export class Retrospective {
   pin: string;
   facilitator?: User;
   members?: User[];
-  annotation?: Annotation[];
+  annotations?: Annotation[];
 }
