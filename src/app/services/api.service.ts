@@ -67,7 +67,7 @@ export class ApiService {
       .toPromise<any>();
   }
 
-  getAllMyActions(): Promise<Array<Retrospective>> {
+  getAllMyActions(): Promise<Partial<Retrospective>[]> {
     return this.http
       .get(this.apiUrl + 'users/actions')
       .toPromise<any>();

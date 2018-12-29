@@ -7,7 +7,6 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Retrospective } from '@models/retrospective';
 import { DashboardComponent } from './dashboard.component';
-import { HeaderComponent } from '@components/header/header.component';
 import { MyActionsComponent } from '@components/my-actions/myActions.component';
 import { RetrospectiveThumbComponent } from '@components/retrospective-thumb/retrospective-thumb.component';
 import { AnnotationComponent } from '@components/annotation/annotation.component';
@@ -26,21 +25,21 @@ let spyGetAllRetros: jasmine.Spy;
 class MockHeaderComponent { @Input() sidenav: any; }
 
 const retroMock: Retrospective[] = [{
-    'id': 1,
-    'title': 'Retrospective Title 1',
-    'context': 'Retrospective Context 1',
-    'state': 3,
-    'date': '30/09/2018',
-    'image': 'http://localhost:4200/assets/images/hopes_concern.png',
-    'pin': '1234567',
+    id: 1,
+    title: 'Retrospective Title 1',
+    context: 'Retrospective Context 1',
+    state: 3,
+    date: '30/09/2018',
+    image: 'http://localhost:4200/assets/images/hopes_concern.png',
+    pin: '1234567',
 }, {
-    'id': 2,
-    'title': 'Retrospective Title 2',
-    'context': 'Retrospective Context 2',
-    'state': 3,
-    'date': '25/12/2018',
-    'image': 'http://localhost:4200/assets/images/nice_ok.png',
-    'pin': '9876543',
+    id: 2,
+    title: 'Retrospective Title 2',
+    context: 'Retrospective Context 2',
+    state: 3,
+    date: '25/12/2018',
+    image: 'http://localhost:4200/assets/images/nice_ok.png',
+    pin: '9876543',
 }];
 
 describe('DashboardComponent', () => {
@@ -116,6 +115,18 @@ describe('DashboardComponent', () => {
             expect(spyGetAllRetros).toHaveBeenCalled();
             expect(component.retrospectives.length).toBe(0);
             expect(html.querySelector('retro-retrospective-thumb')).toBeFalsy();
+        });
+    }));
+
+    it('SHOULD have MyAction drawer', async(() => {
+        fixture = TestBed.createComponent(DashboardComponent);
+        component = fixture.debugElement.componentInstance;
+        const html: HTMLElement = fixture.nativeElement;
+
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+            fixture.detectChanges();
+            expect(html.querySelector('retro-my-actions')).toBeTruthy();
         });
     }));
 });

@@ -20,14 +20,49 @@ const templatesMock: Template[] = [{
 }];
 
 const retroMock: Retrospective[] = [{
-    'id': 1,
-    'title': 'Retrospective Title 1',
-    'context': 'Retrospective Context 1',
-    'state': 3,
-    'date': '30/09/2018',
-    'image': 'http://localhost:4200/assets/images/hopes_concern.png',
-    'pin': '1234567',
+    id: 1,
+    title: 'Retrospective Title 1',
+    context: 'Retrospective Context 1',
+    state: 3,
+    date: '30/09/2018',
+    image: 'http://localhost:4200/assets/images/hopes_concern.png',
+    pin: '1234567',
 }];
+
+const retroWithAnnotationsMock: Partial<Retrospective>[] = [
+    {
+        id: 1,
+        title: 'Retrospective Title 1',
+        annotations: [
+            {
+                id: 1,
+                description: '',
+                responsibles: []
+            },
+            {
+                id: 3,
+                description: '',
+                responsibles: []
+            }
+        ]
+    },
+    {
+        id: 2,
+        title: 'Retrospective Title 2',
+        annotations: [
+            {
+                id: 4,
+                description: '',
+                responsibles: []
+            },
+            {
+                id: 5,
+                description: '',
+                responsibles: []
+            }
+        ]
+    }
+];
 
 describe('ApiService', () => {
     beforeEach(() => {
@@ -50,7 +85,7 @@ describe('ApiService', () => {
         httpMock.verify();
     });
 
-    it('SHOULD return an Promise<Template[]>', () => {
+    it('SHOULD return an Promise<Template[]> on getAllTemplates', () => {
         apiService.getAllTemplates().then(res => {
             expect(res.length).toBe(2);
             expect(res).toEqual(templatesMock);
@@ -61,7 +96,7 @@ describe('ApiService', () => {
         req.flush(templatesMock);
     });
 
-    it('SHOULD return an Promise<Retrospective[]>', () => {
+    it('SHOULD return an Promise<Retrospective[]> on getAllRetrospectives', () => {
         apiService.getAllRetrospectives().then(res => {
             expect(res.length).toBe(1);
             expect(res).toEqual(retroMock);
@@ -70,5 +105,16 @@ describe('ApiService', () => {
         const req = httpMock.expectOne(`${environment.apiUrl}users/retros`);
         expect(req.request.method).toBe('GET');
         req.flush(retroMock);
+    });
+
+    it('SHOULD return an Promise<Partial<Retrospective>[]> on getAllMyActions', () => {
+        apiService.getAllMyActions().then(res => {
+            expect(res.length).toBe(2);
+            expect(res).toEqual(retroWithAnnotationsMock);
+        });
+
+        const req = httpMock.expectOne(`${environment.apiUrl}users/actions`);
+        expect(req.request.method).toBe('GET');
+        req.flush(retroWithAnnotationsMock);
     });
 });

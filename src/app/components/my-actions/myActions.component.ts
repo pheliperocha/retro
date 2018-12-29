@@ -8,7 +8,7 @@ import { ApiService } from '@services/api.service';
   styleUrls: ['./myActions.component.scss']
 })
 export class MyActionsComponent {
-  public retrospectives: Retrospective[];
+  public retrospectives: Partial<Retrospective>[];
 
   constructor(private apiService: ApiService) {
     this.apiService.getAllMyActions().then(retrospectives => {
