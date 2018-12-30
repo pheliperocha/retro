@@ -65,21 +65,11 @@ export class RetrospectiveService {
     }).catch(RetrospectiveService.handleError);
   }
 
-  createNewRetrospective(title: string, context: string, templateId: number): Promise<number> {
+  createNewRetrospective(title: string, context: string, templateId: number): Promise<number | void> {
     const retrospective = {
-      id: null,
       title: title,
       context: context,
       templateId: templateId,
-      state: null,
-      date: null,
-      image: null,
-      facilitator: {
-        id: this.user.id,
-        firstname: this.user.firstname,
-        image: this.user.image
-      },
-      pin: null
     };
 
     return this.apiService.createNewRetrospective(retrospective).then(newRetrospective => {

@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { Template } from '@models/template';
 import { RetrospectiveService } from '@services/retrospective.service';
@@ -12,7 +12,7 @@ import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
   styleUrls: ['./create-retrospective.component.scss'],
   providers: [ RetrospectiveService ]
 })
-export class CreateRetrospectiveComponent {
+export class CreateRetrospectiveComponent implements OnInit {
   public templates: Template[];
   public selectedTemplate = 1;
   public swiperConfig: SwiperConfigInterface = {
@@ -21,11 +21,15 @@ export class CreateRetrospectiveComponent {
     nextButton: '.swiper-button-next',
   };
 
-  constructor(public dialogRef: MatDialogRef<CreateRetrospectiveComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any,
-              private retrospectiveService: RetrospectiveService,
-              private apiService: ApiService,
-              private router: Router) {
+  constructor(
+    public dialogRef: MatDialogRef<CreateRetrospectiveComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private retrospectiveService: RetrospectiveService,
+    private apiService: ApiService,
+    private router: Router
+  ) {}
+
+  ngOnInit() {
     this.apiService.getAllTemplates().then(templates => {
       this.templates = templates;
     }).catch(err => {

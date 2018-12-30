@@ -9,7 +9,7 @@ export class Retrospective {
   date: string;
   image: string;
   pin: string;
-  facilitator?: User;
+  Facilitator?: User;
   members?: User[];
   annotations?: Annotation[];
 }

@@ -58,7 +58,7 @@ export class RetrospectiveComponent implements OnInit, OnDestroy {
     this.socket.emit('subscribe', this.retrospective.id);
     this.socket.emit('enter', {retroId: this.retrospective.id, user: this.user});
 
-    if (this.retrospective.facilitator.id !== this.user.id) {
+    if (this.retrospective.Facilitator.id !== this.user.id) {
       this.apiService.addMember(this.retrospective.id, this.user.id);
     }
 
@@ -143,7 +143,7 @@ export class RetrospectiveComponent implements OnInit, OnDestroy {
     });
 
     this.getNewMemberSubscribe = this.getNewMember().subscribe(user => {
-      if (this.retrospective.facilitator.id !== user.id) {
+      if (this.retrospective.Facilitator.id !== user.id) {
         const memberIndex = this.retrospective.members.findIndex((member) => (member.id === user.id));
 
         if (memberIndex < 0) {
@@ -153,7 +153,7 @@ export class RetrospectiveComponent implements OnInit, OnDestroy {
     });
 
     this.getLeftMemberSubscribe = this.getLeftMember().subscribe(user => {
-      if (this.retrospective.facilitator.id !== user.id) {
+      if (this.retrospective.Facilitator.id !== user.id) {
         const memberIndex = this.retrospective.members.findIndex((member) => (member.id === user.id));
 
         if (memberIndex >= 0) {
@@ -223,7 +223,7 @@ export class RetrospectiveComponent implements OnInit, OnDestroy {
   }
 
   goToPrepareStep() {
-    if (this.retrospective.facilitator.id !== this.user.id) {
+    if (this.retrospective.Facilitator.id !== this.user.id) {
       return false;
     }
     if (this.retrospective.members.length >= 1) {
@@ -262,7 +262,7 @@ export class RetrospectiveComponent implements OnInit, OnDestroy {
   }
 
   goToFeedbackStep() {
-    if (this.retrospective.facilitator.id !== this.user.id) {
+    if (this.retrospective.Facilitator.id !== this.user.id) {
       return false;
     }
     const newPin = Math.random().toString().substr(-6);
@@ -281,7 +281,7 @@ export class RetrospectiveComponent implements OnInit, OnDestroy {
   }
 
   goToReflexaoStep() {
-    if (this.retrospective.facilitator.id !== this.user.id) {
+    if (this.retrospective.Facilitator.id !== this.user.id) {
       return false;
     }
 

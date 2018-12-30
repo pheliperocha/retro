@@ -13,7 +13,7 @@ export class ListsResolverService implements Resolve<List[]> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<List[]> | Promise<List[]> | List[] {
     const id = route.paramMap.get('id');
-    return this.apiService.getLists(id).then().catch((error) => {
+    return this.apiService.getRetroLists(id).then().catch((error) => {
       this.router.navigate(['dashboard']);
       return Promise.reject(error.message || error);
     });

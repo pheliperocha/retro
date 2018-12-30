@@ -37,9 +37,9 @@ export class ApiService {
       .toPromise<any>();
   }
 
-  createNewRetrospective(retrospective: Retrospective): Promise<any> {
+  createNewRetrospective(retrospective: Partial<Retrospective>): Promise<Retrospective> {
     return this.http
-      .post(this.apiUrl + 'retros', retrospective)
+      .post<Retrospective>(this.apiUrl + 'retros', retrospective)
       .toPromise();
   }
 
@@ -73,7 +73,7 @@ export class ApiService {
       .toPromise<any>();
   }
 
-  getLists(id): Promise<List[]> {
+  getRetroLists(id): Promise<List[]> {
     return this.http
       .get(this.apiUrl + 'retros/' + id + '/lists')
       .toPromise<any>();
