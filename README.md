@@ -15,6 +15,8 @@
 
 ---
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/df4e80ba4d274682a9ba819e0b8de129)](https://app.codacy.com/app/pheliperocha/retro?utm_source=github.com&utm_medium=referral&utm_content=pheliperocha/retro&utm_campaign=Badge_Grade_Dashboard)
+
 ## Features
  
 A few of the things you can do with Retro:
