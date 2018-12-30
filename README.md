@@ -8,7 +8,13 @@
 
 <p align="center">
     <a href="https://travis-ci.com/pheliperocha/retro"><img src="https://travis-ci.com/pheliperocha/retro.svg?branch=master"></a>
+    <a href="https://app.codacy.com/app/pheliperocha/retro?utm_source=github.com&utm_medium=referral&utm_content=pheliperocha/retro&utm_campaign=Badge_Grade_Dashboard"><img src="https://api.codacy.com/project/badge/Grade/df4e80ba4d274682a9ba819e0b8de129" alt="Codacy Badge"></a>
     <a href="https://github.com/pheliperocha/retro/issues"><img src="https://img.shields.io/github/issues/pheliperocha/retro.svg"></a>
+    <br>
+    <a href="https://snyk.io/test/github/pheliperocha/retro?targetFile=package.json"><img src="https://snyk.io/test/github/pheliperocha/retro/badge.svg?targetFile=package.json" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io/test/github/pheliperocha/retro?targetFile=package.json" style="max-width:100%;"></a>
+    <a href="https://david-dm.org/pheliperocha/retro" title="dependencies status"><img src="https://david-dm.org/pheliperocha/retro/status.svg"/></a>
+    <a href="https://david-dm.org/pheliperocha/retro?type=dev" title="devDependencies status"><img src="https://david-dm.org/pheliperocha/retro/dev-status.svg"/></a>
+    <br>
     <a href="https://conventionalcommits.org"><img src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg"></a>
     <a href="https://www.conventionalcommits.org/"><img src="https://img.shields.io/packagist/l/doctrine/orm.svg"></a>
 </p>
