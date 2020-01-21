@@ -41,7 +41,7 @@
     "node-sass": "^4.11.0",
     "rxjs": "^6.3.3",
     "rxjs-compat": "^6.3.3",
-    "sass-loader": "^6.0.6",
+    "sass-loader": "^7.2.0",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
