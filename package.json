@@ -13,7 +13,9 @@
     "e2e": "ng e2e",
     "ci": "npm run lint && npm run test:no-watch && npm run e2e && ng build --prod",
     "postinstall": "ng build --prod",
-    "release": "standard-version"
+    "release": "standard-version",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "private": true,
   "dependencies": {
@@ -42,7 +44,8 @@
     "rxjs": "^6.3.3",
     "rxjs-compat": "^6.3.3",
     "sass-loader": "^6.0.6",
-    "zone.js": "^0.8.26"
+    "zone.js": "^0.8.26",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.7.0",
@@ -73,5 +76,6 @@
       "tag": true,
       "commit": true
     }
-  }
+  },
+  "snyk": true
 }
